@@ -1,0 +1,7 @@
+# Windows image file caches
+Thumbs.db
+
+# Windows execution files
+*.exe
+*.dll
+*.pdb

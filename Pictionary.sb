@@ -1,0 +1,56 @@
+' Pictionary
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Last update 201-05-29
+' Extension LitDev
+
+GraphicsWindow.Title = "Pictionary"
+kw = "Array,Bell,Chinese,Color,Dictionary,"
+kw = kw + "Ellipse,English,French,German,Graphics,"
+kw = kw + "Italian,Japanese,Korean,Line,"
+kw = kw + "Pen,Rectangle,Triangle"
+kw = kw + ""
+keywords = LDText.Split(kw, ",")
+n = Array.GetItemCount(keywords)
+LDSpeech.Voice = "Microsoft Zira Desktop"
+GraphicsWindow.BrushColor = "Black"
+xLeft = 10
+y[0] = -20
+dx = 80
+For i = 1 To n
+  y[i] = y[i - 1] + 30
+  If 400 < y[i] Then
+    xLeft = xLeft + dx
+    y[i] = 10
+  EndIf
+  x[i] = xLeft
+  GraphicsWindow.DrawText(x[i], y[i], keywords[i])
+EndFor
+GraphicsWindow.MouseDown = OnMouseDown
+LDSpeech.Speed = -1
+While "True"
+  If mouseDown Then
+    For i = 1 To n
+      If x[i] <= mx And mx <= x[i] + dx And y[i] <= my And my <= y[i] + 12 Then
+        LDProcess.Start(Program.Directory + "\" + keywords[i] + ".exe", "")
+        LDSpeech.Speak(keywords[i])
+        If keywords[i] = "Bell" Then
+          Sound.PlayBellRing()
+        ElseIf keywords[i] = "Chime" Then
+          Sound.PlayChime()
+        ElseIf keywords[i] = "Click" Then
+          Sound.PlayClick()
+        ElseIf keywords[i] = "Music" Then
+          Sound.PlayMusic("O5C8D8E8F8G8A8B8O6C4O5G4O6C4")
+        EndIf
+      EndIf
+    EndFor
+    mouseDown = "False"
+  EndIf
+  Program.Delay(200)
+EndWhile
+
+Sub OnMouseDown
+  mouseDown = "True"
+  mx = GraphicsWindow.MouseX
+  my = GraphicsWindow.MouseY
+EndSub
