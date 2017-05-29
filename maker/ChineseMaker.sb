@@ -1,0 +1,325 @@
+' Flag Maker - Shapes Array Generator
+' Version 0.6
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Last update 2017-05-27
+
+GraphicsWindow.Title = "Flag Maker 0.6"
+GraphicsWindow.BackgroundColor = "LightGray"
+Init()
+mag = 12
+width = mag * 30
+height = mag * 20
+shX = (gw - width) / 2
+shY = (gh - height) / 2
+x = 0
+y = 0
+bc = "#DE2910"
+Shapes_AddRectangle()
+
+xo = mag * 5
+yo = mag * 5
+r = mag * 3
+a = 0
+bc = "#FFDE00"
+Star()
+
+xo = mag * 10
+yo = mag * 2
+x = -5
+y = 3
+Math_CartesianToPolar()
+a = a - 270
+r = mag
+Star()
+
+xo = mag * 12
+yo = mag * 4
+x = -7
+y = 1
+Math_CartesianToPolar()
+a = a - 270
+r = mag
+Star()
+
+xo = mag * 12
+yo = mag * 7
+x = -7
+y = -2
+Math_CartesianToPolar()
+a = a - 270
+r = mag
+Star()
+
+xo = mag * 10
+yo = mag * 9
+x = -5
+y = -4
+Math_CartesianToPolar()
+a = a - 270
+r = mag
+Star()
+
+bc = "Black"
+fn = "Trebuchet MS"
+fs = 50
+txt = "Chinese"
+angle = 0
+x = gw - 200 - shX
+y = gh - 74 - shY
+Shapes_AddText()
+
+Shapes_DumpArray()
+
+Sub CalcPos
+  ' param xo, yo - center of the star
+  ' param i - index of the triangle (1..5)
+  ' param r - radius of the star
+  ' param a - angle of the star
+  ' return x, y - position of the triangle
+  ' return angle - angle of the triangle
+  angle = (i - 1) * 72 + a
+  _angle = Math.GetRadians(angle)
+  r2 = r - ht / 2
+  x = xo + r2 * Math.Sin(_angle) - wt / 2
+  y = yo - r2 * Math.Cos(_angle) - ht / 2 
+EndSub
+
+Sub CalcTriangle
+  x1 = wt / 2
+  y1 = 0
+  x2 = 0
+  y2 = ht
+  x3 = wt
+  y3 = ht
+EndSub
+
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  iMin = 1
+  iMax = iMin - 1
+  pc = ""
+  pw = 0
+  bc = ""
+  x = 0
+  y = 0
+  width = 0
+  height = 0
+  x1 = 0
+  y1 = 0
+  x2 = 0
+  y2 = 0
+  x3 = 0
+  y3 = 0
+  angle = 0
+  fb = "False"
+  fi = "False"
+EndSub
+
+Sub Star
+  ' param xo, yo - center of the star
+  ' param r - radius of the star
+  ' param a - angle of the star
+  _a49 = Math.GetRadians(49)
+  e = 2 * r * Math.Cos(_a49)
+  _a72 = Math.GetRadians(72)
+  ht = e * Math.Sin(_a72)
+  wt = 2 * e * Math.Cos(_a72)
+  For i = 1 To 5
+    CalcTriangle()
+    CalcPos()
+    Shapes_AddTriangle()
+  EndFor
+EndSub
+
+Sub Math_CartesianToPolar
+  ' Math | convert Cartesian coodinate to polar coordinate
+  ' param x, y - Cartesian coordinate
+  ' return r, a - polar Coordinate (0<=a<360)
+  r = Math.SquareRoot(x * x + y * y)
+  If x = 0 And y > 0 Then
+    a = 90 ' [degree]
+  ElseIf x = 0 And y < 0 Then
+    a = -90
+  ElseIf x = 0 And y = 0 Then
+    a = 0
+  Else
+    a = Math.ArcTan(y / x) * 180 / Math.Pi
+  EndIf
+  ' at this point -90<=a<=90
+  If x < 0 Then
+    a = a + 180
+  ElseIf x >= 0 And y < 0 Then
+    a = a + 360
+  EndIf
+  ' at this point 0<=a<360
+EndSub
+
+Sub Shapes_AddEllipse
+  ' param x, y - top left position
+  ' param width
+  ' param height
+  Shapes_EntryClear()
+  Shapes_PenToEntry()
+  Shapes_BrushToEntry()
+  func = "ell"
+  Shapes_FuncToEntry()
+  Shapes_MoveToEntry()
+  Shapes_RotateToEntry()
+  Shapes_EntryToArray()
+EndSub
+
+Sub Shapes_AddLine
+  ' param x1, y1 - first point
+  ' param x2, y2 - second point
+  Shapes_EntryClear()
+  Shapes_PenToEntry()
+  func = "line"
+  Shapes_FuncToEntry()
+  Shapes_MoveToEntry()
+  Shapes_RotateToEntry()
+  Shapes_EntryToArray()
+EndSub
+
+Sub Shapes_AddRectangle
+  ' param x, y - top left position
+  ' param width
+  ' param height
+  Shapes_EntryClear()
+  Shapes_PenToEntry()
+  Shapes_BrushToEntry()
+  func = "rect"
+  Shapes_FuncToEntry()
+  Shapes_MoveToEntry()
+  Shapes_RotateToEntry()
+  Shapes_EntryToArray()
+EndSub
+
+Sub Shapes_AddText
+  ' param x, y - top left position
+  ' param txt - text
+  Shapes_EntryClear()
+  Shapes_PenToEntry()
+  Shapes_BrushToEntry()
+  Shapes_FontToEntry()
+  func = "text"
+  Shapes_FuncToEntry()
+  Shapes_MoveToEntry()
+  Shapes_RotateToEntry()
+  Shapes_EntryToArray()
+EndSub
+
+Sub Shapes_AddTriangle
+  ' param x1, y1 - first point
+  ' param x2, y2 - second point
+  ' param x3, y3 - third point
+  Shapes_EntryClear()
+  Shapes_PenToEntry()
+  Shapes_BrushToEntry()
+  func = "tri"
+  Shapes_FuncToEntry()
+  Shapes_MoveToEntry()
+  Shapes_RotateToEntry()
+  Shapes_EntryToArray()
+EndSub
+
+Sub Shapes_BrushToEntry
+  GraphicsWindow.BrushColor = bc
+  shp["bc"] = bc
+EndSub
+
+Sub Shapes_DumpArray
+  WQ = Text.GetCharacter(34)
+  LF = Text.GetCharacter(10)
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontName = "Consolas"
+  GraphicsWindow.FontSize = 14
+  tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
+  Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
+  buf = ""
+  If 0 < shX Then
+    buf = buf + "  shX = " + shX + LF
+  EndIf
+  If 0 < shY Then
+    buf = buf + "  shY = " + shY + LF
+  EndIf
+  For i = iMin To iMax
+    buf = buf + "  shape[" + i + "] = " + WQ + shape[i] + WQ + LF
+  EndFor
+  Controls.SetTextBoxText(tbox, buf)
+  Shapes.SetOpacity(tbox, 50)
+EndSub
+
+Sub Shapes_EntryClear
+  shp = ""
+EndSub
+
+Sub Shapes_EntryToArray
+  iMax = iMax + 1
+  shape[iMax] = shp
+EndSub
+
+Sub Shapes_FontToEntry
+  GraphicsWindow.FontSize = fs
+  shp["fs"] = fs
+  GraphicsWindow.FontName = fn
+  shp["fn"] = fn
+  GraphicsWindow.FontBold = fb
+  shp["fb"] = fb
+  GraphicsWindow.FontItalic = fi
+  shp["fi"] = fi
+EndSub
+
+Sub Shapes_FuncToEntry
+  shp["func"] = func
+  If func = "ell" Then
+    obj = Shapes.AddEllipse(width, height)
+    shp["width"] = Math.Floor(width * 100) / 100
+    shp["height"] = Math.Floor(height * 100) / 100
+  ElseIf func = "rect" Then
+    obj = Shapes.AddRectangle(width, height)
+    shp["width"] = Math.Floor(width * 100) / 100
+    shp["height"] = Math.Floor(height * 100) / 100
+  ElseIf func = "tri" Then
+    obj = Shapes.AddTriangle(x1, y1, x2, y2, x3, y3)
+    shp["x1"] = Math.Floor(x1 * 100) / 100
+    shp["y1"] = Math.Floor(y1 * 100) / 100
+    shp["x2"] = Math.Floor(x2 * 100) / 100
+    shp["y2"] = Math.Floor(y2 * 100) / 100
+    shp["x3"] = Math.Floor(x3 * 100) / 100
+    shp["y3"] = Math.Floor(y3 * 100) / 100
+  ElseIf func = "line" Then
+    obj = Shapes.AddLine(x1, y1, x2, y2)
+    shp["x1"] = Math.Floor(x1 * 100) / 100
+    shp["y1"] = Math.Floor(y1 * 100) / 100
+    shp["x2"] = Math.Floor(x2 * 100) / 100
+    shp["y2"] = Math.Floor(y2 * 100) / 100
+  ElseIf func = "text" Then
+    obj = Shapes.AddText(txt)
+    shp["text"] = txt
+  EndIf
+EndSub
+
+Sub Shapes_MoveToEntry
+  Shapes.Move(obj, shX + x, shY + y)
+  shp["x"] = Math.Floor(x * 100) / 100
+  shp["y"] = Math.Floor(y * 100) / 100
+EndSub
+
+Sub Shapes_PenToEntry
+  GraphicsWindow.PenWidth = pw
+  shp["pw"] = pw
+  If 0 < pw Then 
+    GraphicsWindow.PenColor = pc
+    shp["pc"] = pc
+  EndIf
+EndSub
+
+Sub Shapes_RotateToEntry
+  If angle <> 0 Then
+    Shapes.Rotate(obj, angle)
+    shp["angle"] = Math.Floor(angle * 100) / 100
+  EndIf
+EndSub
