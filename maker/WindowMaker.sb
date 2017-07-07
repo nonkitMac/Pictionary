@@ -1,52 +1,42 @@
-' Flag Maker - Shapes Array Generator
-' Version 0.51
+' Window Maker - Shapes Array Generator
+' Version 0.1
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-07-07
+' Last update 2017-06-02
 
-GraphicsWindow.Title = "Flag Maker 0.51"
-GraphicsWindow.BackgroundColor = "LightGray"
+GraphicsWindow.Title = "Window Maker 0.1"
 Init()
-mag = 16
-width = mag * 25
-height = mag * 15
-shX = (gw - width) / 2
-shY = (gh - height) / 2
+ww = 120
+wh = 260
+n = 2
+shX = (gw - n * ww) / 2
+shY = (gh - wh) / 2 - 10
+' sky
 x = 0
 y = 0
-bc = "#FFF"
+width = ww * n
+height = wh
+pw = 0
+bc = "SkyBlue"
 Shapes_AddRectangle()
+' windows
+width = ww
+pc = "#666"
+bc = "Transparent"
+Window()
+x = ww
+Window()
 
-bc = "#CD202C"
-x = mag * 11
-y = 0
-width = mag * 3
-height = mag * 15
-Shapes_AddRectangle()
-
-x = 0
-y = mag * 6
-width = mag * 25
-height = mag * 3
-Shapes_AddRectangle()
-
+' caption
 bc = "Black"
 fn = "Trebuchet MS"
 fs = 50
-txt = "English"
+angle = 0
+txt = "Window"
 x = gw - 200 - shX
-y = gh - 74 - shY
+y = gh - 70 - shY
 Shapes_AddText()
 
 Shapes_DumpArray()
-
-Sub CalcTriangle
-x1 = wt / 2
-y1 = 0
-x2 = 0
-y2 = ht
-x3 = wt
-y3 = ht
-EndSub
 
 Sub Init
   gw = 598
@@ -71,8 +61,30 @@ Sub Init
   angle = 0
   fb = "False"
   fi = "False"
-  wt = 0  ' dummy (triangle width)
-  ht = 0  ' dummy (triangle height)
+EndSub
+
+Sub Window
+  pw = 10
+  Shapes_AddRectangle()
+  pw = 4
+  _x = x
+  x = x + ww / 2
+  x1 = 0
+  y1 = 0
+  x2 = 0
+  y2 = wh
+  Shapes_AddLine()
+  x = _x
+  _y = y
+  dy = (wh - 16) / 4
+  For y = dy + 8 To dy * 3 + 8 Step dy
+    x1 = 0
+    y1 = 0
+    x2 = ww
+    y2 = 0
+    Shapes_AddLine()
+  EndFor
+  y = _y
 EndSub
 
 Sub Shapes_AddEllipse
@@ -128,7 +140,7 @@ Sub Shapes_AddText
   Shapes_RotateToEntry()
   Shapes_EntryToArray()
 EndSub
-  
+
 Sub Shapes_AddTriangle
   ' param x1, y1 - first point
   ' param x2, y2 - second point
@@ -157,12 +169,9 @@ Sub Shapes_DumpArray
   tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
   Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
   buf = ""
-  If 0 < shX Then
-    buf = buf + "  shX = " + shX + LF
-  EndIf
-  If 0 < shY Then
-    buf = buf + "  shY = " + shY + LF
-  EndIf
+  buf = buf + "  shX = " + shX + " ' x offset" + LF
+  buf = buf + "  shY = " + shY + " ' y offset" + LF
+  buf = buf + "  shape = " + WQ + WQ + LF
   For i = iMin To iMax
     buf = buf + "  shape[" + i + "] = " + WQ + shape[i] + WQ + LF
   EndFor

@@ -1,52 +1,81 @@
-' Flag Maker - Shapes Array Generator
-' Version 0.51
+' Paper Maker - Shapes Array Generator
+' Version 0.1
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-07-07
+' Last update 2017-05-31
 
-GraphicsWindow.Title = "Flag Maker 0.51"
-GraphicsWindow.BackgroundColor = "LightGray"
+GraphicsWindow.Title = "Paper Maker 0.1"
 Init()
-mag = 16
-width = mag * 25
-height = mag * 15
-shX = (gw - width) / 2
-shY = (gh - height) / 2
+' paper
+w = 200
+r = 100
+shX = gw / 2 - w / 2 - r / 2
+shY = gh / 5
 x = 0
 y = 0
-bc = "#FFF"
+width = r
+height = r * 2
+pw = 0
+bc = "AntiqueWhite"
+Shapes_AddEllipse()
+x = r / 2
+width = w
 Shapes_AddRectangle()
-
-bc = "#CD202C"
-x = mag * 11
+' shadow
+bc = "#11000000"
+y = y + r
+height = r
+Shapes_AddRectangle()
+' paper
+width = r
+height = r * 2
+x = w 
 y = 0
-width = mag * 3
-height = mag * 15
-Shapes_AddRectangle()
-
+bc = "AntiqueWhite"
+Shapes_AddEllipse()
+' core
+width = r / 3
+height = r * 2 / 3
+x = w + (r - width) / 2
+y = (r * 2 - height) / 2
+bc = "#DDDDDD"
+Shapes_AddEllipse()
+' shadow
+width = r
+height = r * 2
+x = w 
+y = 0
+bc = "#22000000"
+Shapes_AddEllipse()
+' paper
 x = 0
-y = mag * 6
-width = mag * 25
-height = mag * 3
+y = r
+width = w
+height = r + 10
+bc = "AntiqueWhite"
 Shapes_AddRectangle()
+y = 2 * r + 10
+x1 = 5
+y1 = 0
+x2 = 0
+y2 = 10
+x3 = 10
+y3 = 10
+angle = 180
+For x = 0 To w - 10 Step 10
+  Shapes_AddTriangle()
+EndFor
 
+' caption
 bc = "Black"
 fn = "Trebuchet MS"
 fs = 50
-txt = "English"
-x = gw - 200 - shX
-y = gh - 74 - shY
+angle = 0
+txt = "Paper"
+x = gw - 160 - shX
+y = gh - 80 - shY
 Shapes_AddText()
 
 Shapes_DumpArray()
-
-Sub CalcTriangle
-x1 = wt / 2
-y1 = 0
-x2 = 0
-y2 = ht
-x3 = wt
-y3 = ht
-EndSub
 
 Sub Init
   gw = 598
@@ -71,8 +100,6 @@ Sub Init
   angle = 0
   fb = "False"
   fi = "False"
-  wt = 0  ' dummy (triangle width)
-  ht = 0  ' dummy (triangle height)
 EndSub
 
 Sub Shapes_AddEllipse
@@ -128,7 +155,7 @@ Sub Shapes_AddText
   Shapes_RotateToEntry()
   Shapes_EntryToArray()
 EndSub
-  
+
 Sub Shapes_AddTriangle
   ' param x1, y1 - first point
   ' param x2, y2 - second point
@@ -157,12 +184,9 @@ Sub Shapes_DumpArray
   tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
   Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
   buf = ""
-  If 0 < shX Then
-    buf = buf + "  shX = " + shX + LF
-  EndIf
-  If 0 < shY Then
-    buf = buf + "  shY = " + shY + LF
-  EndIf
+  buf = buf + "  shX = " + shX + " ' x offset" + LF
+  buf = buf + "  shY = " + shY + " ' y offset" + LF
+  buf = buf + "  shape = " + WQ + WQ + LF
   For i = iMin To iMax
     buf = buf + "  shape[" + i + "] = " + WQ + shape[i] + WQ + LF
   EndFor
@@ -241,4 +265,3 @@ Sub Shapes_RotateToEntry
     shp["angle"] = Math.Floor(angle * 100) / 100
   EndIf
 EndSub
-    

@@ -1,51 +1,88 @@
-' Flag Maker - Shapes Array Generator
-' Version 0.51
+' Wall Maker - Shapes Array Generator
+' Version 0.1
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-07-07
+' Last update 2017-05-31
 
-GraphicsWindow.Title = "Flag Maker 0.51"
-GraphicsWindow.BackgroundColor = "LightGray"
+GraphicsWindow.Title = "Wall Maker 0.1"
 Init()
-mag = 16
-width = mag * 25
-height = mag * 15
-shX = (gw - width) / 2
-shY = (gh - height) / 2
-x = 0
-y = 0
-bc = "#FFF"
-Shapes_AddRectangle()
+shX = 90
+shY = 50
+bh = 20
+For i = 12 To 0 Step -1
+  y = (bh + 2) * i
+  If Math.Remainder(i, 2) = 0 Then 
+    bw = 40
+    For x = 0 To 400 Step bw + 2
+      Brick()
+    EndFor
+  Else
+    x = 0
+    bw = 19
+    Brick()
+    bw = 40
+    For x = 21 To 380 Step bw + 2
+      Brick()
+    EndFor
+    x = 399
+    bw = 19
+    Brick()
+  EndIf
+EndFor
 
-bc = "#CD202C"
-x = mag * 11
-y = 0
-width = mag * 3
-height = mag * 15
-Shapes_AddRectangle()
-
-x = 0
-y = mag * 6
-width = mag * 25
-height = mag * 3
-Shapes_AddRectangle()
-
+' caption
 bc = "Black"
 fn = "Trebuchet MS"
 fs = 50
-txt = "English"
-x = gw - 200 - shX
-y = gh - 74 - shY
+angle = 0
+txt = "Wall"
+x = gw - 160 - shX
+y = gh - 80 - shY
 Shapes_AddText()
 
 Shapes_DumpArray()
 
+Sub Brick
+  ' param x, y - position
+  ' param, bw, ph - size
+  _x = x
+  _y = y
+  pw = 0
+  bc = "#CCC"
+  width = bw
+  height = bh
+  angle = 0
+  Shapes_AddRectangle()
+  bc = "#666"
+  y = _y - 4
+  height = 4
+  width = 8
+  CalcTriangle()
+  Shapes_AddTriangle()
+  x = _x + 4
+  width = bw
+  Shapes_AddRectangle()
+  x = _x + bw
+  width = 4
+  height = bh
+  Shapes_AddRectangle()
+  x = _x + bw + 2 - 4
+  y = _y + bh - 4 - 2
+  height = 4
+  width = 8
+  CalcTriangle()
+  angle = 90
+  Shapes_AddTriangle()
+  x = _x
+  y = _y
+EndSub
+
 Sub CalcTriangle
-x1 = wt / 2
-y1 = 0
-x2 = 0
-y2 = ht
-x3 = wt
-y3 = ht
+  x1 = width / 2
+  y1 = 0
+  x2 = 0
+  y2 = height
+  x3 = width
+  y3 = height
 EndSub
 
 Sub Init
@@ -71,8 +108,6 @@ Sub Init
   angle = 0
   fb = "False"
   fi = "False"
-  wt = 0  ' dummy (triangle width)
-  ht = 0  ' dummy (triangle height)
 EndSub
 
 Sub Shapes_AddEllipse
@@ -128,7 +163,7 @@ Sub Shapes_AddText
   Shapes_RotateToEntry()
   Shapes_EntryToArray()
 EndSub
-  
+
 Sub Shapes_AddTriangle
   ' param x1, y1 - first point
   ' param x2, y2 - second point
@@ -157,12 +192,9 @@ Sub Shapes_DumpArray
   tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
   Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
   buf = ""
-  If 0 < shX Then
-    buf = buf + "  shX = " + shX + LF
-  EndIf
-  If 0 < shY Then
-    buf = buf + "  shY = " + shY + LF
-  EndIf
+  buf = buf + "  shX = " + shX + " ' x offset" + LF
+  buf = buf + "  shY = " + shY + " ' y offset" + LF
+  buf = buf + "  shape = " + WQ + WQ + LF
   For i = iMin To iMax
     buf = buf + "  shape[" + i + "] = " + WQ + shape[i] + WQ + LF
   EndFor

@@ -1,52 +1,40 @@
 ' Flag Maker - Shapes Array Generator
-' Version 0.51
+' Version 0.9
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-07-07
+' Last update 2017-05-26
 
-GraphicsWindow.Title = "Flag Maker 0.51"
-GraphicsWindow.BackgroundColor = "LightGray"
+GraphicsWindow.Title = "Flag Maker 0.9"
 Init()
-mag = 16
-width = mag * 25
-height = mag * 15
+mag = 4.8
+width = mag * 75
+height = mag * 50
+bc = "#C60B1E"
 shX = (gw - width) / 2
 shY = (gh - height) / 2
 x = 0
 y = 0
-bc = "#FFF"
 Shapes_AddRectangle()
 
-bc = "#CD202C"
-x = mag * 11
-y = 0
-width = mag * 3
-height = mag * 15
+bc = "#FFC400"
+height = mag * 25
+y = y + mag * 12.5
 Shapes_AddRectangle()
 
-x = 0
-y = mag * 6
-width = mag * 25
-height = mag * 3
-Shapes_AddRectangle()
+path = Program.Directory + "\Flag_of_Spain.png"
+img = Shapes.AddImage(path)
+Shapes.Zoom(img, 0.48, 0.48)
+xo = gw / 2
+yo = gh / 2
+Shapes.Move(img, xo - 750 / 2, yo - 500 / 2)
 
 bc = "Black"
 fn = "Trebuchet MS"
 fs = 50
-txt = "English"
-x = gw - 200 - shX
+txt = "Spanish"
+x = gw - 210 - shX
 y = gh - 74 - shY
 Shapes_AddText()
-
 Shapes_DumpArray()
-
-Sub CalcTriangle
-x1 = wt / 2
-y1 = 0
-x2 = 0
-y2 = ht
-x3 = wt
-y3 = ht
-EndSub
 
 Sub Init
   gw = 598
@@ -71,8 +59,6 @@ Sub Init
   angle = 0
   fb = "False"
   fi = "False"
-  wt = 0  ' dummy (triangle width)
-  ht = 0  ' dummy (triangle height)
 EndSub
 
 Sub Shapes_AddEllipse
@@ -157,12 +143,9 @@ Sub Shapes_DumpArray
   tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
   Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
   buf = ""
-  If 0 < shX Then
-    buf = buf + "  shX = " + shX + LF
-  EndIf
-  If 0 < shY Then
-    buf = buf + "  shY = " + shY + LF
-  EndIf
+  buf = buf + "  shX = " + shX + " ' x offset" + LF
+  buf = buf + "  shY = " + shY + " ' y offset" + LF
+  buf = buf + "  shape = " + WQ + WQ + LF
   For i = iMin To iMax
     buf = buf + "  shape[" + i + "] = " + WQ + shape[i] + WQ + LF
   EndFor

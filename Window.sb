@@ -1,7 +1,6 @@
-' Pictionary - English
-' Version 0.2
+' Pictionary - Window
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-07-07
+' Last update 2017-06-02
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
@@ -9,26 +8,34 @@ gw = 598
 gh = 428
 GraphicsWindow.Width = gw
 GraphicsWindow.Height = gh
-GraphicsWindow.BackgroundColor = "LightGray"
 ' initialize shapes
 Shapes_Init()
-angle = 0 ' dummy
 ' add shapes
 scale = 1
+angle = 0
 iMin = 1
-iMax = 4
+iMax = 12
 Shapes_Add()
-Sub Shapes_Init
-  ' Shapes | Initialize shapes data
-  ' return shX, shY - current position of shapes
-  ' return shape - array of shapes
-  shX = 99  ' x offset
-  shY = 94  ' y offset
+
+Sub Shapes_Init
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 179 ' x offset
+  shY = 74 ' y offset
   shape = ""
-  shape[1] = "pw=0;bc=#FFF;func=rect;width=400;height=240;x=0;y=0;"
-  shape[2] = "pw=0;bc=#CD202C;func=rect;width=48;height=240;x=176;y=0;"
-  shape[3] = "pw=0;bc=#CD202C;func=rect;width=400;height=48;x=0;y=96;"
-  shape[4] = "pw=0;bc=Black;fs=50;fn=Trebuchet MS;fb=False;fi=False;func=text;text=English;x=299;y=260;"
+  shape[1] = "pw=0;bc=SkyBlue;func=rect;width=240;height=260;x=0;y=0;"
+  shape[2] = "pw=10;pc=#666;bc=Transparent;func=rect;width=120;height=260;x=0;y=0;"
+  shape[3] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=0;y2=260;x=60;y=0;"
+  shape[4] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=120;y2=0;x=0;y=69;"
+  shape[5] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=120;y2=0;x=0;y=130;"
+  shape[6] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=120;y2=0;x=0;y=191;"
+  shape[7] = "pw=10;pc=#666;bc=Transparent;func=rect;width=120;height=260;x=120;y=0;"
+  shape[8] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=0;y2=260;x=180;y=0;"
+  shape[9] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=120;y2=0;x=120;y=69;"
+  shape[10] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=120;y2=0;x=120;y=130;"
+  shape[11] = "pw=4;pc=#666;func=line;x1=0;y1=0;x2=120;y2=0;x=120;y=191;"
+  shape[12] = "pw=4;pc=#666;bc=Black;fs=50;fn=Trebuchet MS;fb=False;fi=False;func=text;text=Window;x=219;y=284;"
 EndSub
 Sub Math_CartesianToPolar
   ' Math | convert cartesian coodinate to polar coordinate
@@ -295,3 +302,4 @@ Sub Shapes_Rotate
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
 EndSub
+  

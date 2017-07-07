@@ -1,16 +1,18 @@
 ' Flag Maker - Shapes Array Generator
-' Version 0.2
+' Version 0.2.1
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
 ' Last update 2017-05-26
 
-GraphicsWindow.Title = "Flag Maker 0.2"
+GraphicsWindow.Title = "Flag Maker 0.2.1"
 Init()
 mag = 80
 width = mag * 5
 height = mag * 3
 bc = "#000"
-x = (gw - width) / 2
-y = (gh - height) / 2
+shX = (gw - width) / 2
+shY = (gh - height) / 2
+x = 0
+y = 0
 height = mag
 Shapes_AddRectangle()
 
@@ -26,8 +28,8 @@ bc = "Black"
 fn = "Trebuchet MS"
 fs = 50
 txt = "German"
-x = gw - 240
-y = gh - 74
+x = gw - 210 - shX
+y = gh - 74 - shY
 Shapes_AddText()
 Shapes_DumpArray()
 
@@ -138,6 +140,9 @@ Sub Shapes_DumpArray
   tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
   Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
   buf = ""
+  buf = buf + "  shX = " + shX + " ' x offset" + LF
+  buf = buf + "  shY = " + shY + " ' y offset" + LF
+  buf = buf + "  shape = " + WQ + WQ + LF
   For i = iMin To iMax
     buf = buf + "  shape[" + i + "] = " + WQ + shape[i] + WQ + LF
   EndFor
@@ -196,7 +201,7 @@ Sub Shapes_FuncToEntry
 EndSub
 
 Sub Shapes_MoveToEntry
-  Shapes.Move(obj, x, y)
+  Shapes.Move(obj, shX + x, shY + y)
   shp["x"] = Math.Floor(x * 100) / 100
   shp["y"] = Math.Floor(y * 100) / 100
 EndSub

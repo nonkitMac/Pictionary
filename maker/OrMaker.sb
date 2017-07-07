@@ -1,51 +1,71 @@
-' Flag Maker - Shapes Array Generator
-' Version 0.51
+' Or Maker - Shapes Array Generator
+' Version 0.1
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-07-07
+' Last update 2017-05-31
 
-GraphicsWindow.Title = "Flag Maker 0.51"
-GraphicsWindow.BackgroundColor = "LightGray"
+GraphicsWindow.Title = "Or Maker 0.1"
 Init()
-mag = 16
-width = mag * 25
-height = mag * 15
-shX = (gw - width) / 2
-shY = (gh - height) / 2
+shX = 130
+shY = 100
+' circle 1
 x = 0
 y = 0
-bc = "#FFF"
-Shapes_AddRectangle()
+width = 200
+height = 200
+pw = 0
+bc = "Orange"
+Shapes_AddEllipse()
+' circle 2
+x = gw - 2 * shX - width
+Shapes_AddEllipse()
 
-bc = "#CD202C"
-x = mag * 11
-y = 0
-width = mag * 3
-height = mag * 15
-Shapes_AddRectangle()
-
+' circle 1
 x = 0
-y = mag * 6
-width = mag * 25
-height = mag * 3
-Shapes_AddRectangle()
+y = 0
+pw = 4
+pc = "#000"
+bc = "Transparent"
+Shapes_AddEllipse()
+' circle 2
+x = gw - 2 * shX - width
+Shapes_AddEllipse()
 
+' caption
 bc = "Black"
 fn = "Trebuchet MS"
 fs = 50
-txt = "English"
-x = gw - 200 - shX
-y = gh - 74 - shY
+angle = 0
+txt = "Or"
+x = gw - 100 - shX
+y = gh - 80 - shY
 Shapes_AddText()
 
 Shapes_DumpArray()
 
-Sub CalcTriangle
-x1 = wt / 2
-y1 = 0
-x2 = 0
-y2 = ht
-x3 = wt
-y3 = ht
+Sub DrawPC
+  x = 43
+  y = 60
+  width = 14
+  height = 10
+  pw = 0
+  bc = "#000"
+  Shapes_AddRectangle()
+  ' keyboard
+  x = 10
+  y = 70
+  width = 80
+  height = 20
+  bc = "#CCC"
+  Shapes_AddRectangle()
+  ' keys
+  height = 2
+  width = 4
+  bc = "#FFF"
+  For y = 74 To 84 Step 4
+    For x = 22 To 78 Step 6
+      Shapes_AddRectangle()
+    EndFor
+  EndFor
 EndSub
 
 Sub Init
@@ -71,8 +91,6 @@ Sub Init
   angle = 0
   fb = "False"
   fi = "False"
-  wt = 0  ' dummy (triangle width)
-  ht = 0  ' dummy (triangle height)
 EndSub
 
 Sub Shapes_AddEllipse
@@ -128,7 +146,7 @@ Sub Shapes_AddText
   Shapes_RotateToEntry()
   Shapes_EntryToArray()
 EndSub
-  
+
 Sub Shapes_AddTriangle
   ' param x1, y1 - first point
   ' param x2, y2 - second point
@@ -157,12 +175,9 @@ Sub Shapes_DumpArray
   tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
   Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
   buf = ""
-  If 0 < shX Then
-    buf = buf + "  shX = " + shX + LF
-  EndIf
-  If 0 < shY Then
-    buf = buf + "  shY = " + shY + LF
-  EndIf
+  buf = buf + "  shX = " + shX + " ' x offset" + LF
+  buf = buf + "  shY = " + shY + " ' y offset" + LF
+  buf = buf + "  shape = " + WQ + WQ + LF
   For i = iMin To iMax
     buf = buf + "  shape[" + i + "] = " + WQ + shape[i] + WQ + LF
   EndFor

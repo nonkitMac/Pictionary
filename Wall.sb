@@ -1,0 +1,974 @@
+' Pictionary - Wall
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Last update 2017-05-31
+
+GraphicsWindow.Title = "Pictionary"
+SB_Workaround()
+gw = 598
+gh = 428
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+' initialize shapes
+Shapes_Init()
+' add shapes
+scale = 1
+angle = 0
+iMin = 1
+iMax = 681
+Shapes_Add()
+
+Sub Shapes_Init
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 90 ' x offset
+  shY = 50 ' y offset
+  shape = ""
+  shape[1] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=0;y=264;"
+  shape[2] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=260;"
+  shape[3] = "pw=0;bc=#666;func=rect;width=40;height=4;x=4;y=260;"
+  shape[4] = "pw=0;bc=#666;func=rect;width=4;height=20;x=40;y=260;"
+  shape[5] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=38;y=278;angle=90;"
+  shape[6] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=42;y=264;"
+  shape[7] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=42;y=260;"
+  shape[8] = "pw=0;bc=#666;func=rect;width=40;height=4;x=46;y=260;"
+  shape[9] = "pw=0;bc=#666;func=rect;width=4;height=20;x=82;y=260;"
+  shape[10] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=80;y=278;angle=90;"
+  shape[11] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=84;y=264;"
+  shape[12] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=84;y=260;"
+  shape[13] = "pw=0;bc=#666;func=rect;width=40;height=4;x=88;y=260;"
+  shape[14] = "pw=0;bc=#666;func=rect;width=4;height=20;x=124;y=260;"
+  shape[15] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=122;y=278;angle=90;"
+  shape[16] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=126;y=264;"
+  shape[17] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=126;y=260;"
+  shape[18] = "pw=0;bc=#666;func=rect;width=40;height=4;x=130;y=260;"
+  shape[19] = "pw=0;bc=#666;func=rect;width=4;height=20;x=166;y=260;"
+  shape[20] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=164;y=278;angle=90;"
+  shape[21] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=168;y=264;"
+  shape[22] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=168;y=260;"
+  shape[23] = "pw=0;bc=#666;func=rect;width=40;height=4;x=172;y=260;"
+  shape[24] = "pw=0;bc=#666;func=rect;width=4;height=20;x=208;y=260;"
+  shape[25] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=206;y=278;angle=90;"
+  shape[26] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=210;y=264;"
+  shape[27] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=210;y=260;"
+  shape[28] = "pw=0;bc=#666;func=rect;width=40;height=4;x=214;y=260;"
+  shape[29] = "pw=0;bc=#666;func=rect;width=4;height=20;x=250;y=260;"
+  shape[30] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=248;y=278;angle=90;"
+  shape[31] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=252;y=264;"
+  shape[32] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=252;y=260;"
+  shape[33] = "pw=0;bc=#666;func=rect;width=40;height=4;x=256;y=260;"
+  shape[34] = "pw=0;bc=#666;func=rect;width=4;height=20;x=292;y=260;"
+  shape[35] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=290;y=278;angle=90;"
+  shape[36] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=294;y=264;"
+  shape[37] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=294;y=260;"
+  shape[38] = "pw=0;bc=#666;func=rect;width=40;height=4;x=298;y=260;"
+  shape[39] = "pw=0;bc=#666;func=rect;width=4;height=20;x=334;y=260;"
+  shape[40] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=332;y=278;angle=90;"
+  shape[41] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=336;y=264;"
+  shape[42] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=336;y=260;"
+  shape[43] = "pw=0;bc=#666;func=rect;width=40;height=4;x=340;y=260;"
+  shape[44] = "pw=0;bc=#666;func=rect;width=4;height=20;x=376;y=260;"
+  shape[45] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=374;y=278;angle=90;"
+  shape[46] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=378;y=264;"
+  shape[47] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=378;y=260;"
+  shape[48] = "pw=0;bc=#666;func=rect;width=40;height=4;x=382;y=260;"
+  shape[49] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=260;"
+  shape[50] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=278;angle=90;"
+  shape[51] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=0;y=242;"
+  shape[52] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=238;"
+  shape[53] = "pw=0;bc=#666;func=rect;width=19;height=4;x=4;y=238;"
+  shape[54] = "pw=0;bc=#666;func=rect;width=4;height=20;x=19;y=238;"
+  shape[55] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=17;y=256;angle=90;"
+  shape[56] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=21;y=242;"
+  shape[57] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=21;y=238;"
+  shape[58] = "pw=0;bc=#666;func=rect;width=40;height=4;x=25;y=238;"
+  shape[59] = "pw=0;bc=#666;func=rect;width=4;height=20;x=61;y=238;"
+  shape[60] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=59;y=256;angle=90;"
+  shape[61] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=63;y=242;"
+  shape[62] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=63;y=238;"
+  shape[63] = "pw=0;bc=#666;func=rect;width=40;height=4;x=67;y=238;"
+  shape[64] = "pw=0;bc=#666;func=rect;width=4;height=20;x=103;y=238;"
+  shape[65] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=101;y=256;angle=90;"
+  shape[66] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=105;y=242;"
+  shape[67] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=105;y=238;"
+  shape[68] = "pw=0;bc=#666;func=rect;width=40;height=4;x=109;y=238;"
+  shape[69] = "pw=0;bc=#666;func=rect;width=4;height=20;x=145;y=238;"
+  shape[70] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=143;y=256;angle=90;"
+  shape[71] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=147;y=242;"
+  shape[72] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=147;y=238;"
+  shape[73] = "pw=0;bc=#666;func=rect;width=40;height=4;x=151;y=238;"
+  shape[74] = "pw=0;bc=#666;func=rect;width=4;height=20;x=187;y=238;"
+  shape[75] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=185;y=256;angle=90;"
+  shape[76] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=189;y=242;"
+  shape[77] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=189;y=238;"
+  shape[78] = "pw=0;bc=#666;func=rect;width=40;height=4;x=193;y=238;"
+  shape[79] = "pw=0;bc=#666;func=rect;width=4;height=20;x=229;y=238;"
+  shape[80] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=227;y=256;angle=90;"
+  shape[81] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=231;y=242;"
+  shape[82] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=231;y=238;"
+  shape[83] = "pw=0;bc=#666;func=rect;width=40;height=4;x=235;y=238;"
+  shape[84] = "pw=0;bc=#666;func=rect;width=4;height=20;x=271;y=238;"
+  shape[85] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=269;y=256;angle=90;"
+  shape[86] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=273;y=242;"
+  shape[87] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=273;y=238;"
+  shape[88] = "pw=0;bc=#666;func=rect;width=40;height=4;x=277;y=238;"
+  shape[89] = "pw=0;bc=#666;func=rect;width=4;height=20;x=313;y=238;"
+  shape[90] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=311;y=256;angle=90;"
+  shape[91] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=315;y=242;"
+  shape[92] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=315;y=238;"
+  shape[93] = "pw=0;bc=#666;func=rect;width=40;height=4;x=319;y=238;"
+  shape[94] = "pw=0;bc=#666;func=rect;width=4;height=20;x=355;y=238;"
+  shape[95] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=353;y=256;angle=90;"
+  shape[96] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=357;y=242;"
+  shape[97] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=357;y=238;"
+  shape[98] = "pw=0;bc=#666;func=rect;width=40;height=4;x=361;y=238;"
+  shape[99] = "pw=0;bc=#666;func=rect;width=4;height=20;x=397;y=238;"
+  shape[100] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=395;y=256;angle=90;"
+  shape[101] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=399;y=242;"
+  shape[102] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=399;y=238;"
+  shape[103] = "pw=0;bc=#666;func=rect;width=19;height=4;x=403;y=238;"
+  shape[104] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=238;"
+  shape[105] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=256;angle=90;"
+  shape[106] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=0;y=220;"
+  shape[107] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=216;"
+  shape[108] = "pw=0;bc=#666;func=rect;width=40;height=4;x=4;y=216;"
+  shape[109] = "pw=0;bc=#666;func=rect;width=4;height=20;x=40;y=216;"
+  shape[110] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=38;y=234;angle=90;"
+  shape[111] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=42;y=220;"
+  shape[112] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=42;y=216;"
+  shape[113] = "pw=0;bc=#666;func=rect;width=40;height=4;x=46;y=216;"
+  shape[114] = "pw=0;bc=#666;func=rect;width=4;height=20;x=82;y=216;"
+  shape[115] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=80;y=234;angle=90;"
+  shape[116] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=84;y=220;"
+  shape[117] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=84;y=216;"
+  shape[118] = "pw=0;bc=#666;func=rect;width=40;height=4;x=88;y=216;"
+  shape[119] = "pw=0;bc=#666;func=rect;width=4;height=20;x=124;y=216;"
+  shape[120] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=122;y=234;angle=90;"
+  shape[121] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=126;y=220;"
+  shape[122] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=126;y=216;"
+  shape[123] = "pw=0;bc=#666;func=rect;width=40;height=4;x=130;y=216;"
+  shape[124] = "pw=0;bc=#666;func=rect;width=4;height=20;x=166;y=216;"
+  shape[125] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=164;y=234;angle=90;"
+  shape[126] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=168;y=220;"
+  shape[127] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=168;y=216;"
+  shape[128] = "pw=0;bc=#666;func=rect;width=40;height=4;x=172;y=216;"
+  shape[129] = "pw=0;bc=#666;func=rect;width=4;height=20;x=208;y=216;"
+  shape[130] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=206;y=234;angle=90;"
+  shape[131] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=210;y=220;"
+  shape[132] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=210;y=216;"
+  shape[133] = "pw=0;bc=#666;func=rect;width=40;height=4;x=214;y=216;"
+  shape[134] = "pw=0;bc=#666;func=rect;width=4;height=20;x=250;y=216;"
+  shape[135] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=248;y=234;angle=90;"
+  shape[136] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=252;y=220;"
+  shape[137] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=252;y=216;"
+  shape[138] = "pw=0;bc=#666;func=rect;width=40;height=4;x=256;y=216;"
+  shape[139] = "pw=0;bc=#666;func=rect;width=4;height=20;x=292;y=216;"
+  shape[140] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=290;y=234;angle=90;"
+  shape[141] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=294;y=220;"
+  shape[142] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=294;y=216;"
+  shape[143] = "pw=0;bc=#666;func=rect;width=40;height=4;x=298;y=216;"
+  shape[144] = "pw=0;bc=#666;func=rect;width=4;height=20;x=334;y=216;"
+  shape[145] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=332;y=234;angle=90;"
+  shape[146] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=336;y=220;"
+  shape[147] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=336;y=216;"
+  shape[148] = "pw=0;bc=#666;func=rect;width=40;height=4;x=340;y=216;"
+  shape[149] = "pw=0;bc=#666;func=rect;width=4;height=20;x=376;y=216;"
+  shape[150] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=374;y=234;angle=90;"
+  shape[151] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=378;y=220;"
+  shape[152] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=378;y=216;"
+  shape[153] = "pw=0;bc=#666;func=rect;width=40;height=4;x=382;y=216;"
+  shape[154] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=216;"
+  shape[155] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=234;angle=90;"
+  shape[156] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=0;y=198;"
+  shape[157] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=194;"
+  shape[158] = "pw=0;bc=#666;func=rect;width=19;height=4;x=4;y=194;"
+  shape[159] = "pw=0;bc=#666;func=rect;width=4;height=20;x=19;y=194;"
+  shape[160] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=17;y=212;angle=90;"
+  shape[161] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=21;y=198;"
+  shape[162] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=21;y=194;"
+  shape[163] = "pw=0;bc=#666;func=rect;width=40;height=4;x=25;y=194;"
+  shape[164] = "pw=0;bc=#666;func=rect;width=4;height=20;x=61;y=194;"
+  shape[165] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=59;y=212;angle=90;"
+  shape[166] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=63;y=198;"
+  shape[167] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=63;y=194;"
+  shape[168] = "pw=0;bc=#666;func=rect;width=40;height=4;x=67;y=194;"
+  shape[169] = "pw=0;bc=#666;func=rect;width=4;height=20;x=103;y=194;"
+  shape[170] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=101;y=212;angle=90;"
+  shape[171] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=105;y=198;"
+  shape[172] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=105;y=194;"
+  shape[173] = "pw=0;bc=#666;func=rect;width=40;height=4;x=109;y=194;"
+  shape[174] = "pw=0;bc=#666;func=rect;width=4;height=20;x=145;y=194;"
+  shape[175] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=143;y=212;angle=90;"
+  shape[176] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=147;y=198;"
+  shape[177] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=147;y=194;"
+  shape[178] = "pw=0;bc=#666;func=rect;width=40;height=4;x=151;y=194;"
+  shape[179] = "pw=0;bc=#666;func=rect;width=4;height=20;x=187;y=194;"
+  shape[180] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=185;y=212;angle=90;"
+  shape[181] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=189;y=198;"
+  shape[182] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=189;y=194;"
+  shape[183] = "pw=0;bc=#666;func=rect;width=40;height=4;x=193;y=194;"
+  shape[184] = "pw=0;bc=#666;func=rect;width=4;height=20;x=229;y=194;"
+  shape[185] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=227;y=212;angle=90;"
+  shape[186] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=231;y=198;"
+  shape[187] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=231;y=194;"
+  shape[188] = "pw=0;bc=#666;func=rect;width=40;height=4;x=235;y=194;"
+  shape[189] = "pw=0;bc=#666;func=rect;width=4;height=20;x=271;y=194;"
+  shape[190] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=269;y=212;angle=90;"
+  shape[191] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=273;y=198;"
+  shape[192] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=273;y=194;"
+  shape[193] = "pw=0;bc=#666;func=rect;width=40;height=4;x=277;y=194;"
+  shape[194] = "pw=0;bc=#666;func=rect;width=4;height=20;x=313;y=194;"
+  shape[195] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=311;y=212;angle=90;"
+  shape[196] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=315;y=198;"
+  shape[197] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=315;y=194;"
+  shape[198] = "pw=0;bc=#666;func=rect;width=40;height=4;x=319;y=194;"
+  shape[199] = "pw=0;bc=#666;func=rect;width=4;height=20;x=355;y=194;"
+  shape[200] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=353;y=212;angle=90;"
+  shape[201] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=357;y=198;"
+  shape[202] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=357;y=194;"
+  shape[203] = "pw=0;bc=#666;func=rect;width=40;height=4;x=361;y=194;"
+  shape[204] = "pw=0;bc=#666;func=rect;width=4;height=20;x=397;y=194;"
+  shape[205] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=395;y=212;angle=90;"
+  shape[206] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=399;y=198;"
+  shape[207] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=399;y=194;"
+  shape[208] = "pw=0;bc=#666;func=rect;width=19;height=4;x=403;y=194;"
+  shape[209] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=194;"
+  shape[210] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=212;angle=90;"
+  shape[211] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=0;y=176;"
+  shape[212] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=172;"
+  shape[213] = "pw=0;bc=#666;func=rect;width=40;height=4;x=4;y=172;"
+  shape[214] = "pw=0;bc=#666;func=rect;width=4;height=20;x=40;y=172;"
+  shape[215] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=38;y=190;angle=90;"
+  shape[216] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=42;y=176;"
+  shape[217] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=42;y=172;"
+  shape[218] = "pw=0;bc=#666;func=rect;width=40;height=4;x=46;y=172;"
+  shape[219] = "pw=0;bc=#666;func=rect;width=4;height=20;x=82;y=172;"
+  shape[220] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=80;y=190;angle=90;"
+  shape[221] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=84;y=176;"
+  shape[222] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=84;y=172;"
+  shape[223] = "pw=0;bc=#666;func=rect;width=40;height=4;x=88;y=172;"
+  shape[224] = "pw=0;bc=#666;func=rect;width=4;height=20;x=124;y=172;"
+  shape[225] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=122;y=190;angle=90;"
+  shape[226] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=126;y=176;"
+  shape[227] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=126;y=172;"
+  shape[228] = "pw=0;bc=#666;func=rect;width=40;height=4;x=130;y=172;"
+  shape[229] = "pw=0;bc=#666;func=rect;width=4;height=20;x=166;y=172;"
+  shape[230] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=164;y=190;angle=90;"
+  shape[231] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=168;y=176;"
+  shape[232] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=168;y=172;"
+  shape[233] = "pw=0;bc=#666;func=rect;width=40;height=4;x=172;y=172;"
+  shape[234] = "pw=0;bc=#666;func=rect;width=4;height=20;x=208;y=172;"
+  shape[235] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=206;y=190;angle=90;"
+  shape[236] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=210;y=176;"
+  shape[237] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=210;y=172;"
+  shape[238] = "pw=0;bc=#666;func=rect;width=40;height=4;x=214;y=172;"
+  shape[239] = "pw=0;bc=#666;func=rect;width=4;height=20;x=250;y=172;"
+  shape[240] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=248;y=190;angle=90;"
+  shape[241] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=252;y=176;"
+  shape[242] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=252;y=172;"
+  shape[243] = "pw=0;bc=#666;func=rect;width=40;height=4;x=256;y=172;"
+  shape[244] = "pw=0;bc=#666;func=rect;width=4;height=20;x=292;y=172;"
+  shape[245] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=290;y=190;angle=90;"
+  shape[246] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=294;y=176;"
+  shape[247] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=294;y=172;"
+  shape[248] = "pw=0;bc=#666;func=rect;width=40;height=4;x=298;y=172;"
+  shape[249] = "pw=0;bc=#666;func=rect;width=4;height=20;x=334;y=172;"
+  shape[250] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=332;y=190;angle=90;"
+  shape[251] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=336;y=176;"
+  shape[252] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=336;y=172;"
+  shape[253] = "pw=0;bc=#666;func=rect;width=40;height=4;x=340;y=172;"
+  shape[254] = "pw=0;bc=#666;func=rect;width=4;height=20;x=376;y=172;"
+  shape[255] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=374;y=190;angle=90;"
+  shape[256] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=378;y=176;"
+  shape[257] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=378;y=172;"
+  shape[258] = "pw=0;bc=#666;func=rect;width=40;height=4;x=382;y=172;"
+  shape[259] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=172;"
+  shape[260] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=190;angle=90;"
+  shape[261] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=0;y=154;"
+  shape[262] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=150;"
+  shape[263] = "pw=0;bc=#666;func=rect;width=19;height=4;x=4;y=150;"
+  shape[264] = "pw=0;bc=#666;func=rect;width=4;height=20;x=19;y=150;"
+  shape[265] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=17;y=168;angle=90;"
+  shape[266] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=21;y=154;"
+  shape[267] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=21;y=150;"
+  shape[268] = "pw=0;bc=#666;func=rect;width=40;height=4;x=25;y=150;"
+  shape[269] = "pw=0;bc=#666;func=rect;width=4;height=20;x=61;y=150;"
+  shape[270] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=59;y=168;angle=90;"
+  shape[271] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=63;y=154;"
+  shape[272] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=63;y=150;"
+  shape[273] = "pw=0;bc=#666;func=rect;width=40;height=4;x=67;y=150;"
+  shape[274] = "pw=0;bc=#666;func=rect;width=4;height=20;x=103;y=150;"
+  shape[275] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=101;y=168;angle=90;"
+  shape[276] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=105;y=154;"
+  shape[277] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=105;y=150;"
+  shape[278] = "pw=0;bc=#666;func=rect;width=40;height=4;x=109;y=150;"
+  shape[279] = "pw=0;bc=#666;func=rect;width=4;height=20;x=145;y=150;"
+  shape[280] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=143;y=168;angle=90;"
+  shape[281] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=147;y=154;"
+  shape[282] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=147;y=150;"
+  shape[283] = "pw=0;bc=#666;func=rect;width=40;height=4;x=151;y=150;"
+  shape[284] = "pw=0;bc=#666;func=rect;width=4;height=20;x=187;y=150;"
+  shape[285] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=185;y=168;angle=90;"
+  shape[286] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=189;y=154;"
+  shape[287] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=189;y=150;"
+  shape[288] = "pw=0;bc=#666;func=rect;width=40;height=4;x=193;y=150;"
+  shape[289] = "pw=0;bc=#666;func=rect;width=4;height=20;x=229;y=150;"
+  shape[290] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=227;y=168;angle=90;"
+  shape[291] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=231;y=154;"
+  shape[292] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=231;y=150;"
+  shape[293] = "pw=0;bc=#666;func=rect;width=40;height=4;x=235;y=150;"
+  shape[294] = "pw=0;bc=#666;func=rect;width=4;height=20;x=271;y=150;"
+  shape[295] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=269;y=168;angle=90;"
+  shape[296] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=273;y=154;"
+  shape[297] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=273;y=150;"
+  shape[298] = "pw=0;bc=#666;func=rect;width=40;height=4;x=277;y=150;"
+  shape[299] = "pw=0;bc=#666;func=rect;width=4;height=20;x=313;y=150;"
+  shape[300] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=311;y=168;angle=90;"
+  shape[301] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=315;y=154;"
+  shape[302] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=315;y=150;"
+  shape[303] = "pw=0;bc=#666;func=rect;width=40;height=4;x=319;y=150;"
+  shape[304] = "pw=0;bc=#666;func=rect;width=4;height=20;x=355;y=150;"
+  shape[305] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=353;y=168;angle=90;"
+  shape[306] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=357;y=154;"
+  shape[307] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=357;y=150;"
+  shape[308] = "pw=0;bc=#666;func=rect;width=40;height=4;x=361;y=150;"
+  shape[309] = "pw=0;bc=#666;func=rect;width=4;height=20;x=397;y=150;"
+  shape[310] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=395;y=168;angle=90;"
+  shape[311] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=399;y=154;"
+  shape[312] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=399;y=150;"
+  shape[313] = "pw=0;bc=#666;func=rect;width=19;height=4;x=403;y=150;"
+  shape[314] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=150;"
+  shape[315] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=168;angle=90;"
+  shape[316] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=0;y=132;"
+  shape[317] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=128;"
+  shape[318] = "pw=0;bc=#666;func=rect;width=40;height=4;x=4;y=128;"
+  shape[319] = "pw=0;bc=#666;func=rect;width=4;height=20;x=40;y=128;"
+  shape[320] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=38;y=146;angle=90;"
+  shape[321] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=42;y=132;"
+  shape[322] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=42;y=128;"
+  shape[323] = "pw=0;bc=#666;func=rect;width=40;height=4;x=46;y=128;"
+  shape[324] = "pw=0;bc=#666;func=rect;width=4;height=20;x=82;y=128;"
+  shape[325] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=80;y=146;angle=90;"
+  shape[326] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=84;y=132;"
+  shape[327] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=84;y=128;"
+  shape[328] = "pw=0;bc=#666;func=rect;width=40;height=4;x=88;y=128;"
+  shape[329] = "pw=0;bc=#666;func=rect;width=4;height=20;x=124;y=128;"
+  shape[330] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=122;y=146;angle=90;"
+  shape[331] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=126;y=132;"
+  shape[332] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=126;y=128;"
+  shape[333] = "pw=0;bc=#666;func=rect;width=40;height=4;x=130;y=128;"
+  shape[334] = "pw=0;bc=#666;func=rect;width=4;height=20;x=166;y=128;"
+  shape[335] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=164;y=146;angle=90;"
+  shape[336] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=168;y=132;"
+  shape[337] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=168;y=128;"
+  shape[338] = "pw=0;bc=#666;func=rect;width=40;height=4;x=172;y=128;"
+  shape[339] = "pw=0;bc=#666;func=rect;width=4;height=20;x=208;y=128;"
+  shape[340] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=206;y=146;angle=90;"
+  shape[341] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=210;y=132;"
+  shape[342] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=210;y=128;"
+  shape[343] = "pw=0;bc=#666;func=rect;width=40;height=4;x=214;y=128;"
+  shape[344] = "pw=0;bc=#666;func=rect;width=4;height=20;x=250;y=128;"
+  shape[345] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=248;y=146;angle=90;"
+  shape[346] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=252;y=132;"
+  shape[347] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=252;y=128;"
+  shape[348] = "pw=0;bc=#666;func=rect;width=40;height=4;x=256;y=128;"
+  shape[349] = "pw=0;bc=#666;func=rect;width=4;height=20;x=292;y=128;"
+  shape[350] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=290;y=146;angle=90;"
+  shape[351] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=294;y=132;"
+  shape[352] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=294;y=128;"
+  shape[353] = "pw=0;bc=#666;func=rect;width=40;height=4;x=298;y=128;"
+  shape[354] = "pw=0;bc=#666;func=rect;width=4;height=20;x=334;y=128;"
+  shape[355] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=332;y=146;angle=90;"
+  shape[356] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=336;y=132;"
+  shape[357] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=336;y=128;"
+  shape[358] = "pw=0;bc=#666;func=rect;width=40;height=4;x=340;y=128;"
+  shape[359] = "pw=0;bc=#666;func=rect;width=4;height=20;x=376;y=128;"
+  shape[360] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=374;y=146;angle=90;"
+  shape[361] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=378;y=132;"
+  shape[362] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=378;y=128;"
+  shape[363] = "pw=0;bc=#666;func=rect;width=40;height=4;x=382;y=128;"
+  shape[364] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=128;"
+  shape[365] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=146;angle=90;"
+  shape[366] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=0;y=110;"
+  shape[367] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=106;"
+  shape[368] = "pw=0;bc=#666;func=rect;width=19;height=4;x=4;y=106;"
+  shape[369] = "pw=0;bc=#666;func=rect;width=4;height=20;x=19;y=106;"
+  shape[370] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=17;y=124;angle=90;"
+  shape[371] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=21;y=110;"
+  shape[372] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=21;y=106;"
+  shape[373] = "pw=0;bc=#666;func=rect;width=40;height=4;x=25;y=106;"
+  shape[374] = "pw=0;bc=#666;func=rect;width=4;height=20;x=61;y=106;"
+  shape[375] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=59;y=124;angle=90;"
+  shape[376] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=63;y=110;"
+  shape[377] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=63;y=106;"
+  shape[378] = "pw=0;bc=#666;func=rect;width=40;height=4;x=67;y=106;"
+  shape[379] = "pw=0;bc=#666;func=rect;width=4;height=20;x=103;y=106;"
+  shape[380] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=101;y=124;angle=90;"
+  shape[381] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=105;y=110;"
+  shape[382] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=105;y=106;"
+  shape[383] = "pw=0;bc=#666;func=rect;width=40;height=4;x=109;y=106;"
+  shape[384] = "pw=0;bc=#666;func=rect;width=4;height=20;x=145;y=106;"
+  shape[385] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=143;y=124;angle=90;"
+  shape[386] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=147;y=110;"
+  shape[387] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=147;y=106;"
+  shape[388] = "pw=0;bc=#666;func=rect;width=40;height=4;x=151;y=106;"
+  shape[389] = "pw=0;bc=#666;func=rect;width=4;height=20;x=187;y=106;"
+  shape[390] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=185;y=124;angle=90;"
+  shape[391] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=189;y=110;"
+  shape[392] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=189;y=106;"
+  shape[393] = "pw=0;bc=#666;func=rect;width=40;height=4;x=193;y=106;"
+  shape[394] = "pw=0;bc=#666;func=rect;width=4;height=20;x=229;y=106;"
+  shape[395] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=227;y=124;angle=90;"
+  shape[396] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=231;y=110;"
+  shape[397] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=231;y=106;"
+  shape[398] = "pw=0;bc=#666;func=rect;width=40;height=4;x=235;y=106;"
+  shape[399] = "pw=0;bc=#666;func=rect;width=4;height=20;x=271;y=106;"
+  shape[400] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=269;y=124;angle=90;"
+  shape[401] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=273;y=110;"
+  shape[402] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=273;y=106;"
+  shape[403] = "pw=0;bc=#666;func=rect;width=40;height=4;x=277;y=106;"
+  shape[404] = "pw=0;bc=#666;func=rect;width=4;height=20;x=313;y=106;"
+  shape[405] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=311;y=124;angle=90;"
+  shape[406] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=315;y=110;"
+  shape[407] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=315;y=106;"
+  shape[408] = "pw=0;bc=#666;func=rect;width=40;height=4;x=319;y=106;"
+  shape[409] = "pw=0;bc=#666;func=rect;width=4;height=20;x=355;y=106;"
+  shape[410] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=353;y=124;angle=90;"
+  shape[411] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=357;y=110;"
+  shape[412] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=357;y=106;"
+  shape[413] = "pw=0;bc=#666;func=rect;width=40;height=4;x=361;y=106;"
+  shape[414] = "pw=0;bc=#666;func=rect;width=4;height=20;x=397;y=106;"
+  shape[415] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=395;y=124;angle=90;"
+  shape[416] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=399;y=110;"
+  shape[417] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=399;y=106;"
+  shape[418] = "pw=0;bc=#666;func=rect;width=19;height=4;x=403;y=106;"
+  shape[419] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=106;"
+  shape[420] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=124;angle=90;"
+  shape[421] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=0;y=88;"
+  shape[422] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=84;"
+  shape[423] = "pw=0;bc=#666;func=rect;width=40;height=4;x=4;y=84;"
+  shape[424] = "pw=0;bc=#666;func=rect;width=4;height=20;x=40;y=84;"
+  shape[425] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=38;y=102;angle=90;"
+  shape[426] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=42;y=88;"
+  shape[427] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=42;y=84;"
+  shape[428] = "pw=0;bc=#666;func=rect;width=40;height=4;x=46;y=84;"
+  shape[429] = "pw=0;bc=#666;func=rect;width=4;height=20;x=82;y=84;"
+  shape[430] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=80;y=102;angle=90;"
+  shape[431] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=84;y=88;"
+  shape[432] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=84;y=84;"
+  shape[433] = "pw=0;bc=#666;func=rect;width=40;height=4;x=88;y=84;"
+  shape[434] = "pw=0;bc=#666;func=rect;width=4;height=20;x=124;y=84;"
+  shape[435] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=122;y=102;angle=90;"
+  shape[436] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=126;y=88;"
+  shape[437] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=126;y=84;"
+  shape[438] = "pw=0;bc=#666;func=rect;width=40;height=4;x=130;y=84;"
+  shape[439] = "pw=0;bc=#666;func=rect;width=4;height=20;x=166;y=84;"
+  shape[440] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=164;y=102;angle=90;"
+  shape[441] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=168;y=88;"
+  shape[442] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=168;y=84;"
+  shape[443] = "pw=0;bc=#666;func=rect;width=40;height=4;x=172;y=84;"
+  shape[444] = "pw=0;bc=#666;func=rect;width=4;height=20;x=208;y=84;"
+  shape[445] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=206;y=102;angle=90;"
+  shape[446] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=210;y=88;"
+  shape[447] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=210;y=84;"
+  shape[448] = "pw=0;bc=#666;func=rect;width=40;height=4;x=214;y=84;"
+  shape[449] = "pw=0;bc=#666;func=rect;width=4;height=20;x=250;y=84;"
+  shape[450] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=248;y=102;angle=90;"
+  shape[451] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=252;y=88;"
+  shape[452] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=252;y=84;"
+  shape[453] = "pw=0;bc=#666;func=rect;width=40;height=4;x=256;y=84;"
+  shape[454] = "pw=0;bc=#666;func=rect;width=4;height=20;x=292;y=84;"
+  shape[455] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=290;y=102;angle=90;"
+  shape[456] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=294;y=88;"
+  shape[457] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=294;y=84;"
+  shape[458] = "pw=0;bc=#666;func=rect;width=40;height=4;x=298;y=84;"
+  shape[459] = "pw=0;bc=#666;func=rect;width=4;height=20;x=334;y=84;"
+  shape[460] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=332;y=102;angle=90;"
+  shape[461] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=336;y=88;"
+  shape[462] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=336;y=84;"
+  shape[463] = "pw=0;bc=#666;func=rect;width=40;height=4;x=340;y=84;"
+  shape[464] = "pw=0;bc=#666;func=rect;width=4;height=20;x=376;y=84;"
+  shape[465] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=374;y=102;angle=90;"
+  shape[466] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=378;y=88;"
+  shape[467] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=378;y=84;"
+  shape[468] = "pw=0;bc=#666;func=rect;width=40;height=4;x=382;y=84;"
+  shape[469] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=84;"
+  shape[470] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=102;angle=90;"
+  shape[471] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=0;y=66;"
+  shape[472] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=62;"
+  shape[473] = "pw=0;bc=#666;func=rect;width=19;height=4;x=4;y=62;"
+  shape[474] = "pw=0;bc=#666;func=rect;width=4;height=20;x=19;y=62;"
+  shape[475] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=17;y=80;angle=90;"
+  shape[476] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=21;y=66;"
+  shape[477] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=21;y=62;"
+  shape[478] = "pw=0;bc=#666;func=rect;width=40;height=4;x=25;y=62;"
+  shape[479] = "pw=0;bc=#666;func=rect;width=4;height=20;x=61;y=62;"
+  shape[480] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=59;y=80;angle=90;"
+  shape[481] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=63;y=66;"
+  shape[482] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=63;y=62;"
+  shape[483] = "pw=0;bc=#666;func=rect;width=40;height=4;x=67;y=62;"
+  shape[484] = "pw=0;bc=#666;func=rect;width=4;height=20;x=103;y=62;"
+  shape[485] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=101;y=80;angle=90;"
+  shape[486] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=105;y=66;"
+  shape[487] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=105;y=62;"
+  shape[488] = "pw=0;bc=#666;func=rect;width=40;height=4;x=109;y=62;"
+  shape[489] = "pw=0;bc=#666;func=rect;width=4;height=20;x=145;y=62;"
+  shape[490] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=143;y=80;angle=90;"
+  shape[491] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=147;y=66;"
+  shape[492] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=147;y=62;"
+  shape[493] = "pw=0;bc=#666;func=rect;width=40;height=4;x=151;y=62;"
+  shape[494] = "pw=0;bc=#666;func=rect;width=4;height=20;x=187;y=62;"
+  shape[495] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=185;y=80;angle=90;"
+  shape[496] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=189;y=66;"
+  shape[497] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=189;y=62;"
+  shape[498] = "pw=0;bc=#666;func=rect;width=40;height=4;x=193;y=62;"
+  shape[499] = "pw=0;bc=#666;func=rect;width=4;height=20;x=229;y=62;"
+  shape[500] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=227;y=80;angle=90;"
+  shape[501] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=231;y=66;"
+  shape[502] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=231;y=62;"
+  shape[503] = "pw=0;bc=#666;func=rect;width=40;height=4;x=235;y=62;"
+  shape[504] = "pw=0;bc=#666;func=rect;width=4;height=20;x=271;y=62;"
+  shape[505] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=269;y=80;angle=90;"
+  shape[506] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=273;y=66;"
+  shape[507] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=273;y=62;"
+  shape[508] = "pw=0;bc=#666;func=rect;width=40;height=4;x=277;y=62;"
+  shape[509] = "pw=0;bc=#666;func=rect;width=4;height=20;x=313;y=62;"
+  shape[510] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=311;y=80;angle=90;"
+  shape[511] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=315;y=66;"
+  shape[512] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=315;y=62;"
+  shape[513] = "pw=0;bc=#666;func=rect;width=40;height=4;x=319;y=62;"
+  shape[514] = "pw=0;bc=#666;func=rect;width=4;height=20;x=355;y=62;"
+  shape[515] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=353;y=80;angle=90;"
+  shape[516] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=357;y=66;"
+  shape[517] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=357;y=62;"
+  shape[518] = "pw=0;bc=#666;func=rect;width=40;height=4;x=361;y=62;"
+  shape[519] = "pw=0;bc=#666;func=rect;width=4;height=20;x=397;y=62;"
+  shape[520] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=395;y=80;angle=90;"
+  shape[521] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=399;y=66;"
+  shape[522] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=399;y=62;"
+  shape[523] = "pw=0;bc=#666;func=rect;width=19;height=4;x=403;y=62;"
+  shape[524] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=62;"
+  shape[525] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=80;angle=90;"
+  shape[526] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=0;y=44;"
+  shape[527] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=40;"
+  shape[528] = "pw=0;bc=#666;func=rect;width=40;height=4;x=4;y=40;"
+  shape[529] = "pw=0;bc=#666;func=rect;width=4;height=20;x=40;y=40;"
+  shape[530] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=38;y=58;angle=90;"
+  shape[531] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=42;y=44;"
+  shape[532] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=42;y=40;"
+  shape[533] = "pw=0;bc=#666;func=rect;width=40;height=4;x=46;y=40;"
+  shape[534] = "pw=0;bc=#666;func=rect;width=4;height=20;x=82;y=40;"
+  shape[535] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=80;y=58;angle=90;"
+  shape[536] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=84;y=44;"
+  shape[537] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=84;y=40;"
+  shape[538] = "pw=0;bc=#666;func=rect;width=40;height=4;x=88;y=40;"
+  shape[539] = "pw=0;bc=#666;func=rect;width=4;height=20;x=124;y=40;"
+  shape[540] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=122;y=58;angle=90;"
+  shape[541] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=126;y=44;"
+  shape[542] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=126;y=40;"
+  shape[543] = "pw=0;bc=#666;func=rect;width=40;height=4;x=130;y=40;"
+  shape[544] = "pw=0;bc=#666;func=rect;width=4;height=20;x=166;y=40;"
+  shape[545] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=164;y=58;angle=90;"
+  shape[546] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=168;y=44;"
+  shape[547] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=168;y=40;"
+  shape[548] = "pw=0;bc=#666;func=rect;width=40;height=4;x=172;y=40;"
+  shape[549] = "pw=0;bc=#666;func=rect;width=4;height=20;x=208;y=40;"
+  shape[550] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=206;y=58;angle=90;"
+  shape[551] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=210;y=44;"
+  shape[552] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=210;y=40;"
+  shape[553] = "pw=0;bc=#666;func=rect;width=40;height=4;x=214;y=40;"
+  shape[554] = "pw=0;bc=#666;func=rect;width=4;height=20;x=250;y=40;"
+  shape[555] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=248;y=58;angle=90;"
+  shape[556] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=252;y=44;"
+  shape[557] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=252;y=40;"
+  shape[558] = "pw=0;bc=#666;func=rect;width=40;height=4;x=256;y=40;"
+  shape[559] = "pw=0;bc=#666;func=rect;width=4;height=20;x=292;y=40;"
+  shape[560] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=290;y=58;angle=90;"
+  shape[561] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=294;y=44;"
+  shape[562] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=294;y=40;"
+  shape[563] = "pw=0;bc=#666;func=rect;width=40;height=4;x=298;y=40;"
+  shape[564] = "pw=0;bc=#666;func=rect;width=4;height=20;x=334;y=40;"
+  shape[565] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=332;y=58;angle=90;"
+  shape[566] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=336;y=44;"
+  shape[567] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=336;y=40;"
+  shape[568] = "pw=0;bc=#666;func=rect;width=40;height=4;x=340;y=40;"
+  shape[569] = "pw=0;bc=#666;func=rect;width=4;height=20;x=376;y=40;"
+  shape[570] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=374;y=58;angle=90;"
+  shape[571] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=378;y=44;"
+  shape[572] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=378;y=40;"
+  shape[573] = "pw=0;bc=#666;func=rect;width=40;height=4;x=382;y=40;"
+  shape[574] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=40;"
+  shape[575] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=58;angle=90;"
+  shape[576] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=0;y=22;"
+  shape[577] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=18;"
+  shape[578] = "pw=0;bc=#666;func=rect;width=19;height=4;x=4;y=18;"
+  shape[579] = "pw=0;bc=#666;func=rect;width=4;height=20;x=19;y=18;"
+  shape[580] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=17;y=36;angle=90;"
+  shape[581] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=21;y=22;"
+  shape[582] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=21;y=18;"
+  shape[583] = "pw=0;bc=#666;func=rect;width=40;height=4;x=25;y=18;"
+  shape[584] = "pw=0;bc=#666;func=rect;width=4;height=20;x=61;y=18;"
+  shape[585] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=59;y=36;angle=90;"
+  shape[586] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=63;y=22;"
+  shape[587] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=63;y=18;"
+  shape[588] = "pw=0;bc=#666;func=rect;width=40;height=4;x=67;y=18;"
+  shape[589] = "pw=0;bc=#666;func=rect;width=4;height=20;x=103;y=18;"
+  shape[590] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=101;y=36;angle=90;"
+  shape[591] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=105;y=22;"
+  shape[592] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=105;y=18;"
+  shape[593] = "pw=0;bc=#666;func=rect;width=40;height=4;x=109;y=18;"
+  shape[594] = "pw=0;bc=#666;func=rect;width=4;height=20;x=145;y=18;"
+  shape[595] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=143;y=36;angle=90;"
+  shape[596] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=147;y=22;"
+  shape[597] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=147;y=18;"
+  shape[598] = "pw=0;bc=#666;func=rect;width=40;height=4;x=151;y=18;"
+  shape[599] = "pw=0;bc=#666;func=rect;width=4;height=20;x=187;y=18;"
+  shape[600] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=185;y=36;angle=90;"
+  shape[601] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=189;y=22;"
+  shape[602] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=189;y=18;"
+  shape[603] = "pw=0;bc=#666;func=rect;width=40;height=4;x=193;y=18;"
+  shape[604] = "pw=0;bc=#666;func=rect;width=4;height=20;x=229;y=18;"
+  shape[605] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=227;y=36;angle=90;"
+  shape[606] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=231;y=22;"
+  shape[607] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=231;y=18;"
+  shape[608] = "pw=0;bc=#666;func=rect;width=40;height=4;x=235;y=18;"
+  shape[609] = "pw=0;bc=#666;func=rect;width=4;height=20;x=271;y=18;"
+  shape[610] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=269;y=36;angle=90;"
+  shape[611] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=273;y=22;"
+  shape[612] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=273;y=18;"
+  shape[613] = "pw=0;bc=#666;func=rect;width=40;height=4;x=277;y=18;"
+  shape[614] = "pw=0;bc=#666;func=rect;width=4;height=20;x=313;y=18;"
+  shape[615] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=311;y=36;angle=90;"
+  shape[616] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=315;y=22;"
+  shape[617] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=315;y=18;"
+  shape[618] = "pw=0;bc=#666;func=rect;width=40;height=4;x=319;y=18;"
+  shape[619] = "pw=0;bc=#666;func=rect;width=4;height=20;x=355;y=18;"
+  shape[620] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=353;y=36;angle=90;"
+  shape[621] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=357;y=22;"
+  shape[622] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=357;y=18;"
+  shape[623] = "pw=0;bc=#666;func=rect;width=40;height=4;x=361;y=18;"
+  shape[624] = "pw=0;bc=#666;func=rect;width=4;height=20;x=397;y=18;"
+  shape[625] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=395;y=36;angle=90;"
+  shape[626] = "pw=0;bc=#CCC;func=rect;width=19;height=20;x=399;y=22;"
+  shape[627] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=399;y=18;"
+  shape[628] = "pw=0;bc=#666;func=rect;width=19;height=4;x=403;y=18;"
+  shape[629] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=18;"
+  shape[630] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=36;angle=90;"
+  shape[631] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=0;y=0;"
+  shape[632] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=0;y=-4;"
+  shape[633] = "pw=0;bc=#666;func=rect;width=40;height=4;x=4;y=-4;"
+  shape[634] = "pw=0;bc=#666;func=rect;width=4;height=20;x=40;y=-4;"
+  shape[635] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=38;y=14;angle=90;"
+  shape[636] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=42;y=0;"
+  shape[637] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=42;y=-4;"
+  shape[638] = "pw=0;bc=#666;func=rect;width=40;height=4;x=46;y=-4;"
+  shape[639] = "pw=0;bc=#666;func=rect;width=4;height=20;x=82;y=-4;"
+  shape[640] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=80;y=14;angle=90;"
+  shape[641] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=84;y=0;"
+  shape[642] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=84;y=-4;"
+  shape[643] = "pw=0;bc=#666;func=rect;width=40;height=4;x=88;y=-4;"
+  shape[644] = "pw=0;bc=#666;func=rect;width=4;height=20;x=124;y=-4;"
+  shape[645] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=122;y=14;angle=90;"
+  shape[646] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=126;y=0;"
+  shape[647] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=126;y=-4;"
+  shape[648] = "pw=0;bc=#666;func=rect;width=40;height=4;x=130;y=-4;"
+  shape[649] = "pw=0;bc=#666;func=rect;width=4;height=20;x=166;y=-4;"
+  shape[650] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=164;y=14;angle=90;"
+  shape[651] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=168;y=0;"
+  shape[652] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=168;y=-4;"
+  shape[653] = "pw=0;bc=#666;func=rect;width=40;height=4;x=172;y=-4;"
+  shape[654] = "pw=0;bc=#666;func=rect;width=4;height=20;x=208;y=-4;"
+  shape[655] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=206;y=14;angle=90;"
+  shape[656] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=210;y=0;"
+  shape[657] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=210;y=-4;"
+  shape[658] = "pw=0;bc=#666;func=rect;width=40;height=4;x=214;y=-4;"
+  shape[659] = "pw=0;bc=#666;func=rect;width=4;height=20;x=250;y=-4;"
+  shape[660] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=248;y=14;angle=90;"
+  shape[661] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=252;y=0;"
+  shape[662] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=252;y=-4;"
+  shape[663] = "pw=0;bc=#666;func=rect;width=40;height=4;x=256;y=-4;"
+  shape[664] = "pw=0;bc=#666;func=rect;width=4;height=20;x=292;y=-4;"
+  shape[665] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=290;y=14;angle=90;"
+  shape[666] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=294;y=0;"
+  shape[667] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=294;y=-4;"
+  shape[668] = "pw=0;bc=#666;func=rect;width=40;height=4;x=298;y=-4;"
+  shape[669] = "pw=0;bc=#666;func=rect;width=4;height=20;x=334;y=-4;"
+  shape[670] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=332;y=14;angle=90;"
+  shape[671] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=336;y=0;"
+  shape[672] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=336;y=-4;"
+  shape[673] = "pw=0;bc=#666;func=rect;width=40;height=4;x=340;y=-4;"
+  shape[674] = "pw=0;bc=#666;func=rect;width=4;height=20;x=376;y=-4;"
+  shape[675] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=374;y=14;angle=90;"
+  shape[676] = "pw=0;bc=#CCC;func=rect;width=40;height=20;x=378;y=0;"
+  shape[677] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=378;y=-4;"
+  shape[678] = "pw=0;bc=#666;func=rect;width=40;height=4;x=382;y=-4;"
+  shape[679] = "pw=0;bc=#666;func=rect;width=4;height=20;x=418;y=-4;"
+  shape[680] = "pw=0;bc=#666;func=tri;x1=4;y1=0;x2=0;y2=4;x3=8;y3=4;x=416;y=14;angle=90;"
+  shape[681] = "pw=0;bc=Black;fs=50;fn=Trebuchet MS;fb=False;fi=False;func=text;text=Wall;x=348;y=298;"
+EndSub
+Sub Math_CartesianToPolar
+  ' Math | convert cartesian coodinate to polar coordinate
+  ' param x, y - cartesian coordinate
+  ' return r, a - polar coordinate
+  r = Math.SquareRoot(x * x + y * y)
+  If x = 0 And y > 0 Then
+    a = 90 ' [degree]
+  ElseIf x = 0 And y < 0 Then
+    a = -90
+  ElseIf x = 0 Then
+    a = 0
+  Else
+    a = Math.ArcTan(y / x) * 180 / Math.Pi
+  EndIf
+  If x < 0 Then
+    a = a + 180
+  ElseIf x > 0 And y < 0 Then
+    a = a + 360
+  EndIf
+EndSub
+Sub SB_RotateWorkaround
+  ' Small Basic | Rotate workaround for Silverlight
+  ' param shp - current shape
+  ' param x, y - original coordinate
+  ' param alpha - angle [radian]
+  ' returns x, y - workaround coordinate
+  If shp["func"] = "tri" Then
+    x1 = -Math.Floor(shp["x3"] / 2)
+    y1 = -Math.Floor(shp["y3"] / 2)
+  ElseIf shp["func"] = "line" Then
+    x1 = -Math.Floor(Math.Abs(shp["x1"] - shp["x2"]) / 2)
+    y1 = -Math.Floor(Math.Abs(shp["y1"] - shp["y2"]) / 2)
+  EndIf
+  ox = x - x1
+  oy = y - y1
+  x = x1 * Math.Cos(alpha) - y1 * Math.Sin(alpha) + ox
+  y = x1 * Math.Sin(alpha) + y1 * Math.Cos(alpha) + oy
+EndSub
+Sub SB_Workaround
+  ' Small Basic | Workaround for Silverlight
+  ' returns silverlight - "True" if in remote
+  color = GraphicsWindow.GetPixel(0, 0)
+  If Text.GetLength(color) > 7 Then
+    silverlight = "True"
+    msWait = 300
+  Else
+    silverlight = "False"
+  EndIf
+EndSub
+Sub Shapes_Add
+  ' Shapes | add shapes as shapes data
+  ' param iMin, iMax - shape indices to add
+  ' param shape - array of shapes
+  ' param scale - 1 if same scale
+  ' return shWidth, shHeight - total size of shapes
+  ' return shAngle - current angle of shapes
+  Stack.PushValue("local", i)
+  Stack.PushValue("local", x)
+  Stack.PushValue("local", y)
+  Shapes_CalcWidthAndHeight()
+  s = scale
+  For i = iMin To iMax
+    shp = shape[i]
+    GraphicsWindow.PenWidth = shp["pw"] * s
+    If shp["pw"] > 0 Then
+      GraphicsWindow.PenColor = shp["pc"]
+    EndIf
+    If Text.IsSubText("rect|ell|tri|text", shp["func"]) Then
+      GraphicsWindow.BrushColor = shp["bc"]
+    EndIf
+    If shp["func"] = "rect" Then
+      shp["obj"] = Shapes.AddRectangle(shp["width"] * s, shp["height"] * s)
+    ElseIf shp["func"] = "ell" Then
+      shp["obj"] = Shapes.AddEllipse(shp["width"] * s, shp["height"] * s)
+    ElseIf shp["func"] = "tri" Then
+      shp["obj"] = Shapes.AddTriangle(shp["x1"] * s, shp["y1"] * s, shp["x2"] * s, shp["y2"] * s, shp["x3"] * s, shp["y3"] * s)
+    ElseIf shp["func"] = "line" Then
+      shp["obj"] = Shapes.AddLine(shp["x1"] * s, shp["y1"] * s, shp["x2"] * s, shp["y2"] * s)
+    ElseIf shp["func"] = "text" Then
+      If silverlight Then
+        fs = Math.Floor(shp["fs"] * 0.9)
+      Else
+        fs = shp["fs"]
+      EndIf
+      GraphicsWindow.FontSize = fs * s
+      GraphicsWindow.FontName = shp["fn"]
+      shp["obj"] = Shapes.AddText(shp["text"])
+    EndIf
+    x = shp["x"]
+    y = shp["y"]
+    shp["rx"] = x
+    shp["ry"] = y
+    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
+      alpha = Math.GetRadians(shp["angle"])
+      SB_RotateWorkaround()
+      shp["wx"] = x
+      shp["wy"] = y
+    EndIf
+    Shapes.Move(shp["obj"], shX + x * s, shY + y * s)
+    If Text.IsSubText("rect|ell|tri|text", shp["func"]) And (shp["angle"] <> 0) And (shp["angle"] <> "") Then
+      Shapes.Rotate(shp["obj"], shp["angle"])
+    EndIf
+    shape[i] = shp
+  EndFor
+  shAngle = 0
+  y = Stack.PopValue("local")
+  x = Stack.PopValue("local")
+  i = Stack.PopValue("local")
+EndSub
+Sub Shapes_CalcRotatePos
+  ' Shapes | Calculate position for rotated shape
+  ' param["x"], param["y"] - position of a shape
+  ' param["width"], param["height"] - size of a shape
+  ' param ["cx"], param["cy"] - center of rotation
+  ' param ["angle"] - rotate angle
+  ' return x, y - rotated position of a shape
+  _cx = param["x"] + param["width"] / 2
+  _cy = param["y"] + param["height"] / 2
+  x = _cx - param["cx"]
+  y = _cy - param["cy"]
+  Math_CartesianToPolar()
+  a = a + param["angle"]
+  x = r * Math.Cos(a * Math.Pi / 180)
+  y = r * Math.Sin(a * Math.Pi / 180)
+  _cx = x + param["cx"]
+  _cy = y + param["cy"]
+  x = _cx - param["width"] / 2
+  y = _cy - param["height"] / 2
+EndSub
+Sub Shapes_CalcWidthAndHeight
+  ' Shapes | Calculate total width and height of shapes
+  ' param iMin, iMax - shape indices to add
+  ' return shWidth, shHeight - total size of shapes
+  For i = iMin To iMax
+    shp = shape[i]
+    If shp["func"] = "tri" Or shp["func"] = "line" Then
+      xmin = shp["x1"]
+      xmax = shp["x1"]
+      ymin = shp["y1"]
+      ymax = shp["y1"]
+      If shp["x2"] < xmin Then
+        xmin = shp["x2"]
+      EndIf
+      If xmax < shp["x2"] Then
+        xmax = shp["x2"]
+      EndIf
+      If shp["y2"] < ymin Then
+        ymin = shp["y2"]
+      EndIf
+      If ymax < shp["y2"] Then
+        ymax = shp["y2"]
+      EndIf
+      If shp["func"] = "tri" Then
+        If shp["x3"] < xmin Then
+          xmin = shp["x3"]
+        EndIf
+        If xmax < shp["x3"] Then
+          xmax = shp["x3"]
+        EndIf
+        If shp["y3"] < ymin Then
+          ymin = shp["y3"]
+        EndIf
+        If ymax < shp["y3"] Then
+          ymax = shp["y3"]
+        EndIf
+      EndIf
+      shp["width"] = xmax - xmin
+      shp["height"] = ymax - ymin
+    EndIf
+    If i = 1 Then
+      shWidth = shp["x"] + shp["width"]
+      shHeight = shp["y"] + shp["height"]
+    Else
+      If shWidth < shp["x"] + shp["width"] Then
+        shWidth = shp["x"] + shp["width"]
+      EndIf
+      If shHeight < shp["y"] + shp["height"] Then
+        shHeight = shp["y"] + shp["height"]
+      EndIf
+    EndIf
+    shape[i] = shp
+  EndFor
+EndSub
+Sub Shapes_Move
+  ' Shapes | Move shapes
+  ' param iMin, iMax - shape indices to add
+  ' param shape - array of shapes
+  ' param scale - to zoom
+  ' param x, y - position to move
+  ' return shX, shY - new position of shapes
+  Stack.PushValue("local", i)
+  s = scale
+  shX = x
+  shY = y
+  For i = iMin To iMax
+    shp = shape[i]
+    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
+      _x = shp["wx"]
+      _y = shp["wy"]
+    Else
+      _x = shp["rx"]
+      _y = shp["ry"]
+    EndIf
+    Shapes.Move(shp["obj"], shX + _x * s, shY + _y * s)
+  EndFor
+  i = Stack.PopValue("local")
+EndSub
+Sub Shapes_Remove
+  ' Shapes | Remove shapes
+  ' param iMin, iMax - shapes indices to remove
+  ' param shape - array of shapes
+  Stack.PushValue("local", i)
+  For i = iMin To iMax
+    shp = shape[i]
+    Shapes.Remove(shp["obj"])
+  EndFor
+  i = Stack.PopValue("local")
+EndSub
+Sub Shapes_Rotate
+  ' Shapes | Rotate shapes
+  ' param iMin, iMax - shapes indices to rotate
+  ' param shape - array of shapes
+  ' param cx, cy - rotation center
+  ' param scale - to zoom
+  ' param angle - to rotate
+  Stack.PushValue("local", i)
+  Stack.PushValue("local", x)
+  Stack.PushValue("local", y)
+  s = scale
+  param["angle"] = angle
+  If cx <> "" Then
+    param["cx"] = cx
+  Else
+    cx = ""   ' to avoid syntax error
+    param["cx"] = shWidth / 2
+  EndIf
+  If cy <> "" Then
+    param["cy"] = cy
+  Else
+    cy = ""   ' to avoid syntax error
+    param["cy"] = shHeight / 2
+  EndIf
+  For i = iMin To iMax
+    shp = shape[i]
+    param["x"] = shp["x"]
+    param["y"] = shp["y"]
+    param["width"] = shp["width"]
+    param["height"] = shp["height"]
+    Shapes_CalcRotatePos()
+    shp["rx"] = x
+    shp["ry"] = y
+    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
+      alpha = Math.GetRadians(angle + shp["angle"])
+      SB_RotateWorkAround()
+      shp["wx"] = x
+      shp["wy"] = y
+    EndIf
+    Shapes.Move(shp["obj"], shX + x * s, shY + y * s)
+    Shapes.Rotate(shp["obj"], angle + shp["angle"])
+    shape[i] = shp
+  EndFor
+  y = Stack.PopValue("local")
+  x = Stack.PopValue("local")
+  i = Stack.PopValue("local")
+EndSub
+  

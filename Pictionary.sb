@@ -1,18 +1,21 @@
 ' Pictionary
-' Version 0.2
+' Version 0.3
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 201-05-30
+' Last update 201-06-02
 ' Extension LitDev
 
-GraphicsWindow.Title = "Pictionary 0.2"
+title = "Pictionary 0.3"
+GraphicsWindow.Title = title
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
-kw = "Array,Bell,Chime,Chinese,Clock,Color,Dictionary,"
-kw = kw + "Ellipse,English,French,German,Graphics,"
-kw = kw + "Hour,Italian,Japanese,Korean,Line,"
-kw = kw + "Minute,Mouse,Pen,Rectangle,Second,Triangle"
+kw = "And,Array,Bell,Chime,Chinese,Clock,Color,Dictionary,"
+kw = kw + "Ellipse,English,File,French,German,Graphics,"
+kw = kw + "Hour,Image,Italian,Japanese,Korean,Line,"
+kw = kw + "Minute,Mouse,Music,Network,Or,Paper,Pen,Rectangle,"
+kw = kw + "Second,Sound,Spanish,Triangle,Turtle,Wall,Window"
 kw = kw + ""
 keywords = LDText.Split(kw, ",")
 n = Array.GetItemCount(keywords)
+GraphicsWindow.Title = title + " - " + n + " keywords"
 LDSpeech.Voice = "Microsoft Zira Desktop"
 GraphicsWindow.BrushColor = "Black"
 GraphicsWindow.FontName = "Trebuchet MS"
