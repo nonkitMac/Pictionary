@@ -1,0 +1,36 @@
+' Pictionary - Tangnet
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+
+GraphicsWindow.Title = "Pictionary"
+Init()
+r = 150
+xo = gw / 2
+yo = gh / 2 - 20
+GraphicsWindow.PenColor = "Gray"
+GraphicsWindow.DrawEllipse(xo - r, yo - r, 2 * r, 2 * r)
+GraphicsWindow.DrawLine(xo - (r + 20), yo, xo + (r + 20), yo)
+GraphicsWindow.DrawLine(xo, yo - (r + 20), xo, yo + (r + 20))
+GraphicsWindow.BrushColor = "Gray"
+GraphicsWindow.FillEllipse(xo + 40, yo - 18 , 10, 10)
+_a = Math.GetRadians(30)
+x = xo + (r + 20)
+y = yo - (r + 20) * Math.Tan(_a)
+GraphicsWindow.DrawLine(xo, yo, x, y)
+GraphicsWindow.PenColor = "Red"
+x1 = xo + r
+y1 = yo
+x2 = x1
+y2 = yo - r * Math.Tan(_a)
+GraphicsWindow.DrawLine(x1, y1, x2, y2)
+GraphicsWindow.FontName = "Trebuchet MS"
+GraphicsWindow.FontSize = 50
+GraphicsWindow.BrushColor = "Black"
+x = gw - 20 - 190
+y = gh - 20 - 50
+GraphicsWindow.DrawText(x, y, "Tangent")
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub

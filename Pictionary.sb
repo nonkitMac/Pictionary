@@ -1,18 +1,20 @@
 ' Pictionary
-' Version 0.5
+' Version 0.6
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-09-25
+' Last update 2017-10-13
 ' Extension LitDev
 
-title = "Pictionary 0.5"
+title = "Pictionary 0.6"
 GraphicsWindow.Title = title
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
-kw = "And,Array,Bell,Chime,Chinese,Clock,Color,Control,"
-kw = kw + "Desktop,Dictionary,Ellipse,English,File,Flickr,French,"
-kw = kw + "German,Graphics,Hour,Image,Italian,Japanese,Korean,Line,"
-kw = kw + "Math,Minute,Mouse,Music,Network,Or,Paper,Pen,Program,"
-kw = kw + "Rectangle,Second,Shape,Shell,Sound,Spanish,Square,Stack,"
-kw = kw + "Text,Timer,Triangle,Turtle,Wall,Window"
+kw = "And,Array,Bell,Brush,Chime,Chinese,Clock,Color,Control,Cosine,"
+kw = kw + "Degree,Desktop,Dictionary,Draw,"
+kw = kw + "Ellipse,English,Error,File,Flickr,French,"
+kw = kw + "German,Go,Graphics,Height,Hour,Image,Italian,Japanese,"
+kw = kw + "Korean,Length,Line,Math,Minute,Mouse,Music,Network,Or,"
+kw = kw + "Paper,Pen,Program,Radian,Random,Rectangle,RGB,"
+kw = kw + "Second,Shape,Shell,Sine,Sound,Spanish,Square,Stack,Stop,"
+kw = kw + "Tangent,Text,Timer,Triangle,Turtle,Wall,Width,Window,Write"
 keywords = LDText.Split(kw, ",")
 n = Array.GetItemCount(keywords)
 GraphicsWindow.Title = title + " - " + n + " keywords"

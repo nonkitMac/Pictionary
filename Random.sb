@@ -1,0 +1,82 @@
+' Pictionary - Random
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Last update 2017-10-09
+
+GraphicsWindow.Title = "Pictionary"
+Init()
+While "True"
+    For i = 1 To nArrow
+      arw = arrow[i]
+      a = Math.GetRandomNumber(360)
+      Shapes.Rotate(arw["tail"], a + 135)
+      Shapes.Rotate(arw["head"], a + 135)
+    EndFor
+    Program.Delay(500)
+EndWhile
+
+Sub AddArrow
+  ' param x, y - point
+  GraphicsWindow.PenWidth = 2
+  GraphicsWindow.PenColor = "Black"
+  tail = Shapes.AddLine(-20, -20, 0, 0)
+  GraphicsWindow.PenWidth = 0
+  GraphicsWindow.BrushColor = "Black"
+  head = Shapes.AddTriangle(-25, -25, -20, -10, -10, -20)
+  Shapes.Move(tail, x, y)
+  Shapes.Move(head, x, y)
+  arw["tail"] = tail
+  arw["head"] = head
+  arw["x"] = x
+  arw["y"] = y
+  nArrow = nArrow + 1
+  arrow[nArrow] = arw
+EndSub
+
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  cx = gw / 2
+  cy = gh / 2 - 30
+  For y = cy - 120 To cy + 120 Step 80
+    For x = cx - 200 To cx + 200 Step 80
+      AddArrow()
+    EndFor
+  EndFor
+  GraphicsWindow.FontName = "Trebuchet MS"
+  GraphicsWindow.FontSize = 50
+  x = gw - 20 - 187
+  y = gh - 20 - 50
+  GraphicsWindow.DrawText(x, y, "Random")
+  GraphicsWindow.MouseMove = OnMouseMove
+EndSub
+
+Sub OnMouseMove
+  mouseMove = "True"
+  mx = GraphicsWindow.MouseX
+  my = GraphicsWindow.MouseY
+EndSub
+
+Sub Math_CartesianToPolar
+  ' Math | convert Cartesian coodinate to polar coordinate
+  ' param x, y - Cartesian coordinate
+  ' return r, a - polar Coordinate (0<=a<360)
+  r = Math.SquareRoot(x * x + y * y)
+  If x = 0 And y > 0 Then
+    a = 90 ' [degree]
+  ElseIf x = 0 And y < 0 Then
+    a = -90
+  ElseIf x = 0 And y = 0 Then
+    a = 0
+  Else
+    a = Math.ArcTan(y / x) * 180 / Math.Pi
+  EndIf
+  ' at this point -90<=a<=90
+  If x < 0 Then
+    a = a + 180
+  ElseIf x >= 0 And y < 0 Then
+    a = a + 360
+  EndIf
+  ' at this point 0<=a<360
+EndSub

@@ -1,0 +1,37 @@
+' Pictionary - Radian
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Last update 2017-09-10
+
+GraphicsWindow.Title = "Pictionary"
+Init()
+r = 160
+x1 = gw / 2 
+y1 = gh / 2 - 20
+x2 = x1 + r
+y2 = y1
+rad = Math.GetDegrees(1)
+Stack.PushValue("local", y2)
+For a = 5 To rad Step rad / 10
+  _a = Math.GetRadians(a)
+  x3 = x1 + r * Math.Cos(_a)
+  y3 = y1 - r * Math.Sin(_a)
+  GraphicsWindow.BrushColor = "#CC0000"
+  GraphicsWindow.FillTriangle(x1, y1, x2, y2, x3, y3)
+  x2 = x3
+  y2 = y3
+EndFor
+y2 = Stack.PopValue("local")
+GraphicsWindow.PenColor = "Gray"
+GraphicsWindow.DrawEllipse(x1 - r, y2 - r, 2 * r, 2 * r)
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontName = "Trebuchet MS"
+GraphicsWindow.FontSize = 50
+x = gw - 20 - 157
+y = gh - 20 - 50
+GraphicsWindow.DrawText(x, y, "Radian")
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub

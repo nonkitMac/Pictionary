@@ -1,0 +1,35 @@
+' Pictionary - Cosine
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+
+GraphicsWindow.Title = "Pictionary"
+Init()
+r = 150
+xo = gw / 2
+yo = gh / 2 - 20
+GraphicsWindow.PenColor = "Gray"
+GraphicsWindow.DrawEllipse(xo - r, yo - r, 2 * r, 2 * r)
+GraphicsWindow.DrawLine(xo - (r + 20), yo, xo + (r + 20), yo)
+GraphicsWindow.DrawLine(xo, yo - (r + 20), xo, yo + (r + 20))
+GraphicsWindow.BrushColor = "Gray"
+GraphicsWindow.FillEllipse(xo + 20, yo - 20 , 10, 10)
+_a = Math.GetRadians(60)
+x = xo + (r + 20) * Math.Cos(_a)
+y = yo - (r + 20) * Math.Sin(_a)
+GraphicsWindow.DrawLine(xo, yo, x, y)
+x1 = xo + r * Math.Cos(_a)
+y1 = yo - r * Math.Sin(_a)
+GraphicsWindow.DrawLine(x1, y1, x1, yo)
+GraphicsWindow.PenColor = "Red"
+GraphicsWindow.DrawLine(xo, yo, x1, yo)
+GraphicsWindow.FontName = "Trebuchet MS"
+GraphicsWindow.FontSize = 50
+GraphicsWindow.BrushColor = "Black"
+x = gw - 20 - 154
+y = gh - 20 - 50
+GraphicsWindow.DrawText(x, y, "Cosine")
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub

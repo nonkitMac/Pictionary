@@ -1,9 +1,9 @@
-' Command Maker - Shapes Generator
+' Shell Maker - Shapes Generator
 ' Version 0.1
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-09-25
+' Last update 2017-09-29
 
-GraphicsWindow.Title = "Command Maker 0.1"
+GraphicsWindow.Title = "Shell Maker 0.1"
 Init()
 
 ' Command Prompt Window
@@ -60,8 +60,8 @@ bc = "Black"
 fn = "Trebuchet MS"
 fb = "True"
 fs = 50
-txt = "Command"
-x = gw - 260
+txt = "Shell"
+x = gw - 160
 y = gh - 74
 Shapes_AddText()
 

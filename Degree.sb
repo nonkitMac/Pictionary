@@ -1,0 +1,30 @@
+' Pictionary - Degree
+' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Last update 2017-09-10
+
+GraphicsWindow.Title = "Pictionary"
+Init()
+r = 160
+x1 = gw / 2 
+y1 = gh / 2 - 20
+x2 = x1 + r
+y2 = y1
+deg = Math.GetRadians(1)
+x3 = x1 + r * Math.Cos(deg)
+y3 = y1 - r * Math.Sin(deg)
+GraphicsWindow.BrushColor = "#CC0000"
+GraphicsWindow.FillTriangle(x1, y1, x2, y2, x3, y3)
+GraphicsWindow.PenColor = "Gray"
+GraphicsWindow.DrawEllipse(x1 - r, y2 - r, 2 * r, 2 * r)
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontName = "Trebuchet MS"
+GraphicsWindow.FontSize = 50
+x = gw - 20 - 165
+y = gh - 20 - 50
+GraphicsWindow.DrawText(x, y, "Degree")
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub
