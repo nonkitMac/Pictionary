@@ -1,5 +1,6 @@
 ' Pictionary - Cosine
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Last update 2017-10-09
 
 GraphicsWindow.Title = "Pictionary"
 Init()
@@ -27,6 +28,7 @@ GraphicsWindow.BrushColor = "Black"
 x = gw - 20 - 154
 y = gh - 20 - 50
 GraphicsWindow.DrawText(x, y, "Cosine")
+
 Sub Init
   gw = 598
   gh = 428
