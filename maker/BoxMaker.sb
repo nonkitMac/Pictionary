@@ -1,281 +1,123 @@
-' Car Maker - Shapes Generator
+' Box Maker - Shapes Generator
 ' Version 0.1
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-10-11
+' Last update 2017-10-13
 
-GraphicsWindow.Title = "Car Maker 0.1"
+GraphicsWindow.Title = "Box Maker 0.1"
 Init()
-' ground
-GraphicsWindow.BrushColor = "Gray"
-GraphicsWindow.FillRectangle(0, 400, gw, gh - 400)
-light = "#FFFFCC"
-car = "#6495ED"     ' CornflowerBlue
-silver = "#C0C0C0"  ' Silver
-pillar = 8
-'Goto front
+c1 = "BurlyWood"
+color = c1
+rate = 0.1
+Color_Blacken()
+c2 = color
+color = c1
+rate = 0.2
+Color_Blacken()
+c3 = color
+color = c1
+rate = 0.3
+Color_Blacken()
+c4 = color
 
-' side ---------------------------------------------------------
-' light
-bc = light
-x = 112.5
-y = 250
-width = 50
-height = 50
-Shapes_AddEllipse()
-' top
-bc = "#99000000"
-x = 250
-y = 150
-x1 = 50
-y1 = 0
-x2 = 0
-y2 = 100
-x3 = 50
-y3 = 100
-Shapes_AddTriangle()
-x = 300
-y = 150
-width = 175
-height = 100
-Shapes_AddRectangle()
-x = 475
-y = 150
-x1 = 0
-y1 = 0
-x2 = 0
-y2 = 100
-x3 = 25
-y3 = 100
-Shapes_AddTriangle()
-' tail lump
-bc = "#99FF0000"
-x = 500
-y = 250
-width = 50
-height = 50
-Shapes_AddEllipse()
-' body
-bc = car
-x = 125
-y = 250
-width = 100
-height = 100
-Shapes_AddEllipse()
-x = 175
-y = 250
-width = 350
-height = 50
-Shapes_AddRectangle()
-x = 125
-y = 300
-width = 400
-height = 50
-Shapes_AddRectangle()
-' roof
-pw = pillar
-pc = car
-x = 300
-y = 150
-x1 = 0
-y1 = 0
-x2 = 175
-y2 = 0
-Shapes_AddLine()
-x = 300 - pillar / 2
-y = 150 - pillar / 2
-width = pillar
-height = pillar
-pw = 0
-Shapes_AddEllipse()
-x = 475 - pillar / 2
-Shapes_AddEllipse()
-' pillar
-pw = pillar
-x = 250
-y = 150
-x1 = 50
-y1 = 0
-x2 = 0
-y2 = 100
-Shapes_AddLine()
-bc = car
-pw = 0
-x = 250 - pillar / 2
-y = 250 - pillar / 2
-Shapes_AddEllipse()
-pw = pillar
-x = 375
-y = 150
-x1 = 0
-y1 = 0
-x2 = 0
-y2 = 100
-Shapes_AddLine()
-x = 450
-y2 = 0
-Shapes_AddLine()
-x = 475
-x2 = 25
-y2 = 100
-Shapes_AddLine()
-bc = car
-pw = 0
-x = 500 - pillar / 2
-y = 250 - pillar / 2
-Shapes_AddEllipse()
-' wheels
-pc = "#333333"
-bc = silver
-pw = 20
-x = 150
-y = 300
-width = 100
-height = 100
-Shapes_AddEllipse()
-x = 400
-Shapes_AddEllipse()
-' bumpers
-pw = 0
-x = 100
-y = 330
-width = 40
-height = 20
-Shapes_AddRectangle()
-x = 510
-Shapes_AddRectangle()
-Goto dump
-
-' front --------------------------------------------------------
-front:
-' top
-bc = "#99000000"
-x = 625
-y = 150
-x1 = 25
-y1 = 0
-x2 = 0
-y2 = 100
-x3 = 25
-y3 = 100
-Shapes_AddTriangle()
-x = 650
-y = 150
+' back
+bc = c2
+x = 280
+y = 110
 width = 200
+height = 160
+Shapes_AddRectangle()
+' left
+bc = c4
+x = 135
+y = 85
+x1 = 60
+y1 = 0
+x2 = 0
+y2 = 170
+x3 = 120
+y3 = 170
+angle = -90
+Shapes_AddTriangle()
+' front
+angle = 0
+bc = c2
+x = 110
+y = 170
+width = 200
+height = 160
+Shapes_AddRectangle()
+' right
+bc = c4
+x = 335
+y = 85
+x1 = 60
+y1 = 0
+x2 = 0
+y2 = 170
+x3 = 120
+y3 = 170
+angle = -90
+Shapes_AddTriangle()
+angle = 0
+x = 310
+y = 170
+width = 170
 height = 100
 Shapes_AddRectangle()
-x = 850
-x1 = 0
+x = 335
+y = 185
+angle = 90
 Shapes_AddTriangle()
-' roof
-pw = pillar
-pc = car
-x = 0
-y = 0
-x1 = 650
-y1 = 150
-x2 = 850
-y2 = 150
-Shapes_AddLine()
-pw = 0
-bc = car
-x = 650 - pillar / 2
-y = 150 - pillar / 2
-width = pillar
-height = pillar
-Shapes_AddEllipse()
-x = 850 - pillar / 2
-Shapes_AddEllipse()
-' pillar
-pw = pillar
-pc = car
-x = 0
-y = 0
-x1 = 650
-y1 = 150
-x2 = 625
-y2 = 250
-Shapes_AddLine()
-x1 = 850
-x2 = 875
-Shapes_AddLine()
-pw = 0
-x = 625 - pw / 2
-y = 250 - pw / 2
-width = pw
-height = pw
-Shapes_AddEllipse()
-x = 875 - pw / 2
-Shapes_AddEllipse()
-' body
-bc = car
-x = 600
-y = 250
-width = 50
-height = 50
-Shapes_AddEllipse()
-x = 850
-Shapes_AddEllipse()
-x = 625
-y = 250
-width = 250
-height = 25
+' front top
+bc = c1
+_angle = Math.ArcTan(60 / 170)
+s = 110 * Math.Sin(_angle)
+c = 110 * Math.Cos(_angle)
+x = 110
+y = 170
+x1 = 0
+y1 = 0
+x2 = -s
+y2 = c
+x3 = s
+y3 = y2
+angle = 0
+Shapes_AddTriangle()
+x = 310 - s
+y = 170
+x1 = 0
+y1 = 0
+x2 = -s
+y2 = c
+x3 = s
+y3 = y2
+angle = 180
+Shapes_AddTriangle()
+x = 110
+y = 170
+width = 200 - s
+height = c
+angle = 0
 Shapes_AddRectangle()
-x = 600
-y = 275
-width = 300
-height = 75
-Shapes_AddRectangle()
-bc = "#99000000"
-x = 650
-y = 305
-width = 200
-height = 5
-Shapes_AddRectangle()
-y = 315
-Shapes_AddRectangle()
-' light
-bc = light
-x = 625
-y = 250
-width = 50
-height = 50
-Shapes_AddEllipse()
-x = 825
-Shapes_AddEllipse()
-' bumpers
-bc = silver
-x = 575
-y = 330
-width = 350
-height = 20
-Shapes_AddRectangle()
-' wheels
-bc = "#333333"
-x = 600
-y = 350
-width = 50
-height = 50
-Shapes_AddRectangle()
-x = 850
-Shapes_AddRectangle()
-' plate
-bc = "#FFFFFF"
-x = 700
-y = 340
-width = 100
-height = 30
+' right top
+bc = c3
+width = Math.SquareRoot(60 * 60 + 170 * 170)
+height = 100
+s = 100 * Math.Sin(_angle)
+c = 100 * Math.Cos(_angle)
+angle = -Math.GetDegrees(_angle)
+x = (310 + 480 + s) / 2 - width / 2
+y = (110 + 170 + c) / 2 - height / 2
 Shapes_AddRectangle()
 
-dump:
 Shapes_Normalize()
 Shapes_DumpArray()
 
 Sub Init
-  gw = 998
+  gw = 598
   gh = 428
   GraphicsWindow.Width = gw
   GraphicsWindow.Height = gh
-  GraphicsWindow.BackgroundColor = "SkyBlue"
   GraphicsWindow.BrushColor = "Gray"
   iMin = 1
   iMax = iMin - 1
@@ -298,25 +140,61 @@ Sub Init
   fb = "False"
   fi = "False"
   txt = ""
-  DrawGrid()
 EndSub
 
-Sub DrawGrid
-  GraphicsWindow.PenColor = "#CCCCCC"
-  For y = 0 To gh Step 50
-    GraphicsWindow.DrawLine(0, y, gw, y)
-  EndFor
-  For x = 0 To gw Step 50
-    GraphicsWindow.DrawLine(x, 0, x, gh)
-  EndFor
-  GraphicsWindow.PenColor = "#999999"
-  For y = 0 To gh Step 100
-    GraphicsWindow.DrawLine(0, y, gw, y)
-    GraphicsWindow.DrawText(2, y + 2, y)
-  EndFor
-  For x = 0 To gw Step 100
-    GraphicsWindow.DrawLine(x, 0, x, gh)
-    GraphicsWindow.DrawText(x + 2, 2, x)
+Sub Color_Blacken
+  ' Color | Blacken given color
+  ' param color - given color
+  ' param rate - 0..1
+  ' return color - color blackened
+  Color_NameToColor()
+  Color_ColorToRGB()
+  r = Math.Floor(r * (1 - rate))
+  g = Math.Floor(g * (1 - rate))
+  b = Math.Floor(b * (1 - rate))
+  color = GraphicsWindow.GetColorFromRGB(r, g, b)
+EndSub
+
+Sub Color_ColorToRGB
+  ' Color | Convert color to RGB values
+  ' param color - "#rrggbb" (hexadecimal values)
+  ' return r, g, b - RGB values 0..255
+  sR = Text.GetSubText(color, 2, 2)
+  sG = Text.GetSubText(color, 4, 2)
+  sB = Text.GetSubText(color, 6, 2)
+  hex = sR
+  Math_Hex2Dec()
+  r = dec
+  hex = sG
+  Math_Hex2Dec()
+  g = dec
+  hex = sB
+  Math_Hex2Dec()
+  b = dec
+EndSub
+
+Sub Color_NameToColor
+  ' Color | Convert color name to color
+  ' param color - color name
+  ' return color -"#rrggbb"
+  If Text.StartsWith(color, "#") Then
+    color = Text.ConvertToUpperCase(color)
+  Else
+    bc = GraphicsWindow.BrushColor
+    GraphicsWindow.BrushColor = color
+    color = GraphicsWindow.BrushColor
+    GraphicsWindow.BrushColor = bc
+  EndIf
+EndSub
+
+Sub Math_Hex2Dec
+  ' Math | Convert hexadecimal to decimal
+  ' param hex
+  ' return dec
+  dec = 0
+  len = Text.GetLength(hex)
+  For ptr = 1 To len
+    dec = dec * 16 + Text.GetIndexOf("123456789ABCDEF", Text.GetSubText(hex, ptr, 1))
   EndFor
 EndSub
 
@@ -396,7 +274,7 @@ EndSub
 Sub Shapes_DumpArray
   order = "1=func;2=x;3=y;4=width;5=height;6=x1;7=y1;8=x2;9=y2;"
   order = order + "10=x3;11=y3;12=txt;13=fn;14=fs;15=fb;16=fi;"
-  order = order + "17=pw;18=pc;19=bc;"
+  order = order + "17=angle;18=pw;19=pc;20=bc;"
   nOrder = Array.GetItemCount(order)
   WQ = Text.GetCharacter(34)
   LF = Text.GetCharacter(10)

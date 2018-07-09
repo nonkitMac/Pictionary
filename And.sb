@@ -1,6 +1,6 @@
 ' Pictionary - And
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-05-31
+' Last update 2017-10-13
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
@@ -9,15 +9,20 @@ gh = 428
 GraphicsWindow.Width = gw
 GraphicsWindow.Height = gh
 ' initialize shapes
-Shapes_Init()
+Shapes_Init_And()
 ' add shapes
 scale = 1
 angle = 0
 iMin = 1
-iMax = 57
+iMax = Array.GetItemCount(shape)
+Shapes_Add()
+' initialize shapes
+Shapes_Init_Caption()
+iMax = Array.GetItemCount(shape)
+' add shapes
 Shapes_Add()
 
-Sub Shapes_Init
+Sub Shapes_Init_And
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -80,8 +85,18 @@ Sub Shapes_Init
   shape[54] = "pw=0;bc=Orange;func=rect;width=3.42;height=7.77;x=167.28;y=162.93;"
   shape[55] = "pw=4;pc=#000;bc=Transparent;func=ell;width=200;height=200;x=0;y=0;"
   shape[56] = "pw=4;pc=#000;bc=Transparent;func=ell;width=200;height=200;x=138;y=0;"
-  shape[57] = "pw=4;pc=#000;bc=Black;fs=50;fn=Trebuchet MS;fb=False;fi=False;func=text;text=And;x=358;y=248;"
 EndSub
+
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 488 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=And;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
 Sub Math_CartesianToPolar
   ' Math | convert cartesian coodinate to polar coordinate
   ' param x, y - cartesian coordinate

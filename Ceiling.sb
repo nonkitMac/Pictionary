@@ -1,4 +1,4 @@
-' Pictionary - Shape
+' Pictionary - Ceiling
 ' Copyright © 2017 Nonki Takahashi.  The MIT License.
 ' Last update 2017-10-13
 
@@ -9,7 +9,7 @@ gh = 428
 GraphicsWindow.Width = gw
 GraphicsWindow.Height = gh
 ' initialize shapes
-Shapes_Init()
+Shapes_Init_Ceiling()
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Convert()
@@ -17,6 +17,14 @@ Shapes_Convert()
 scale = 1
 angle = 0
 Shapes_Add()
+
+' initialize shapes
+Shapes_Init_Caption()
+iMin = 1
+iMax = Array.GetItemCount(shape)
+' add shapes
+Shapes_Add()
+
 Sub Math_CartesianToPolar
   ' Math | convert cartesian coodinate to polar coordinate
   ' param x, y - cartesian coordinate
@@ -37,6 +45,7 @@ Sub Math_CartesianToPolar
     a = a + 360
   EndIf
 EndSub
+
 Sub SB_RotateWorkaround
   ' Small Basic | Rotate workaround for Silverlight
   ' param shp - current shape
@@ -55,6 +64,7 @@ Sub SB_RotateWorkaround
   x = x1 * Math.Cos(alpha) - y1 * Math.Sin(alpha) + ox
   y = x1 * Math.Sin(alpha) + y1 * Math.Cos(alpha) + oy
 EndSub
+
 Sub SB_Workaround
   ' Small Basic | Workaround for Silverlight
   ' returns silverlight - "True" if in remote
@@ -66,6 +76,7 @@ Sub SB_Workaround
     silverlight = "False"
   EndIf
 EndSub
+
 Sub Shapes_Add
   ' Shapes | add shapes as shapes data
   ' param iMin, iMax - shape indices to add
@@ -126,6 +137,7 @@ Sub Shapes_Add
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
 EndSub
+
 Sub Shapes_Convert
   ' Shapes | Convert virtual function to function
   ' return iMax
@@ -370,6 +382,7 @@ Sub Shapes_Convert
     EndIf
   EndFor
 EndSub
+
 Sub Shapes_CalcRotateFill
   ' Shapes | Calculate position for rotated fill shape
   ' param x, y - shape position
@@ -410,6 +423,7 @@ Sub Shapes_CalcRotateLine
   _y1 = _ry1 - y
   _y2 = _ry2 - y
 EndSub
+
 Sub Shapes_CalcRotatePos
   ' Shapes | Calculate position for rotated shape
   ' param["x"], param["y"] - position of a shape
@@ -430,6 +444,7 @@ Sub Shapes_CalcRotatePos
   x = _cx - param["width"] / 2
   y = _cy - param["height"] / 2
 EndSub
+
 Sub Shapes_CalcWidthAndHeight
   ' Shapes | Calculate total width and height of shapes
   ' param iMin, iMax - shape indices to add
@@ -484,21 +499,29 @@ Sub Shapes_CalcWidthAndHeight
     shape[i] = shp
   EndFor
 EndSub
-Sub Shapes_Init
+
+Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 180 ' x offset
+  shX = 419 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;text=Ceiling;x=0;y=0;fn=Trebuchet MS;fs=50;pw=0;bc=#000000;"
+EndSub
+
+Sub Shapes_Init_Ceiling
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 100 ' x offset
   shY = 50  ' y offset
   shape = ""
-  shape[1] = "func=rect;x=0;y=0;width=100;height=80;bc=#00CCFF;pw=0;"
-  shape[2] = "func=tri;x=150;y=0;x1=50;y1=0;x2=0;y2=80;x3=100;y3=80;bc=#FF00CC;pw=0;"
-  shape[3] = "func=ell;x=0;y=100;width=100;height=80;bc=#FF6600;pw=0;"
-  shape[4] = "func=hex;x=150;y=100;width=100;height=80;ratio=0.25;pw=0;bc=#CCFF00;"
-  shape[5] = "func=trap;x=0;y=200;width=100;height=80;ratio=0.25;pw=0;bc=#00FF33;"
-  shape[6] = "func=line;x=150;y=200;x1=100;y1=0;x2=0;y2=80;pc=#330099;pw=10;"
-  shape[7] = "func=text;x=230;y=300;text=Shape;fs=50;fn=Trebuchet MS;fb=True;Fi=False;bc=Black;"
+  shape[1] = "func=trap;x=0;y=0;width=400;height=50;ratio=2;angle=180;pw=0;bc=#CC0000;"
+  shape[2] = "func=trap;x=-100;y=100;width=300;height=100;ratio=0.5;angle=90;pw=0;bc=#CCCCCC;"
+  shape[3] = "func=trap;x=200;y=100;width=300;height=100;ratio=0.5;angle=-90;pw=0;bc=#CCCCCC;"
 EndSub
+
 Sub Shapes_Move
   ' Shapes | Move shapes
   ' param iMin, iMax - shape indices to add
