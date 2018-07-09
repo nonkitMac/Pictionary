@@ -1,6 +1,6 @@
 ' Pictionary - Brush
-' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-10-09
+' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
+' Last update 2018-07-09
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
@@ -29,8 +29,8 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = gw - 20 - 132 ' x offset
-  shY = gh - 20 - 50  ' y offset
+  shX = 446 ' x offset
+  shY = 358 ' y offset
   shape = ""
   shape[1] = "func=text;x=0;y=0;text=Brush;fn=Trebuchet MS;fs=50;bc=#000000;"
 EndSub
@@ -42,9 +42,9 @@ Sub Shapes_Init_Brush
   shX = -40 ' x offset
   shY = 30  ' y offset
   shape = ""
-  shape[1] = "pw=0;bc=Sienna;func=ell;width=140;height=30;x=229;y=189;"
-  shape[2] = "pw=0;bc=Sienna;func=ell;width=20;height=20;x=538;y=194;"
-  shape[3] = "pw=0;bc=Sienna;func=rect;width=249;height=20;x=299;y=194;"
+  shape[1] = "pw=0;bc=#330000;func=ell;width=140;height=30;x=229;y=189;"
+  shape[2] = "pw=0;bc=#330000;func=ell;width=20;height=20;x=538;y=194;"
+  shape[3] = "pw=0;bc=#330000;func=rect;width=249;height=20;x=299;y=194;"
   shape[4] = "pw=0;bc=Black;func=ell;width=40;height=6;x=129;y=189;"
   shape[5] = "pw=0;bc=Black;func=ell;width=40;height=6;x=129;y=192;"
   shape[6] = "pw=0;bc=Black;func=ell;width=40;height=6;x=129;y=195;"
@@ -257,43 +257,6 @@ Sub Shapes_CalcWidthAndHeight
     EndIf
     shape[i] = shp
   EndFor
-EndSub
-
-Sub Shapes_Move
-  ' Shapes | Move shapes
-  ' param iMin, iMax - shape indices to add
-  ' param shape - array of shapes
-  ' param scale - to zoom
-  ' param x, y - position to move
-  ' return shX, shY - new position of shapes
-  Stack.PushValue("local", i)
-  s = scale
-  shX = x
-  shY = y
-  For i = iMin To iMax
-    shp = shape[i]
-    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
-      _x = shp["wx"]
-      _y = shp["wy"]
-    Else
-      _x = shp["rx"]
-      _y = shp["ry"]
-    EndIf
-    Shapes.Move(shp["obj"], shX + _x * s, shY + _y * s)
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
-
-Sub Shapes_Remove
-  ' Shapes | Remove shapes
-  ' param iMin, iMax - shapes indices to remove
-  ' param shape - array of shapes
-  Stack.PushValue("local", i)
-  For i = iMin To iMax
-    shp = shape[i]
-    Shapes.Remove(shp["obj"])
-  EndFor
-  i = Stack.PopValue("local")
 EndSub
 
 Sub Shapes_Rotate

@@ -1,6 +1,6 @@
 ' Pictionary - Ceiling
-' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-10-13
+' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
+' Last update 2017-07-09
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
@@ -392,16 +392,17 @@ Sub Shapes_CalcRotateFill
   ' param shp["width"], shp["height"] - for rotate center
   ' return x, y - rotated shape position
   ' return angle - rotated shape angle
-   param["x"] = x
-   param["y"] = y
-   param["width"] = _width
-   param["height"] = _height
-   param["cx"] = shp["x"] + shp["width"] / 2
-   param["cy"] = shp["y"] + shp["height"] / 2
-   param["angle"] = shp["angle"]
-   Shapes_CalcRotatePos()
-   angle = Math.Remainder(angle + shp["angle"], 360)
+  param["x"] = x
+  param["y"] = y
+  param["width"] = _width
+  param["height"] = _height
+  param["cx"] = shp["x"] + shp["width"] / 2
+  param["cy"] = shp["y"] + shp["height"] / 2
+  param["angle"] = shp["angle"]
+  Shapes_CalcRotatePos()
+  angle = Math.Remainder(angle + shp["angle"], 360)
 EndSub
+
 Sub Shapes_CalcRotateLine
   ' Shapes | Calculate position for rotated line
   ' param["x"], param["y"] - line position
@@ -520,87 +521,4 @@ Sub Shapes_Init_Ceiling
   shape[1] = "func=trap;x=0;y=0;width=400;height=50;ratio=2;angle=180;pw=0;bc=#CC0000;"
   shape[2] = "func=trap;x=-100;y=100;width=300;height=100;ratio=0.5;angle=90;pw=0;bc=#CCCCCC;"
   shape[3] = "func=trap;x=200;y=100;width=300;height=100;ratio=0.5;angle=-90;pw=0;bc=#CCCCCC;"
-EndSub
-
-Sub Shapes_Move
-  ' Shapes | Move shapes
-  ' param iMin, iMax - shape indices to add
-  ' param shape - array of shapes
-  ' param scale - to zoom
-  ' param x, y - position to move
-  ' return shX, shY - new position of shapes
-  Stack.PushValue("local", i)
-  s = scale
-  shX = x
-  shY = y
-  For i = iMin To iMax
-    shp = shape[i]
-    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
-      _x = shp["wx"]
-      _y = shp["wy"]
-    Else
-      _x = shp["rx"]
-      _y = shp["ry"]
-    EndIf
-    Shapes.Move(shp["obj"], shX + _x * s, shY + _y * s)
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
-Sub Shapes_Remove
-  ' Shapes | Remove shapes
-  ' param iMin, iMax - shapes indices to remove
-  ' param shape - array of shapes
-  Stack.PushValue("local", i)
-  For i = iMin To iMax
-    shp = shape[i]
-    Shapes.Remove(shp["obj"])
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
-Sub Shapes_Rotate
-  ' Shapes | Rotate shapes
-  ' param iMin, iMax - shapes indices to rotate
-  ' param shape - array of shapes
-  ' param cx, cy - rotation center
-  ' param scale - to zoom
-  ' param angle - to rotate
-  Stack.PushValue("local", i)
-  Stack.PushValue("local", x)
-  Stack.PushValue("local", y)
-  s = scale
-  param["angle"] = angle
-  If cx <> "" Then
-    param["cx"] = cx
-  Else
-    cx = ""   ' to avoid syntax error
-    param["cx"] = shWidth / 2
-  EndIf
-  If cy <> "" Then
-    param["cy"] = cy
-  Else
-    cy = ""   ' to avoid syntax error
-    param["cy"] = shHeight / 2
-  EndIf
-  For i = iMin To iMax
-    shp = shape[i]
-    param["x"] = shp["x"]
-    param["y"] = shp["y"]
-    param["width"] = shp["width"]
-    param["height"] = shp["height"]
-    Shapes_CalcRotatePos()
-    shp["rx"] = x
-    shp["ry"] = y
-    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
-      alpha = Math.GetRadians(angle + shp["angle"])
-      SB_RotateWorkAround()
-      shp["wx"] = x
-      shp["wy"] = y
-    EndIf
-    Shapes.Move(shp["obj"], shX + x * s, shY + y * s)
-    Shapes.Rotate(shp["obj"], angle + shp["angle"])
-    shape[i] = shp
-  EndFor
-  y = Stack.PopValue("local")
-  x = Stack.PopValue("local")
-  i = Stack.PopValue("local")
 EndSub
