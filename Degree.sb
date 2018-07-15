@@ -1,6 +1,6 @@
 ' Pictionary - Degree
-' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-09-10
+' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
+' Last update 2018-07-11
 
 GraphicsWindow.Title = "Pictionary"
 Init()
@@ -22,6 +22,7 @@ GraphicsWindow.FontSize = 50
 x = gw - 20 - 165
 y = gh - 20 - 50
 GraphicsWindow.DrawText(x, y, "Degree")
+
 Sub Init
   gw = 598
   gh = 428
