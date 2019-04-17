@@ -1,16 +1,16 @@
 ' Caption Maker - Shapes Generator
-' Version 0.1
-' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-10-13
+' Version 0.2
+' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
+' Last update 2018-07-15
 
-GraphicsWindow.Title = "Caption Maker 0.1"
+GraphicsWindow.Title = "Caption Maker 0.2"
 Init()
 buttonClicked = "False"
 Controls.ButtonClicked = OnButtonClicked
 While "True"
   ' wait OK button
   While Not[buttonClicked] Or (lastButton <> btnOK)
-    If buttonClicked And lastButton = btnSave Then
+    If buttonClicked And (lastButton = btnSave) Then
       SaveCaptionProgram()
     Else
       Program.Delay(100)
