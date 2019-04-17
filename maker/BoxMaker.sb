@@ -1,9 +1,9 @@
 ' Box Maker - Shapes Generator
-' Version 0.1
-' Copyright © 2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-10-13
+' Version 0.2
+' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
+' Last update 2018-10-26
 
-GraphicsWindow.Title = "Box Maker 0.1"
+GraphicsWindow.Title = "Box Maker 0.2"
 Init()
 c1 = "BurlyWood"
 color = c1
@@ -83,7 +83,7 @@ x3 = s
 y3 = y2
 angle = 0
 Shapes_AddTriangle()
-x = 310 - s
+x = 310 - 2 * s
 y = 170
 x1 = 0
 y1 = 0
