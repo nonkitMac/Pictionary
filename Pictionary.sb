@@ -1,10 +1,10 @@
 ' Pictionary
-' Version 0.8
+' Version 0.9
 ' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
 ' Last update 2019-04-17
 ' Extension LitDev
 
-title = "Pictionary 0.8"
+title = "Pictionary 0.9"
 GraphicsWindow.Title = title
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
 kw = "And,Array,Bell,Box,Brush,"
@@ -13,7 +13,8 @@ kw = kw + "Date,Degree,Desktop,Dictionary,Draw,"
 kw = kw + "Ellipse,English,Error,File,Fill,Flickr,Floor,French,"
 kw = kw + "German,Go,Graphics,Height,Hour,Image,Italian,Japanese,"
 kw = kw + "Korean,Length,Line,Math,Minute,Mouse,Music,Network,Or,"
-kw = kw + "Paper,Pen,Program,Radian,Random,Rectangle,RGB,"
+kw = kw + "Paper,Pen,Program,"
+kw = kw + "Radian,Random,Rectangle,Resize,RGB,Rotate,"
 kw = kw + "Second,Shape,Shell,Sine,Sound,Spanish,Square,Stack,Stop,"
 kw = kw + "Tangent,Text,Timer,Triangle,Turtle,"
 kw = kw + "Wall,Width,Window,Write"
