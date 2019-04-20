@@ -1,20 +1,20 @@
 ' Pictionary - Korean
-' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Version 0.92
+' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
+' Last update 2019-04-20
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-GraphicsWindow.BackgroundColor = "LightGray"
-' initialize shapes
-Shapes_Init()
-angle = 0 ' dummy
-' add shapes
+Init()
+' initialize caption shapes
+Shapes_Init_Caption()
 scale = 1
 iMin = 1
-iMax = 28
+iMax = Array.GetItemCount(shape)
+Shapes_Add()
+' initialize flag shapes
+Shapes_Init_Flag()
+iMax = Array.GetItemCount(shape)
 Shapes_Add()
 ' rotate shapes
 x = 72
@@ -33,7 +33,25 @@ cx = gw / 2 - shX
 cy = gh / 2 - shY
 Shapes_Rotate()
 
-Sub Shapes_Init
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  GraphicsWindow.BackgroundColor = "LightGray"
+EndSub
+
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 412 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=Korean;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
+Sub Shapes_Init_Flag
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -67,8 +85,8 @@ Sub Shapes_Init
   shape[25] = "pw=0;bc=#FFF;func=rect;width=5;height=15;x=177.5;y=-12.5;angle=180;"
   shape[26] = "pw=0;bc=#FFF;func=rect;width=5;height=15;x=177.5;y=17.5;angle=180;"
   shape[27] = "pw=0;bc=#FFF;func=rect;width=5;height=15;x=177.5;y=222.5;angle=180;"
-  shape[28] = "pw=0;bc=Black;fs=50;fn=Trebuchet MS;fb=False;fi=False;func=text;text=Korean;x=279;y=260;"
 EndSub
+
 Sub Math_CartesianToPolar
   ' Math | convert cartesian coodinate to polar coordinate
   ' param x, y - cartesian coordinate
@@ -107,6 +125,7 @@ Sub SB_RotateWorkaround
   x = x1 * Math.Cos(alpha) - y1 * Math.Sin(alpha) + ox
   y = x1 * Math.Sin(alpha) + y1 * Math.Cos(alpha) + oy
 EndSub
+
 Sub SB_Workaround
   ' Small Basic | Workaround for Silverlight
   ' returns silverlight - "True" if in remote
@@ -118,6 +137,7 @@ Sub SB_Workaround
     silverlight = "False"
   EndIf
 EndSub
+
 Sub Shapes_Add
   ' Shapes | add shapes as shapes data
   ' param iMin, iMax - shape indices to add
@@ -178,6 +198,7 @@ Sub Shapes_Add
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
 EndSub
+
 Sub Shapes_CalcRotatePos
   ' Shapes | Calculate position for rotated shape
   ' param["x"], param["y"] - position of a shape
@@ -198,6 +219,7 @@ Sub Shapes_CalcRotatePos
   x = _cx - param["width"] / 2
   y = _cy - param["height"] / 2
 EndSub
+
 Sub Shapes_CalcWidthAndHeight
   ' Shapes | Calculate total width and height of shapes
   ' param iMin, iMax - shape indices to add
@@ -252,41 +274,7 @@ Sub Shapes_CalcWidthAndHeight
     shape[i] = shp
   EndFor
 EndSub
-Sub Shapes_Move
-  ' Shapes | Move shapes
-  ' param iMin, iMax - shape indices to add
-  ' param shape - array of shapes
-  ' param scale - to zoom
-  ' param x, y - position to move
-  ' return shX, shY - new position of shapes
-  Stack.PushValue("local", i)
-  s = scale
-  shX = x
-  shY = y
-  For i = iMin To iMax
-    shp = shape[i]
-    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
-      _x = shp["wx"]
-      _y = shp["wy"]
-    Else
-      _x = shp["rx"]
-      _y = shp["ry"]
-    EndIf
-    Shapes.Move(shp["obj"], shX + _x * s, shY + _y * s)
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
-Sub Shapes_Remove
-  ' Shapes | Remove shapes
-  ' param iMin, iMax - shapes indices to remove
-  ' param shape - array of shapes
-  Stack.PushValue("local", i)
-  For i = iMin To iMax
-    shp = shape[i]
-    Shapes.Remove(shp["obj"])
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
+
 Sub Shapes_Rotate
   ' Shapes | Rotate shapes
   ' param iMin, iMax - shapes indices to rotate

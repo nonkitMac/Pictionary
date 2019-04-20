@@ -408,4 +408,3 @@ Sub Shapes_RotateToEntry
     shp["angle"] = Math.Floor(angle * 100) / 100
   EndIf
 EndSub
-    
