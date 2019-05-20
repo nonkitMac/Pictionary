@@ -1,21 +1,22 @@
 ' Pictionary
-' Version 0.92
+' Version 0.93
 ' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
-' Last update 2019-04-20
+' Last update 2019-05-20
 ' Extension LitDev
 
-title = "Pictionary 0.92"
+title = "Pictionary 0.93"
 GraphicsWindow.Title = title
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
 kw = "And,Array,Bell,Box,Brush,"
-kw = kw + "Ceiling,Chime,Chinese,Clock,Color,Control,Cosine,"
+kw = kw + "Ceiling,Chime,Chinese,Click,Clock,Color,Control,Cosine,"
 kw = kw + "Date,Degree,Desktop,Dictionary,Draw,"
-kw = kw + "Ellipse,English,Error,File,Fill,Flickr,Floor,French,"
+kw = kw + "Ellipse,English,Error,File,Fill,Flickr,Floor,Font,French,"
 kw = kw + "German,Go,Graphics,Height,Hour,Image,Italian,Japanese,"
 kw = kw + "Korean,Length,Line,Math,Minute,Mouse,Music,Network,Or,"
 kw = kw + "Paper,Pen,Program,"
 kw = kw + "Radian,Random,Rectangle,Resize,RGB,Rotate,"
-kw = kw + "Second,Shape,Shell,Sine,Sound,Spanish,Square,Stack,Stop,"
+kw = kw + "Second,Shape,Shell,Sine,Sound,Spanish,"
+kw = kw + "Square,Stack,Stop,Subroutine,"
 kw = kw + "Tangent,Text,Timer,Triangle,Turtle,"
 kw = kw + "Wall,Width,Window,Write,Zoom"
 keywords = LDText.Split(kw, ",")

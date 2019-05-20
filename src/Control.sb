@@ -1,28 +1,47 @@
 ' Pictionary - Control
-' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
-' Last update 2018-07-09
+' Version 0.93
+' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
+' Last update 2019-04-21
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-' initialize shapes
-Shapes_Init_Control()
-angle = 0 ' dummy
-' add shapes
-scale = 1
-iMin = 1
+Init()
+' initialize controler shapes
+Shapes_Init_Controler()
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
-' initialize shapes
+shp = shape[iMax]
+shpLED = shp["obj"]
+' initialize caption shapes
 Shapes_Init_Caption()
 iMax = Array.GetItemCount(shape)
-' add shapes
 Shapes_Add()
+Controls.ButtonClicked = OnButtonClicked
+Timer.Tick = OnTick
+Timer.Pause()
+Timer.Interval = 200
 
-Sub Shapes_Init_Control
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  angle = 0 ' dummy
+  scale = 1
+  iMin = 1
+EndSub
+
+Sub OnButtonClicked
+  Shapes.SetOpacity(shpLED, 10)
+  Timer.Resume()
+EndSub
+
+Sub OnTick
+  Shapes.SetOpacity(shpLED, 100)
+  Timer.Pause()
+EndSub
+  
+Sub Shapes_Init_Controler
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -216,3 +235,4 @@ Sub Shapes_CalcWidthAndHeight
     shape[i] = shp
   EndFor
 EndSub
+    
