@@ -1,4 +1,4 @@
-' Pictionary - Mouse
+' Pictionary - Click
 ' Version 0.93
 ' Copyright © 2017-2019  Nonki Takahashi.  The MIT License.
 ' Last update 2019-05-20
@@ -9,6 +9,10 @@ Init()
 ' initialize mouse shapes
 Shapes_Init_Mouse()
 name = "Mouse"
+Group_Add()
+' initialize mouse shapes
+Shapes_Init_Click()
+name = "Click"
 Group_Add()
 ' initialize caption shapes
 Shapes_Init_Caption()
@@ -111,27 +115,6 @@ Sub Group_Add
   i = Stack.PopValue("local")
 EndSub
 
-Sub Math_CartesianToPolar
-  ' Math | convert cartesian coodinate to polar coordinate
-  ' param x, y - cartesian coordinate
-  ' return r, a - polar coordinate
-  r = Math.SquareRoot(x * x + y * y)
-  If x = 0 And y > 0 Then
-    a = 90 ' [degree]
-  ElseIf x = 0 And y < 0 Then
-    a = -90
-  ElseIf x = 0 Then
-    a = 0
-  Else
-    a = Math.ArcTan(y / x) * 180 / Math.Pi
-  EndIf
-  If x < 0 Then
-    a = a + 180
-  ElseIf x > 0 And y < 0 Then
-    a = a + 360
-  EndIf
-EndSub
-
 Sub SB_RotateWorkaround
   ' Small Basic | rotate workaround For Silverlight
   ' param shp - current shape
@@ -229,17 +212,29 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 432 ' x offset
+  shX = 465 ' x offset
   shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Mouse;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+  shape[1] = "func=text;x=0;y=0;text=Click;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
+Sub Shapes_Init_Click
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 180 ' x offset
+  shY = 150 ' y offset
+  shape = ""
+  shape[1] = "func=line;x=0;y=0;x1=0;y1=0;x2=50;y2=25;pw=2;pc=#CCC;"
+  shape[2] = "func=line;x=0;y=50;x1=0;y1=0;x2=50;y2=0;pw=2;pc=#CCC;"
+  shape[3] = "func=line;x=0;y=75;x1=0;y1=25;x2=50;y2=0;pw=2;pc=#CCC;"
 EndSub
 
 Sub Shapes_Init_Mouse
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 220 ' x offset
+  shX = 240 ' x offset
   shY = 0   ' y offset
   shape = ""
   shape[1] = "pw=6;pc=Gray;func=line;x1=0;y1=0;x2=0;y2=107;x=0;y=0;"
