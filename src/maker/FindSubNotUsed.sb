@@ -1,14 +1,9 @@
 ' Find Subroutines Not Used
-' Version 0.1
-' Copyright © 2018 Nonki Takahashi.  The MIT License.
-' Last update 2018-07-09
+' Version 0.94
+' Copyright © 2018-2019 Nonki Takahashi.  The MIT License.
+' Last update 2019-05-22
 
-Not = "False=True;True=False;"
-CR = Text.GetCharacter(13)
-LF = Text.GetCharacter(10)
-ALPHA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
-NUM = "0123456789"
-ALPHANUM = ALPHA + NUM
+Init()
 GraphicsWindow.Title = "Find Subroutines Not Used"
 Form()
 folder = Program.Directory
@@ -61,6 +56,9 @@ Sub FindSubNotUsed
     EndIf
     If Not[match] Then
       ParseCall()
+      If Not[match] Then
+        ParseEvent()
+      EndIf
       If match And (subName <> caller) Then
         callTree[subName][caller] = "caller"
         callTree[subName]["(none)"] = ""
@@ -142,6 +140,27 @@ Sub GetToken
   EndWhile
 EndSub
 
+Sub Init
+  Not = "False=True;True=False;"
+  CR = Text.GetCharacter(13)
+  LF = Text.GetCharacter(10)
+  ALPHA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_"
+  NUM = "0123456789"
+  ALPHANUM = ALPHA + NUM
+  obj[1] = "controls"
+  obj[2] = "graphicswindow"
+  obj[3] = "timer"
+  event[1] = "controls.buttonclicked"
+  event[2] = "controls.texttyped"
+  event[3] = "graphicswindow.keydown"
+  event[4] = "graphicswindow.keyup"
+  event[5] = "graphicswindow.mousemove"
+  event[6] = "graphicswindow.mousedown"
+  event[7] = "graphicswindow.mouseup"
+  event[8] = "graphicswindow.textinput"
+  event[9] = "timer.tick"
+EndSub
+
 Sub ParseCall
   ' param line
   ' param len - length of line
@@ -151,14 +170,57 @@ Sub ParseCall
   SkipSpace()
   GetToken()
   If match Then
-    SkipSpace ( )
+    SkipSpace()
     symbol = "("
     SkipSymbol()
   EndIf
   If match Then
-    SkipSpace ( )
+    SkipSpace()
     symbol = ")"
     SkipSymbol()
+  EndIf
+  If match Then
+    subName = token
+  Else
+    lp = 1
+  EndIf
+EndSub
+
+Sub ParseEvent
+  ' param line
+  ' param len - length of line
+  ' return match - "True" If match
+  ' return subName - subroutine name
+  lp = 1
+  SkipSpace()
+  GetToken()
+  If match Then
+    kw = Text.ConvertToLowerCase(token) 
+    If Array.ContainsValue(obj, kw) Then
+      SkipSpace()
+      symbol = "."
+      SkipSymbol()
+    Else
+      match = "False"
+    EndIf
+  EndIf
+  If match Then
+    SkipSpace()
+    GetToken()
+  EndIf
+  If match Then
+    kw = kw + "." + Text.ConvertToLowerCase(token) 
+    If Array.ContainsValue(event, kw) Then
+      SkipSpace()
+      symbol = "="
+      SkipSymbol()
+    Else
+      match = "False"
+    EndIf
+  EndIf
+  If match Then
+    SkipSpace()
+    GetToken()
   EndIf
   If match Then
     subName = token
@@ -232,3 +294,4 @@ Sub SkipSymbol
     c = Text.GetSubText(line, lp, 1)
   EndIf
 EndSub
+    
