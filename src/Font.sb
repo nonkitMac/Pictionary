@@ -1,7 +1,7 @@
-' Pictionary - Click
-' Version 0.93
+' Pictionary - Font
+' Version 0.94
 ' Copyright © 2019  Nonki Takahashi.  The MIT License.
-' Last update 2019-05-20
+' Last update 2019-05-22
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
@@ -205,7 +205,7 @@ Sub Shapes_CalcWidthAndHeight
 EndSub
 
 Sub Shapes_Init_Caption
-  ' Shapes | Initialize shapes data
+  ' Shapes | initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
   shX = 473 ' x offset
@@ -215,7 +215,7 @@ Sub Shapes_Init_Caption
 EndSub
 
 Sub Shapes_Init_Font
-  ' Shapes | Initialize shapes data
+  ' Shapes | initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
   shX = 160 ' x offset
