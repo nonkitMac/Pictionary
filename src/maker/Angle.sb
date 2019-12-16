@@ -1,9 +1,0 @@
-Sub Shapes_Init_Caption
-  ' Shapes | Initialize shapes data
-  ' return shX, shY - current position of shapes
-  ' return shape - array of shapes
-  shX = 448 ' x offset
-  shY = 358 ' y offset
-  shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Angle;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
-EndSub

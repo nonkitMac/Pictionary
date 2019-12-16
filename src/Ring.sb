@@ -16,8 +16,12 @@ i = nGroup
 angle = 10
 Group_Rotate()
 ' initialize shapes
-Shapes_Init_Caption()
+Shapes_Init_Ring()
 scale = 1
+name = "Ring"
+Group_Add()
+' initialize shapes
+Shapes_Init_Caption()
 name = "Caption"
 Group_Add()
 
@@ -362,8 +366,8 @@ Sub Shapes_Init_Bell
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 180 ' x offset
-  shY = 70 ' y offset
+  shX = 220 ' x offset
+  shY = 70  ' y offset
   shape = ""
   shape[1] = "func=tri;x=5;y=45;x1=87;y1=0;x2=0;y2=126;x3=175;y3=126;bc=#CAAA59;pw=0;"
   shape[2] = "func=ell;x=0;y=152;width=184;height=54;bc=#B5923A;pc=#C0A154;pw=8;"
@@ -377,8 +381,20 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 490 ' x offset
+  shX = 478 ' x offset
   shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Bell;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+  shape[1] = "func=text;x=0;y=0;text=Ring;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
+Sub Shapes_Init_Ring
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 150 ' x offset
+  shY = 150 ' y offset
+  shape = ""
+  shape[1] = "func=line;x=0;y=0;x1=0;y1=0;x2=50;y2=25;pw=2;pc=#CAAA59;"
+  shape[2] = "func=line;x=0;y=50;x1=0;y1=0;x2=50;y2=0;pw=2;pc=#CAAA59;"
+  shape[3] = "func=line;x=0;y=75;x1=0;y1=25;x2=50;y2=0;pw=2;pc=#CAAA59;"
 EndSub

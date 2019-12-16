@@ -1,10 +1,10 @@
 ' Pictionary
-' Version 0.94
+' Version 0.95
 ' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
 ' Last update 2019-12-16
 ' Extension LitDev
 
-title = "Pictionary 0.94"
+title = "Pictionary 0.95"
 GraphicsWindow.Title = title
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
 kw = "And,Array,Bell,Box,Brush,"
@@ -17,7 +17,7 @@ kw = kw + "German,Go,Graphics,Height,Hour,"
 kw = kw + "Image,Italian,Japanese,"
 kw = kw + "Korean,Length,Line,Math,Minute,Mouse,Music,"
 kw = kw + "Network,Or,Paper,Pen,Program,"
-kw = kw + "Radian,Random,Rectangle,Resize,RGB,Rotate,"
+kw = kw + "Radian,Random,Rectangle,Resize,RGB,Ring,Rotate,"
 kw = kw + "Second,Shape,Shell,Sine,Sound,Spanish,"
 kw = kw + "Square,Stack,Stop,Subroutine,"
 kw = kw + "Tangent,Text,Timer,Triangle,Turtle,"
@@ -48,14 +48,14 @@ While "True"
       If x[i] <= mx And mx <= x[i] + dx And y[i] <= my And my <= y[i] + 12 Then
         LDProcess.Start(Program.Directory + "\" + keywords[i] + ".exe", "")
         LDSpeech.Speak(keywords[i])
-        If keywords[i] = "Bell" Then
-          Sound.PlayBellRing()
-        ElseIf keywords[i] = "Chime" Then
+        If keywords[i] = "Chime" Then
           Sound.PlayChime()
         ElseIf keywords[i] = "Click" Then
           Sound.PlayClick()
         ElseIf keywords[i] = "Music" Then
           Sound.PlayMusic("O5C8D8E8F8G8A8B8O6C4O5G4O6C4")
+        ElseIf keywords[i] = "Ring" Then
+          Sound.PlayBellRing()
         EndIf
       EndIf
     EndFor
