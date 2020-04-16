@@ -3,8 +3,11 @@
 # Pictionary
 Pictionary for Small Basic
 
+## Download
+Download [Releases](https://github.com/nonkitMac/Pictionary/releases).
+
 ## Usage
-1. Compile all .sb files except maker folder. Or download .zip file and unzip.
+1. Download .zip file and unzip.  Or compile all .sb files except maker folder.
 1. Run Pictionary.exe .
 1. Click keyword in the program.
 

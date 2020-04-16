@@ -1,10 +1,10 @@
 ' Pictionary
-' Version 0.95
-' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
-' Last update 2019-12-16
-' Extension LitDev
+' Version 1.0.0
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-04-17
+' Using Extension LitDev
 
-title = "Pictionary 0.95"
+title = "Pictionary 1.0.0"
 GraphicsWindow.Title = title
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
 kw = "And,Array,Bell,Box,Brush,"
@@ -15,12 +15,12 @@ kw = kw + "Ellipse,English,Error,"
 kw = kw + "File,Fill,Flickr,Floor,Font,French,"
 kw = kw + "German,Go,Graphics,Height,Hour,"
 kw = kw + "Image,Italian,Japanese,"
-kw = kw + "Korean,Length,Line,Math,Minute,Mouse,Music,"
+kw = kw + "Korean,Length,Line,Math,Minute,Mouse,Move,Music,"
 kw = kw + "Network,Or,Paper,Pen,Program,"
 kw = kw + "Radian,Random,Rectangle,Resize,RGB,Ring,Rotate,"
 kw = kw + "Second,Shape,Shell,Sine,Sound,Spanish,"
 kw = kw + "Square,Stack,Stop,Subroutine,"
-kw = kw + "Tangent,Text,Timer,Triangle,Turtle,"
+kw = kw + "Tangent,Text,Timer,Triangle,Turn,Turtle,"
 kw = kw + "Wall,Web,Width,Window,Write,Zoom"
 keywords = LDText.Split(kw, ",")
 n = Array.GetItemCount(keywords)
