@@ -18,5 +18,6 @@ Download [Releases](https://github.com/nonkitMac/Pictionary/releases).
 - LitDev Extension 1.2 or later (included in .zip)
 
 ## Reference
+- [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/) (official site)
 - [Pictionary Project for Small Basic](https://sway.com/gIdC8unQibvltFHq?ref=Link) (Sway)
 - [Pictionary for Small Basic](https://goo.gl/photos/vkJocXXbd1pyGMMk8) (Google Photo)
