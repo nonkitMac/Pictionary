@@ -1,7 +1,7 @@
 ![icon](img/PictionaryIcon.png)
 
 # Pictionary
-Pictionary for Small Basic
+Pictionary for Small Basic is a project to show pictures about English keywords in Small Basic for non-native kids.
 
 ![Pictionary](img/Pictionary1.1.0.png)
 
