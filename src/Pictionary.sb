@@ -1,23 +1,41 @@
 ' Pictionary
-' Version 1.0.0
+' Version 1.1.0
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
 ' Last update 2020-04-17
 ' Using Extension LitDev
 
-title = "Pictionary 1.0.0"
+title = "Pictionary 1.1.0"
 GraphicsWindow.Title = title
+Not = "False=True;True=False;"
+gw = 598
+gh = 428
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+path = Program.Directory + "\PictionaryIcon.png"
+tmp = File.GetTemporaryFilePath()
+If Not[LDFile.Exists(path)] Then
+  url = "https://raw.githubusercontent.com/nonkitMac/Pictionary/master/img/PictionaryIcon.png"
+  LDNetwork.DownloadFile(path, url)
+EndIf
+LDGraphicsWindow.Icon = path
+img = ImageList.LoadImage(path)
+iw = ImageList.GetWidthOfImage(img)
+ih = ImageList.GetHeightOfImage(img)
+icon = Shapes.AddImage(img)
+Shapes.Move(icon, gw - iw - 10, gh - ih - 10)
+Shapes.SetOpacity(icon, 90)
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
-kw = "And,Array,Bell,Box,Brush,"
+kw = "And,Angle,Array,Bell,Box,Brush,"
 kw = kw + "Caption,Ceiling,Chime,Chinese,"
-kw = kw + "Click,Clock,Color,Control,Cosine,"
-kw = kw + "Date,Degree,Desktop,Dictionary,Draw,"
+kw = kw + "Click,Clock,Color,Control,Copy,Cosine,"
+kw = kw + "Date,Degree,Delete,Desktop,Dictionary,Draw,"
 kw = kw + "Ellipse,English,Error,"
 kw = kw + "File,Fill,Flickr,Floor,Font,French,"
 kw = kw + "German,Go,Graphics,Height,Hour,"
-kw = kw + "Image,Italian,Japanese,"
-kw = kw + "Korean,Length,Line,Math,Minute,Mouse,Move,Music,"
-kw = kw + "Network,Or,Paper,Pen,Program,"
-kw = kw + "Radian,Random,Rectangle,Resize,RGB,Ring,Rotate,"
+kw = kw + "Image,Italian,Japanese,Korean,"
+kw = kw + "Left,Length,Line,Math,Minute,Mouse,Move,Music,"
+kw = kw + "Network,Or,Paper,Pen,Program,Radian,Random,"
+kw = kw + "Rectangle,Resize,RGB,Right,Ring,Rotate,"
 kw = kw + "Second,Shape,Shell,Sine,Sound,Spanish,"
 kw = kw + "Square,Stack,Stop,Subroutine,"
 kw = kw + "Tangent,Text,Timer,Triangle,Turn,Turtle,"
@@ -69,3 +87,4 @@ Sub OnMouseDown
   mx = GraphicsWindow.MouseX
   my = GraphicsWindow.MouseY
 EndSub
+  
