@@ -1,14 +1,14 @@
-' Pictionary - Error
+' Pictionary - Message
 ' Version 1.2.0
-' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Copyright © 2020 Nonki Takahashi.  The MIT License.
 ' Last update 2020-04-21
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
 ' initialize error shapes
-Shapes_Init_Error()
-name = "Error"
+Shapes_Init_Message()
+name = "Message"
 Sprite_Add()
 ' initialize caption shapes
 Shapes_Init_Caption()
@@ -120,13 +120,13 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = gw - 20 - 121 ' x offset
-  shY = gh - 20 - 50  ' y offset
+  shX = 388 ' x offset
+  shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Error;fn=Trebuchet MS;fs=50;bc=#000000;"
+  shape[1] = "func=text;x=0;y=0;text=Message;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
-Sub Shapes_Init_Error
+Sub Shapes_Init_Message
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -136,11 +136,9 @@ Sub Shapes_Init_Error
   shape[1] = "func=rect;x=0;y=0;width=300;height=200;pc=#0066CC;bc=#FFFFFF;pw=1;"
   shape[2] = "func=line;x=270;y=10;x1=0;y1=0;x2=12;y2=12;pc=#000000;pw=1;"
   shape[3] = "func=line;x=270;y=10;x1=0;y1=12;x2=12;y2=0;pc=#000000;pw=1;"
-  shape[4] = "func=line;x=30;y=40;x1=0;y1=0;x2=40;y2=40;pc=#CC0000;pw=10;"
-  shape[5] = "func=line;x=30;y=40;x1=0;y1=40;x2=40;y2=0;pc=#CC0000;pw=10;"
-  shape[6] = "func=text;x=100;y=40;text=Sorry... :(;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[7] = "func=text;x=100;y=60;text=Something is wrong.;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[8] = "func=btn;x=240;y=150;caption= OK ;fn=Trebuchet MS;fs=16;bc=#000000;"
+  shape[4] = "func=text;x=40;y=40;text=A message is a communication,;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
+  shape[5] = "func=text;x=40;y=60;text=usually a brief one.;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
+  shape[6] = "func=btn;x=240;y=150;caption= OK ;fn=Trebuchet MS;fs=16;bc=#000000;"
 EndSub
 
 Sub Sprite_Add

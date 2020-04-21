@@ -1,18 +1,20 @@
-' Pictionary - Error
+' Pictionary - Root
 ' Version 1.2.0
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-04-21
+' Last update 2020-04-19
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
-' initialize error shapes
-Shapes_Init_Error()
-name = "Error"
+' initialize image shapes
+Shapes_Init_Triangle()
+name = "Triangle"
+scale = 1.5
 Sprite_Add()
 ' initialize caption shapes
 Shapes_Init_Caption()
 name = "Caption"
+scale = 1
 Sprite_Add()
 
 Sub Init
@@ -20,7 +22,27 @@ Sub Init
   gh = 428
   GraphicsWindow.Width = gw
   GraphicsWindow.Height = gh
-  angle = 0
+EndSub
+
+Sub Math_CartesianToPolar
+  ' Math | convert cartesian coodinate to polar coordinate
+  ' param x, y - cartesian coordinate
+  ' return r, a - polar coordinate
+  r = Math.SquareRoot(x * x + y * y)
+  If x = 0 And y > 0 Then
+    a = 90 ' [degree]
+  ElseIf x = 0 And y < 0 Then
+    a = -90
+  ElseIf x = 0 Then
+    a = 0
+  Else
+    a = Math.ArcTan(y / x) * 180 / Math.Pi
+  EndIf
+  If x < 0 Then
+    a = a + 180
+  ElseIf x > 0 And y < 0 Then
+    a = a + 360
+  EndIf
 EndSub
 
 Sub SB_RotateWorkaround
@@ -62,10 +84,10 @@ Sub SB_Workaround
 EndSub
 
 Sub Shapes_CalcWidthAndHeight
-  ' Shapes | Calculate total width and height of shapes
+  ' Shapes | calculate total width and height of shapes
   ' param shape[] - shape array
   ' return shWidth, shHeight - total size of shapes
-  For i = i To Array.GetItemCount(shape)
+  For i = 1 To Array.GetItemCount(shape)
     shp = shape[i]
     If shp["func"] = "tri" Or shp["func"] = "line" Then
       xmin = shp["x1"]
@@ -120,27 +142,35 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = gw - 20 - 121 ' x offset
-  shY = gh - 20 - 50  ' y offset
+  shX = 471 ' x offset
+  shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Error;fn=Trebuchet MS;fs=50;bc=#000000;"
+  shape[1] = "func=text;x=0;y=0;text=Root;fn=Trebuchet MS;fs=50;fb=True;bc=Black;"
 EndSub
 
-Sub Shapes_Init_Error
+Sub Shapes_Init_Triangle
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = (gw - 300) / 2      ' x offset
-  shY = (gh - 200) / 2 - 20 ' y offset
+  shX = 160 ' x offset
+  shY = 110 ' y offset
   shape = ""
-  shape[1] = "func=rect;x=0;y=0;width=300;height=200;pc=#0066CC;bc=#FFFFFF;pw=1;"
-  shape[2] = "func=line;x=270;y=10;x1=0;y1=0;x2=12;y2=12;pc=#000000;pw=1;"
-  shape[3] = "func=line;x=270;y=10;x1=0;y1=12;x2=12;y2=0;pc=#000000;pw=1;"
-  shape[4] = "func=line;x=30;y=40;x1=0;y1=0;x2=40;y2=40;pc=#CC0000;pw=10;"
-  shape[5] = "func=line;x=30;y=40;x1=0;y1=40;x2=40;y2=0;pc=#CC0000;pw=10;"
-  shape[6] = "func=text;x=100;y=40;text=Sorry... :(;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[7] = "func=text;x=100;y=60;text=Something is wrong.;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[8] = "func=btn;x=240;y=150;caption= OK ;fn=Trebuchet MS;fs=16;bc=#000000;"
+  shape[1] = "func=tri;x=0;y=0;x1=0;y1=100;x2=173.2;y2=0;x3=173.2;y3=100;bc=DarkTurquoise;pc=Black;pw=2;"
+  shape[2] = "func=line;x=78;y=18;x1=-16;y1=16;x2=-12;y2=14;pw=1;pc=Black;"
+  shape[3] = "func=line;x=78;y=18;x1=-12;y1=14;x2=-8;y2=22;pw=1;pc=Black;"
+  shape[4] = "func=line;x=78;y=18;x1=-8;y1=22;x2=-2;y2=0;pw=1;pc=Black;"
+  shape[5] = "func=line;x=78;y=18;x1=-2;y1=0;x2=12;y2=0;pw=1;pc=Black;"
+  shape[6] = "func=text;x=78;y=18;text=4;fn=Trebuchet MS;fs=20;bc=Black;"
+  shape[7] = "func=line;x=200;y=40;x1=-16;y1=16;x2=-12;y2=14;pw=1;pc=Black;"
+  shape[8] = "func=line;x=200;y=40;x1=-12;y1=14;x2=-8;y2=22;pw=1;pc=Black;"
+  shape[9] = "func=line;x=200;y=40;x1=-8;y1=22;x2=-2;y2=0;pw=1;pc=Black;"
+  shape[10] = "func=line;x=200;y=40;x1=-2;y1=0;x2=12;y2=0;pw=1;pc=Black;"
+  shape[11] = "func=text;x=200;y=40;text=1;fn=Trebuchet MS;fs=20;bc=Black;"
+  shape[12] = "func=line;x=90;y=110;x1=-16;y1=16;x2=-12;y2=14;pw=1;pc=Black;"
+  shape[13] = "func=line;x=90;y=110;x1=-12;y1=14;x2=-8;y2=22;pw=1;pc=Black;"
+  shape[14] = "func=line;x=90;y=110;x1=-8;y1=22;x2=-2;y2=0;pw=1;pc=Black;"
+  shape[15] = "func=line;x=90;y=110;x1=-2;y1=0;x2=12;y2=0;pw=1;pc=Black;"
+  shape[16] = "func=text;x=90;y=110;text=3;fn=Trebuchet MS;fs=20;bc=Black;"
 EndSub
 
 Sub Sprite_Add

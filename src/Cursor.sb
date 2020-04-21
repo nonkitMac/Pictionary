@@ -1,26 +1,62 @@
-' Pictionary - Error
+' Pictionary - Cursor
 ' Version 1.2.0
-' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Copyright © 2020 Nonki Takahashi.  The MIT License.
 ' Last update 2020-04-21
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
-' initialize error shapes
-Shapes_Init_Error()
-name = "Error"
+' initialize shell shapes
+Shapes_Init_Shell()
+name = "Shell"
 Sprite_Add()
+' initialize cursor shapes
+Shapes_Init_Cursor()
+name = "Cursor"
+Sprite_Add()
+i = nSprite
 ' initialize caption shapes
 Shapes_Init_Caption()
 name = "Caption"
 Sprite_Add()
+spr = sprite[i]
+shape = spr["shape"]
+shp = shape[2]
+While "True"
+  Program.Delay(500)
+  Shapes.HideShape(shp["obj"])
+  Program.Delay(500)
+  Shapes.ShowShape(shp["obj"])
+EndWhile
 
 Sub Init
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw
   GraphicsWindow.Height = gh
-  angle = 0
+  angle = 0 ' dummy
+  scale = 1
+EndSub
+
+Sub Math_CartesianToPolar
+  ' Math | convert cartesian coodinate to polar coordinate
+  ' param x, y - cartesian coordinate
+  ' return r, a - polar coordinate
+  r = Math.SquareRoot(x * x + y * y)
+  If x = 0 And y > 0 Then
+    a = 90 ' [degree]
+  ElseIf x = 0 And y < 0 Then
+    a = -90
+  ElseIf x = 0 Then
+    a = 0
+  Else
+    a = Math.ArcTan(y / x) * 180 / Math.Pi
+  EndIf
+  If x < 0 Then
+    a = a + 180
+  ElseIf x > 0 And y < 0 Then
+    a = a + 360
+  EndIf
 EndSub
 
 Sub SB_RotateWorkaround
@@ -62,10 +98,10 @@ Sub SB_Workaround
 EndSub
 
 Sub Shapes_CalcWidthAndHeight
-  ' Shapes | Calculate total width and height of shapes
+  ' Shapes | calculate total width and height of shapes
   ' param shape[] - shape array
   ' return shWidth, shHeight - total size of shapes
-  For i = i To Array.GetItemCount(shape)
+  For i = 1 To Array.GetItemCount(shape)
     shp = shape[i]
     If shp["func"] = "tri" Or shp["func"] = "line" Then
       xmin = shp["x1"]
@@ -120,27 +156,37 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = gw - 20 - 121 ' x offset
-  shY = gh - 20 - 50  ' y offset
+  shX = 425 ' x offset
+  shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Error;fn=Trebuchet MS;fs=50;bc=#000000;"
+  shape[1] = "func=text;x=0;y=0;text=Cursor;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
-Sub Shapes_Init_Error
+Sub Shapes_Init_Cursor
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = (gw - 300) / 2      ' x offset
-  shY = (gh - 200) / 2 - 20 ' y offset
+  shX = 248 ' x offset
+  shY = 174 ' y offset
   shape = ""
-  shape[1] = "func=rect;x=0;y=0;width=300;height=200;pc=#0066CC;bc=#FFFFFF;pw=1;"
-  shape[2] = "func=line;x=270;y=10;x1=0;y1=0;x2=12;y2=12;pc=#000000;pw=1;"
-  shape[3] = "func=line;x=270;y=10;x1=0;y1=12;x2=12;y2=0;pc=#000000;pw=1;"
-  shape[4] = "func=line;x=30;y=40;x1=0;y1=0;x2=40;y2=40;pc=#CC0000;pw=10;"
-  shape[5] = "func=line;x=30;y=40;x1=0;y1=40;x2=40;y2=0;pc=#CC0000;pw=10;"
-  shape[6] = "func=text;x=100;y=40;text=Sorry... :(;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[7] = "func=text;x=100;y=60;text=Something is wrong.;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[8] = "func=btn;x=240;y=150;caption= OK ;fn=Trebuchet MS;fs=16;bc=#000000;"
+  shape[1] = "func=ell;x=-8;y=-5;width=24;height=24;pw=0;bc=#661E90FF;"
+  shape[2] = "func=rect;x=0;y=10;width=7;height=4;pw=0;bc=white;"
+EndSub
+
+Sub Shapes_Init_Shell
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 0   ' x offset
+  shY = 0   ' y offset
+  shape = ""
+  shape[1] = "pw=1;pc=DodgerBlue;bc=Black;func=rect;width=300;height=250;x=149;y=79;"
+  shape[2] = "pw=0;bc=White;func=rect;width=298;height=30;x=150;y=80;"
+  shape[3] = "pw=0;bc=Black;fs=16;fn=Consolas;fb=False;fi=False;func=text;text=Command Prompt;x=160;y=84;"
+  shape[4] = "pw=0;bc=Black;fs=16;fn=Consolas;fb=False;fi=False;func=text;text=– □ ×;x=396;y=84;"
+  shape[5] = "pw=0;bc=LightGray;fs=14;fn=Consolas;fb=False;fi=False;func=text;text=Microsoft Windows;x=154;y=112;"
+  shape[6] = "pw=0;bc=LightGray;fs=14;fn=Consolas;fb=False;fi=False;func=text;text=(c) 2018 Microsoft Corporation.;x=154;y=132;"
+  shape[7] = "pw=0;bc=LightGray;fs=14;fn=Consolas;fb=False;fi=False;func=text;text=C:\\Users\\SB>;x=154;y=172;"
 EndSub
 
 Sub Sprite_Add

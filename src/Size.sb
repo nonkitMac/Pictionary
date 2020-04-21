@@ -1,16 +1,28 @@
-' Pictionary - Error
-' Version 1.2.0
+' Pictionary - Size
+' Versioin 1.2.0
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-04-21
+' Last update 2020-04-19
 
 GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
-' initialize error shapes
-Shapes_Init_Error()
-name = "Error"
+
+' initialize shapes for car
+Shapes_Init_Car()
+name = "Car"
 Sprite_Add()
-' initialize caption shapes
+
+' initialize shapes for height
+Shapes_Init_Height()
+name = "Height"
+Sprite_Add()
+
+' initialize shapes for width
+Shapes_Init_Width()
+name = "Width"
+Sprite_Add()
+
+' initialize shapes for caption
 Shapes_Init_Caption()
 name = "Caption"
 Sprite_Add()
@@ -20,7 +32,28 @@ Sub Init
   gh = 428
   GraphicsWindow.Width = gw
   GraphicsWindow.Height = gh
-  angle = 0
+  GraphicsWindow.BackgroundColor = "LightGray"
+EndSub
+
+Sub Math_CartesianToPolar
+  ' Math | convert cartesian coodinate to polar coordinate
+  ' param x, y - cartesian coordinate
+  ' return r, a - polar coordinate
+  r = Math.SquareRoot(x * x + y * y)
+  If x = 0 And y > 0 Then
+    a = 90 ' [degree]
+  ElseIf x = 0 And y < 0 Then
+    a = -90
+  ElseIf x = 0 Then
+    a = 0
+  Else
+    a = Math.ArcTan(y / x) * 180 / Math.Pi
+  EndIf
+  If x < 0 Then
+    a = a + 180
+  ElseIf x > 0 And y < 0 Then
+    a = a + 360
+  EndIf
 EndSub
 
 Sub SB_RotateWorkaround
@@ -62,10 +95,10 @@ Sub SB_Workaround
 EndSub
 
 Sub Shapes_CalcWidthAndHeight
-  ' Shapes | Calculate total width and height of shapes
+  ' Shapes | calculate total width and height of shapes
   ' param shape[] - shape array
   ' return shWidth, shHeight - total size of shapes
-  For i = i To Array.GetItemCount(shape)
+  For i = 1 To Array.GetItemCount(shape)
     shp = shape[i]
     If shp["func"] = "tri" Or shp["func"] = "line" Then
       xmin = shp["x1"]
@@ -120,27 +153,65 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = gw - 20 - 121 ' x offset
-  shY = gh - 20 - 50  ' y offset
+  shX = 482 ' x offset
+  shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Error;fn=Trebuchet MS;fs=50;bc=#000000;"
+  shape[1] = "func=text;x=0;y=0;text=Size;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
-Sub Shapes_Init_Error
+Sub Shapes_Init_Car
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = (gw - 300) / 2      ' x offset
-  shY = (gh - 200) / 2 - 20 ' y offset
+  shX = 130 ' x offset
+  shY = 70  ' y offset
   shape = ""
-  shape[1] = "func=rect;x=0;y=0;width=300;height=200;pc=#0066CC;bc=#FFFFFF;pw=1;"
-  shape[2] = "func=line;x=270;y=10;x1=0;y1=0;x2=12;y2=12;pc=#000000;pw=1;"
-  shape[3] = "func=line;x=270;y=10;x1=0;y1=12;x2=12;y2=0;pc=#000000;pw=1;"
-  shape[4] = "func=line;x=30;y=40;x1=0;y1=0;x2=40;y2=40;pc=#CC0000;pw=10;"
-  shape[5] = "func=line;x=30;y=40;x1=0;y1=40;x2=40;y2=0;pc=#CC0000;pw=10;"
-  shape[6] = "func=text;x=100;y=40;text=Sorry... :(;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[7] = "func=text;x=100;y=60;text=Something is wrong.;fn=Trebuchet MS;fs=16;fb=False;bc=#000000;"
-  shape[8] = "func=btn;x=240;y=150;caption= OK ;fn=Trebuchet MS;fs=16;bc=#000000;"
+  shape[1] = "func=tri;x=50;y=4;x1=25;y1=0;x2=0;y2=100;x3=25;y3=100;pw=0;bc=#99000000;"
+  shape[2] = "func=rect;x=75;y=4;width=200;height=100;pw=0;bc=#99000000;"
+  shape[3] = "func=tri;x=275;y=4;x1=0;y1=0;x2=0;y2=100;x3=25;y3=100;pw=0;bc=#99000000;"
+  shape[4] = "func=line;x=75;y=4;x1=0;y1=0;x2=200;y2=0;pw=8;pc=#6495ED;"
+  shape[5] = "func=ell;x=71;y=0;width=8;height=8;pw=0;bc=#6495ED;"
+  shape[6] = "func=ell;x=271;y=0;width=8;height=8;pw=0;bc=#6495ED;"
+  shape[7] = "func=line;x=50;y=4;x1=25;y1=0;x2=0;y2=100;pw=8;pc=#6495ED;"
+  shape[8] = "func=line;x=275;y=4;x1=0;y1=0;x2=25;y2=100;pw=8;pc=#6495ED;"
+  shape[9] = "func=ell;x=50;y=104;width=0;height=0;pw=0;bc=#6495ED;"
+  shape[10] = "func=ell;x=300;y=104;width=0;height=0;pw=0;bc=#6495ED;"
+  shape[11] = "func=ell;x=25;y=104;width=50;height=50;pw=0;bc=#6495ED;"
+  shape[12] = "func=ell;x=275;y=104;width=50;height=50;pw=0;bc=#6495ED;"
+  shape[13] = "func=rect;x=50;y=104;width=250;height=25;pw=0;bc=#6495ED;"
+  shape[14] = "func=rect;x=25;y=129;width=300;height=75;pw=0;bc=#6495ED;"
+  shape[15] = "func=rect;x=75;y=159;width=200;height=5;pw=0;bc=#99000000;"
+  shape[16] = "func=rect;x=75;y=169;width=200;height=5;pw=0;bc=#99000000;"
+  shape[17] = "func=ell;x=50;y=104;width=50;height=50;pw=0;bc=#FFFFCC;"
+  shape[18] = "func=ell;x=250;y=104;width=50;height=50;pw=0;bc=#FFFFCC;"
+  shape[19] = "func=rect;x=0;y=184;width=350;height=20;pw=0;bc=#C0C0C0;"
+  shape[20] = "func=rect;x=25;y=204;width=50;height=50;pw=0;bc=#333333;"
+  shape[21] = "func=rect;x=275;y=204;width=50;height=50;pw=0;bc=#333333;"
+  shape[22] = "func=rect;x=125;y=194;width=100;height=30;pw=0;bc=#FFFFFF;"
+EndSub
+
+Sub Shapes_Init_Height
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 90  ' x offset
+  shY = 70  ' y offset
+  shape = ""
+  shape[1] = "func=tri;x=0;y=0;x1=10;y1=0;x2=0;y2=40;x3=20;y3=40;pw=0;bc=#333333;"
+  shape[2] = "func=tri;x=0;y=214;x1=10;y1=0;x2=0;y2=40;x3=20;y3=40;angle=180;pw=0;bc=#333333;"
+  shape[3] = "func=line;x=10;y=40;x1=0;y1=0;x2=0;y2=174;angle=-90;pw=6;pc=#333333;"
+EndSub
+
+Sub Shapes_Init_Width
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 130 ' x offset
+  shY = 330 ' y offset
+  shape = ""
+  shape[1] = "func=tri;x=10;y=0;x1=10;y1=0;x2=0;y2=40;x3=20;y3=40;angle=-90;pw=0;bc=#333333;"
+  shape[2] = "func=tri;x=320;y=0;x1=10;y1=0;x2=0;y2=40;x3=20;y3=40;angle=90;pw=0;bc=#333333;"
+  shape[3] = "func=line;x=40;y=20;x1=0;y1=0;x2=270;y2=0;angle=-90;pw=6;pc=#333333;"
 EndSub
 
 Sub Sprite_Add
