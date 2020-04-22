@@ -1,7 +1,7 @@
-Welcome to the Pictionary wiki!
+Welcome to the Pictionary documents!
 
 # FOR USE
-* TBD
+* [Pictionary](Pictionary.md)
 # FOR DEVELOPMENT
 * [Refactoring](Refactoring.md)
 * [Packaging](Packaging.md)

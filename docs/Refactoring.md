@@ -21,7 +21,7 @@ Use `Array.GetItemCount(shape)` instead of hard coded number.
 Replace `Shape_Add()` to `Stripe_Add()`. 
 
 ## Use Caption Maker
-[maker/CaptionMaker.sb](https://github.com/nonkitMac/Pictionary/blob/master/maker/CaptionMaker.sb) will create such as following code.
+[maker/CaptionMaker.sb](https://github.com/nonkitMac/Pictionary/blob/master/src/maker/CaptionMaker.sb) will create such as following code.
 ```
 Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
@@ -39,7 +39,7 @@ Use this code to show the caption.
 Add a new line between subroutines.
 
 ## Remove Not Used Subroutine
-[maker/FindSubNotUsed.sb](https://github.com/nonkitMac/Pictionary/blob/master/maker/FindSubNotUsed.sb) will find subroutines not used.  Following list is a sample output.
+[maker/FindSubNotUsed.sb](https://github.com/nonkitMac/Pictionary/blob/master/src/maker/FindSubNotUsed.sb) will find subroutines not used.  Following list is a sample output.
 ```
 C:\Users\nonki\Documents\GitHub\Pictionary\Ellipse.sb Math_CartesianToPolar Shapes_CalcRotatePos Shapes_Move Shapes_Remove Shapes_Rotate
 ```
