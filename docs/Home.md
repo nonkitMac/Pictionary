@@ -6,6 +6,7 @@ Welcome to the Pictionary documents!
 * [Refactoring](Refactoring.md)
 * [Packaging](Packaging.md)
 * [Uploading Images](Uploading-Images.md)
+* [Small Basic: Revision Control with GitHub](https://social.technet.microsoft.com/wiki/contents/articles/37846.small-basic-revision-control-with-github.aspx) (TechNet Wiki)
 ____
 Copyright © 2017-2020 Nonki Takahashi.
 

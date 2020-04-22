@@ -1,4 +1,5 @@
 This page illustrates what kind of refactoring will be done for this project.
+
 ## Update Version
 Update version information.
 
@@ -17,8 +18,8 @@ EndSub
 ## Use Array.GetItemCount()
 Use `Array.GetItemCount(shape)` instead of hard coded number.
 
-## Replace Shape_ to Group_ Subroutines
-Replace `Shape_Add()` to `Stripe_Add()`. 
+## Replace Shape_ to Sprite_ Subroutines
+Replace `Shape_Add()` and `Group_Add()` to `Stripe_Add()`. 
 
 ## Use Caption Maker
 [maker/CaptionMaker.sb](https://github.com/nonkitMac/Pictionary/blob/master/src/maker/CaptionMaker.sb) will create such as following code.
@@ -44,6 +45,9 @@ Add a new line between subroutines.
 C:\Users\nonki\Documents\GitHub\Pictionary\Ellipse.sb Math_CartesianToPolar Shapes_CalcRotatePos Shapes_Move Shapes_Remove Shapes_Rotate
 ```
 This means that subroutines Math_CartesianToPolar, Shapes_CalcRotatePos, Shapes_Move, Shapes_Remove and Shapes_Rotate should be removed from Ellipse.sb
+
+# See Also
+- [Small Basic Coding Pattern](https://github.com/nonkit/SmallWikiPad/wiki/Small-Basic-Coding-Pattern)
 ____
 Copyright © 2017-2020 Nonki Takahashi.
 

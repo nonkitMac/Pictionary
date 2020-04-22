@@ -18,6 +18,9 @@ Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/rel
 - Small Basic 1.2 (dll included in .zip)
 - LitDev Extension 1.2 or later (included in .zip)
 
+## Documents
+- [Pictionary documents](docs/Home.md)
+
 ## Reference
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/) (official site)
 - [Pictionary Project for Small Basic](https://sway.com/gIdC8unQibvltFHq?ref=Link) (Sway)
