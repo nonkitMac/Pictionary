@@ -1,6 +1,11 @@
-# How to contributing to Pictionary
+# How to contribute to Pictionary
 
 :tada: Thank you for your interest in Pictionary. :tada:
+
+### Before contributing
+
+- Create your GitHub account.
+- Fork Pictionary to your GitHub. 
 
 ### Did you write a new code to add keywords?
 
@@ -8,9 +13,9 @@
 
 ### Did you find a bug?
 
-- **Ensure the bug was not already reported** by searching on GitHub under issues.
+- **Ensure the bug was not already reported** by searching on GitHub under [issues](https://github.com/nonkitMac/Pictionary/issues).
 
-- If you're unable to find an open issue addressing the problem, open a new one.  Be sure to include a **title and clear desciption**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occuring.
+- If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/nonkitMac/Pictionary/issues/new).  Be sure to include a **title and clear desciption**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occuring.
 
 ### Did you write a patch that fixes a bug?
 
