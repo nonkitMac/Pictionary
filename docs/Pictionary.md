@@ -11,7 +11,7 @@
 
 Target keywords are following 172 words - nouns, **verbs** and *others*.
 
-1. *And* *Or* *For* Step *If* *Then* *Else* *While* **Go** *To* Subroutine
+1. *[And](../img/And2.png)* *Or* *For* Step *If* *Then* *Else* *While* **Go** *To* Subroutine
 2. Array Clock Control Desktop Dictionary File Flickr Graphics Math Mouse Network Program Shape Sound Stack Text Timer Turtle Window
 3. *Absolute* Angle Append Argument Background Bell Button Bold *Bound* Box Brush Caption Case Ceiling Character Chime Chinese Code Color Content Cosine Count Cursor Date Day Degree Definition Directory Ellipse English Error Floor Font French *From* German Height Hour Image Index Interval Italian Italic Item Japanese Key Korean *Last* Left Length Line *Lower* Logarithm *Natural* *Maximum* Message Millisecond *Minimum* Minute Month Music Name *Of* Opacity Page Paper Path Pen Pi Pixel Power Radian *Random* Remainder Rectangle RGB Right Root Second Sine Size Spanish Speed Square Tangent Title Top *Traditional* Triangle *Upper* Value Wall Web Week Width Year
 4. **Add** **Animate** **Append** **Clear** **Click** **Convert** **Copy** **Create** **Delete** **Delay** **Download** **Draw** **Down** **Elapse** **Fill** **Get** **Hide** **Input** **Insert** **Move** **Pause** **Play** **Pop** **Push** **Read** **Remove** **Resize** **Resume** **Ring** **Rotate** **Round** **Set** **Show** **Simplify** **Stop** **Tick** **Turn** **Type** **Up** **Wait** **Write** **Zoom**
