@@ -1,7 +1,7 @@
 This page illustrates what kind of refactoring will be done for this project.
 
 ## Update Version
-Update version information.
+Update version information according to Semantic Versioning below.
 
 ## Use Init() Subroutine
 Use `Init()` subroutine such as following code.
@@ -47,6 +47,7 @@ C:\Users\nonki\Documents\GitHub\Pictionary\Ellipse.sb Math_CartesianToPolar Shap
 This means that subroutines Math_CartesianToPolar, Shapes_CalcRotatePos, Shapes_Move, Shapes_Remove and Shapes_Rotate should be removed from Ellipse.sb
 
 # See Also
+- [Semantic Versioning 2.0.0](https://semver.org/)
 - [Small Basic Coding Pattern](https://github.com/nonkit/SmallWikiPad/wiki/Small-Basic-Coding-Pattern)
 ____
 Copyright © 2017-2020 Nonki Takahashi.

@@ -3,6 +3,7 @@ Welcome to the Pictionary documents!
 # FOR USE
 * [Pictionary](Pictionary.md)
 # FOR DEVELOPMENT
+* [How to contribute to Pictionary](../CONTRIBUTING.md)
 * [Refactoring](Refactoring.md)
 * [Packaging](Packaging.md)
 * [Uploading Images](Uploading-Images.md)
