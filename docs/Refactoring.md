@@ -44,3 +44,9 @@ Add a new line between subroutines.
 C:\Users\nonki\Documents\GitHub\Pictionary\Ellipse.sb Math_CartesianToPolar Shapes_CalcRotatePos Shapes_Move Shapes_Remove Shapes_Rotate
 ```
 This means that subroutines Math_CartesianToPolar, Shapes_CalcRotatePos, Shapes_Move, Shapes_Remove and Shapes_Rotate should be removed from Ellipse.sb
+____
+Copyright © 2017-2020 Nonki Takahashi.
+
+[![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
+
+This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
