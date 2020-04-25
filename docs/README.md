@@ -160,7 +160,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
 
 ## Documents
 
-- [Pictionary for Small Basic](Documents)
+- [Pictionary Documents](Documents)
 
 ____
 
