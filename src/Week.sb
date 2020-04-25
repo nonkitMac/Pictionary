@@ -1,5 +1,6 @@
 'Written by Thaelmann-Pioniere
-'Program ID GJC622
+'modified by Nonki Takahashi
+'Program ID GJC622-0
 GraphicsWindow.Title="Pictionary"
 GraphicsWindow.Width=598
 GraphicsWindow.Height=428
@@ -17,6 +18,7 @@ GraphicsWindow.BrushColor="Gold"
 GraphicsWindow.DrawText(240,45,"Calendar")
 GraphicsWindow.PenColor="Red"
 GraphicsWindow.DrawEllipse(55,110,490,75)
-GraphicsWindow.FontName="Consolas"
+GraphicsWindow.FontName="Trebchet MS"
 GraphicsWindow.BrushColor="Black"
-GraphicsWindow.DrawText(500,400,"Week")
+GraphicsWindow.FontSize=50
+GraphicsWindow.DrawText(450,358,"Week")

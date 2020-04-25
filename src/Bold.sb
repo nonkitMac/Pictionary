@@ -1,5 +1,5 @@
 'Written by Thaelmann-Pioniere
-'Program ID GJC622-1
+'modified by Nonki Takahashi
 GraphicsWindow.Width=598
 GraphicsWindow.Height=428
 GraphicsWindow.Title="Pictionary"
@@ -14,7 +14,7 @@ GraphicsWindow.DrawText(300,100,"Bold")
 GraphicsWindow.DrawText(300,200,"12345ABC") 
 GraphicsWindow.DrawLine(280,50,280,300)
 GraphicsWindow.FontName="Trebchet MS"
-GraphicsWindow.FontBold="false"
+GraphicsWindow.FontBold="True"
 GraphicsWindow.BrushColor="Black"
 GraphicsWindow.FontSize=50
-GraphicsWindow.DrawText(450,358,"Bold")
+GraphicsWindow.DrawText(476,358,"Bold")

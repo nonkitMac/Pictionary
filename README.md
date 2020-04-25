@@ -3,7 +3,7 @@
 # Pictionary
 Pictionary for Small Basic is a project to show pictures about English keywords in Small Basic for non-native kids.
 
-![Pictionary](img/Pictionary1.1.0.png)
+![Pictionary](img/Pictionary1.3.0.png)
 
 ## Download
 Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/releases).
