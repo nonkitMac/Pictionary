@@ -1,13 +1,13 @@
 ' Pictionary
-' Version 1.2.0
+' Version 1.3.0
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
 ' Last update 2020-04-21
 ' Using Extension LitDev
 
-title = "Pictionary 1.2.0"
+title = "Pictionary 1.3.0"
 GraphicsWindow.Title = title
 Not = "False=True;True=False;"
-gw = 598
+gw = 660
 gh = 428
 GraphicsWindow.Width = gw
 GraphicsWindow.Height = gh
@@ -25,22 +25,22 @@ icon = Shapes.AddImage(img)
 Shapes.Move(icon, gw - iw - 10, gh - ih - 10)
 Shapes.SetOpacity(icon, 90)
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
-kw = "And,Angle,Array,Bell,Box,Brush,"
+kw = "And,Angle,Array,Bell,Bold,Box,Brush,"
 kw = kw + "Caption,Ceiling,Chime,Chinese,Click,Clock,"
 kw = kw + "Color,Control,Copy,Cosine,Cursor,"
 kw = kw + "Date,Degree,Delete,Desktop,Dictionary,Draw,"
 kw = kw + "Ellipse,End,English,Error,"
 kw = kw + "File,Fill,Flickr,Floor,Font,For,French,From,"
 kw = kw + "German,Go,Graphics,Height,Hour,"
-kw = kw + "Image,Italian,Japanese,Korean,"
+kw = kw + "Image,Italian,Italic,Japanese,Korean,"
 kw = kw + "Left,Length,Line,"
-kw = kw + "Math,Message,Minute,Mouse,Move,Music,"
-kw = kw + "Network,Or,Paper,Pen,Program,Radian,Random,"
-kw = kw + "Rectangle,Resize,RGB,Right,Ring,Root,Rotate,"
+kw = kw + "Math,Message,Minute,Mouse,Move,Music,Network,"
+kw = kw + "Or,Paper,Pen,Program,Radian,Random,Rectangle,"
+kw = kw + "Remainder,Resize,RGB,Right,Ring,Root,Rotate,"
 kw = kw + "Second,Shape,Shell,Sine,Size,Sound,Spanish,"
 kw = kw + "Square,Stack,Start,Step,Stop,Subroutine,"
 kw = kw + "Tangent,Text,Timer,To,Triangle,Turn,Turtle,"
-kw = kw + "Wall,Web,Width,Window,Write,Zoom"
+kw = kw + "Wall,Web,Week,Width,Window,Write,Xor,Zoom"
 keywords = LDText.Split(kw, ",")
 n = Array.GetItemCount(keywords)
 GraphicsWindow.Title = title + " - " + n + " keywords"

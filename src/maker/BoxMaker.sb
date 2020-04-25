@@ -2,6 +2,7 @@
 ' Version 0.2
 ' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
 ' Last update 2018-10-26
+' Program ID MXT540
 
 GraphicsWindow.Title = "Box Maker 0.2"
 Init()
