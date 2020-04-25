@@ -23,5 +23,5 @@ Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/rel
 
 ## Reference
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/) (official site)
-- [Pictionary Project for Small Basic](https://sway.com/gIdC8unQibvltFHq?ref=Link) (Sway)
-- [Pictionary for Small Basic](https://goo.gl/photos/vkJocXXbd1pyGMMk8) (Google Photo)
+- [Pictionary Project for Small Basic](https://nonkitmac.github.io/Pictionary/Pictionary.html) (concept)
+- [Pictionary for Small Basic](https://nonkitmac.github.io/Pictionary/Gallery.html) (images)

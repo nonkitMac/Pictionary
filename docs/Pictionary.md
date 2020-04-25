@@ -37,7 +37,7 @@ SVG)
 
 ## Repository
 
-- [Pictionary for Small Basic](https://github.com/nonkitMac/Pictionary) (GitHub)
+- [Pictionary for Small Basic](https://nonkitmac.github.io/Pictionary/Gallery.html) (GitHub)
 
 ____
 
