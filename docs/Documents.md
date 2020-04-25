@@ -1,10 +1,10 @@
 Welcome to the Pictionary documents!
 
 # FOR USE
-* [Pictionary](Pictionary.md)
+* [Pictionary](README.md)
 
 # FOR DEVELOPMENT
-* [How to contribute to Pictionary](Contributing.html)
+* [How to contribute to Pictionary](Contributing.md)
 * [Refactoring](Refactoring.md)
 * [Packaging](Packaging.md)
 * [Uploading Images](Uploading-Images.md)

@@ -1,3 +1,5 @@
+[[Documents]] > Refactoring
+
 This page illustrates what kind of refactoring will be done for this project.
 
 ## Update Version
