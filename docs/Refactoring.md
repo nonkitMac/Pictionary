@@ -49,7 +49,9 @@ This means that subroutines Math_CartesianToPolar, Shapes_CalcRotatePos, Shapes_
 # See Also
 - [Semantic Versioning 2.0.0](https://semver.org/)
 - [Small Basic Coding Pattern](https://github.com/nonkit/SmallWikiPad/wiki/Small-Basic-Coding-Pattern)
+
 ____
+
 Copyright © 2017-2020 Nonki Takahashi.
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)

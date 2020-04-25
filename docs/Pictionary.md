@@ -1,6 +1,6 @@
 # Pictionary Project for Small Basic
 
-![Sample](../img/Dictionary.png)
+![Sample](https://raw.githubusercontent.com/nonkitMac/Pictionary/master/img/Dictionary.png)
 
 ## Purpose
 - Small Basic is a programming language for kids.
@@ -31,7 +31,9 @@ SVG)
 ## Repository
 
 - [Pictionary for Small Basic](https://github.com/nonkitMac/Pictionary) (GitHub)
+
 ____
+
 Copyright © 2017-2020 Nonki Takahashi.
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
