@@ -1,10 +1,10 @@
 Welcome to the Pictionary documents!
 
 # FOR USE
-* [Pictionary](README)
+* [Pictionary Project for Small Basic](README.md)
 
 # FOR DEVELOPMENT
-* [How to contribute to Pictionary](Contributing)
+* [How to contribute to Pictionary](https://github.com/nonkitMac/Pictionary/blob/master/CONTRIBUTING.md)
 * [Refactoring](Refactoring)
 * [Packaging](Packaging)
 * [Uploading Images](Uploading-Images)

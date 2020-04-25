@@ -1,5 +1,3 @@
-[Documents](Documents) > Contributing
-
 # How to contribute to Pictionary
 
 :tada: Thank you for your interest in Pictionary. :tada:
