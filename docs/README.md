@@ -4,7 +4,7 @@ Welcome to the Pictionary documents!
 * [Pictionary](Pictionary.md)
 
 # FOR DEVELOPMENT
-* [How to contribute to Pictionary](CONTRIBUTING.md)
+* [How to contribute to Pictionary](Contributing.md)
 * [Refactoring](Refactoring.md)
 * [Packaging](Packaging.md)
 * [Uploading Images](Uploading-Images.md)
