@@ -1,3 +1,5 @@
+[Documents] > Uploading Images
+
 This page illustrates how to upload images to [Google Photo](https://goo.gl/photos/vkJocXXbd1pyGMMk8).
 # Take Screen Shot
 Take screen shot of a program with Snipping Tool.
