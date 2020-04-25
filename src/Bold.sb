@@ -13,7 +13,7 @@ GraphicsWindow.FontBold="true"
 GraphicsWindow.DrawText(300,100,"Bold")
 GraphicsWindow.DrawText(300,200,"12345ABC") 
 GraphicsWindow.DrawLine(280,50,280,300)
-GraphicsWindow.FontName="Trebchet MS"
+GraphicsWindow.FontName="Trebuchet MS"
 GraphicsWindow.FontBold="True"
 GraphicsWindow.BrushColor="Black"
 GraphicsWindow.FontSize=50
