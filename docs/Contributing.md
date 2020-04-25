@@ -1,4 +1,4 @@
-[Documents] > Contributing
+[Documents](Documents) > Contributing
 
 # How to contribute to Pictionary
 

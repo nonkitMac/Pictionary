@@ -1,13 +1,15 @@
-[Documents] > Uploading Images
+[Documents](Documents) > Uploading Images
 
-This page illustrates how to upload images to [Google Photo](https://goo.gl/photos/vkJocXXbd1pyGMMk8).
+This page illustrates how to upload images to [Gallery](Gallery.html).
 # Take Screen Shot
 Take screen shot of a program with Snipping Tool.
-# Upload Image
-Push [Add to Album] button on Google Photo and upload the image with drag and drop to the screen.
-# Sort Alphabetically
-Select [Edit Album] menu and push [Sort Photo] button.  Drag and drop the image to put it as alphabet order.  Push [Finish] button.
-
+# Save Image to Local Repository
+Push \[Save\] button on Snipping Tool and save the image to img folder in local repository.
+# Add Link to Gallery.html
+Add such like following link to docs/Gallery.html.
+```
+<a href="https://github.com/nonkitMac/Pictionary/blob/master/img/Remainder.png"><img src="https://raw.githubusercontent.com/nonkitMac/Pictionary/master/img/Remainder.png"></a>
+```
 ____
 
 Copyright © 2017-2020 Nonki Takahashi.

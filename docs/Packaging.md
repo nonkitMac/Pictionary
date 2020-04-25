@@ -1,4 +1,4 @@
-[Documents](Documents.md) > Packaging
+[Documents](Documents) > Packaging
 
 This page shows how to create zip file for run time modules.
 # Zip Following Files
@@ -7,6 +7,13 @@ Zip following files and name it Pictionary_vX.X.X.zip .
 * SmallBasicLibrary.dll
 * LitDev.dll
 * PictionaryIcon.png
+
+# Release
+Release the zip file to GitHub with following instructions.
+1. Select \[releases\] menu in \[Code\] tab.
+2. Push \[Draft a new release\] button.
+3. Input information and drag and drop the zip file.
+4. Push \[Publish release\] button.
 
 ____
 

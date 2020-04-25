@@ -1,13 +1,13 @@
 Welcome to the Pictionary documents!
 
 # FOR USE
-* [Pictionary](README.md)
+* [Pictionary](README)
 
 # FOR DEVELOPMENT
-* [How to contribute to Pictionary](Contributing.md)
-* [Refactoring](Refactoring.md)
-* [Packaging](Packaging.md)
-* [Uploading Images](Uploading-Images.md)
+* [How to contribute to Pictionary](Contributing)
+* [Refactoring](Refactoring)
+* [Packaging](Packaging)
+* [Uploading Images](Uploading-Images)
 * [Small Basic: Revision Control with GitHub](https://social.technet.microsoft.com/wiki/contents/articles/37846.small-basic-revision-control-with-github.aspx) (TechNet Wiki)
 
 ____
