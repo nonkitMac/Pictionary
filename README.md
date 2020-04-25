@@ -19,7 +19,7 @@ Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/rel
 - LitDev Extension 1.2 or later (included in .zip)
 
 ## Documents
-- [Pictionary documents](docs/Home.md)
+- [Pictionary documents](https://nonkitmac.github.io/Pictionary/)
 
 ## Reference
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/) (official site)
