@@ -5,3 +5,6 @@ Thumbs.db
 *.exe
 *.dll
 *.pdb
+
+# Other binary files
+*.zip
