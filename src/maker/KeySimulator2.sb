@@ -1,0 +1,121 @@
+' Typewriter Key Simulator 2
+' Copyright © 2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-11
+
+GraphicsWindow.Title = "Typewriter Key Simulator 2"
+delay = 50  ' [ms]
+gw = GraphicsWindow.Width
+gh = GraphicsWindow.Height
+ox = gw / 2
+oy = gh / 2
+r = 60
+GraphicsWindow.PenWidth = 0
+GraphicsWindow.BrushColor = "#99CCCCCC"
+shW[1] = 2 * r
+shH[1] = 2 * r
+shX[1] = ox - r
+shY[1] = oy - r
+shp[1] = Shapes.AddEllipse(shW[1], shH[1])
+Shapes.Move(shp[1], shX[1], shY[1])
+GraphicsWindow.BrushColor = "#99666666"
+θ1 = 2 * LDMath.ArcTan(1/3)
+θ2 = 180 - θ1
+tfw = 6   ' type face
+tfh = 20
+tbw = 2   ' type bar
+tbh = 50
+For θ = 10 To 170 Step 10
+  CalcTypeBar()
+  da = 30
+  For a = da To 120 Step da
+    Program.Delay(delay)
+    FlipTypeBar()
+  EndFor
+EndFor
+
+Sub CalcTypeBar
+  p = ""
+  n = 1 ' first corner of type face
+  p[n][1] = -tfw / 2
+  p[n][2] = tbw / 2 - tfh
+  n = 2 ' second corner of type face
+  p[n][1] = tfw / 2
+  p[n][2] = tbw / 2 - tfh
+  n = 3 ' third corner of type face
+  p[n][1] = tfw / 2
+  p[n][2] = tbw / 2
+  If θ < θ1 Then
+    s = tfw / 2 - tbw / 2 * LDMath.Sin(θ)
+    y = s * LDMath.Tan(θ) - tbw / 2 * LDMath.Cos(θ)
+    p[n][2] = y
+  ElseIf θ1 < θ Then
+    n = n + 1
+    s = tbw / 2 * (1 + LDMath.Cos(θ))
+    c = s / LDMath.Tan(θ)
+    p[n][1] = tbw / 2 * LDMath.Sin(θ) + c
+    p[n][2] = tbw / 2
+  EndIf
+  n = n + 1 ' third corner of type bar
+  n3 = n    ' for flip
+  p[n][1] = tbh * LDMath.Cos(θ) + tbw / 2 * LDMath.Sin(θ)
+  p[n][2] = tbh * LDMath.Sin(θ) - tbw / 2 * LDMath.Cos(θ)
+  n = n + 1 ' forth corner of type bar
+  p[n][1] = tbh * LDMath.Cos(θ) - tbw / 2 * LDMath.Sin(θ)
+  p[n][2] = tbh * LDMath.Sin(θ) + tbw / 2 * LDMath.Cos(θ)
+  n = n + 1
+  s = tbw / 2 * (1 - LDMath.Cos(θ))
+  c = s / LDMath.Tan(θ)
+  p[n][1] = c - tbw / 2 * LDMath.Sin(θ)
+  p[n][2] = tbw / 2
+  If θ < θ2 Then
+    n = n + 1 ' forth corner of type face
+    p[n][1] = p[1][1]
+    p[n][2] = tbw / 2
+  ElseIf θ2 < θ Then
+    n = n + 1
+    p[n][1] = p[1][1]
+    s = tfw / 2 - tbw / 2 * LDMath.Sin(180 - θ)
+    y = s * LDMath.Tan(180 - θ) - tbw / 2 * LDMath.Cos(180 - θ)
+    p[n][2] = y
+  EndIf
+  shp[2] = LDShapes.AddPolygon(p)
+  Shapes.Move(shp[2], ox, oy)
+EndSub
+
+Sub FlipTypeBar
+  ' param a - angle to flip
+  x3 = p[n3][1]
+  y3 = p[n3][2]
+  x4 = p[n3 + 1][1]
+  y4 = p[n3 + 1][2]
+  n = Array.GetItemCount(p)
+  q = ""
+  GraphicsWindow.PenWidth = 0
+  For i = 1 To n
+    ' perpendicular foot
+    x = p[i][1]
+    y = p[i][2]
+    k = - (y4 - y3) * (y3 - y) - (x4 - x3) * (x3 - x)
+    k = k / (Math.Power(x4 - x3, 2) + Math.Power(y4 - y3, 2))
+    fx = (1 - k) * x3 + k * x4
+    fy = (1 - k) * y3 + k * y4
+    dx = x - fx
+    dy = y - fy
+    q[i][1] = fx + dx * LDMath.Cos(a)
+    q[i][2] = fy + dy * LDMath.Cos(a)
+  EndFor
+  LDShapes.MovePolygon(shp[2], q)
+EndSub
+
+Sub DumpPoints
+  LF = Text.GetCharacter(10)
+  buf = ""
+  For i = 1 To Array.GetItemCount(p)
+    buf = buf + "p[" + i + "]=(" + p[i][1] + "," + p[i][2] + ")" + LF
+  EndFor
+  tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
+  Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
+  Controls.SetTextBoxText(tbox, buf)
+  Shapes.SetOpacity(tbox, 50)
+EndSub
+  

@@ -104,14 +104,15 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Right](https://github.com/nonkitMac/Pictionary/blob/master/img/Right.png)
    [Root](https://github.com/nonkitMac/Pictionary/blob/master/img/Root.png)
    [Second](https://github.com/nonkitMac/Pictionary/blob/master/img/Second.png)
-   *Simplified*
+   *[Simplified](https://github.com/nonkitMac/Pictionary/blob/master/img/Simplified.png)*
    [Sine](https://github.com/nonkitMac/Pictionary/blob/master/img/Sine.png)
    [Size](https://github.com/nonkitMac/Pictionary/blob/master/img/Size.png)
    [Spanish](https://github.com/nonkitMac/Pictionary/blob/master/img/Spanish.png)
    Speed
    [Square](https://github.com/nonkitMac/Pictionary/blob/master/img/Square.png)
    [Tangent](https://github.com/nonkitMac/Pictionary/blob/master/img/Tangent.png)
-   Title Top *Traditional*
+   Title Top 
+   *[Traditional](https://github.com/nonkitMac/Pictionary/blob/master/img/Traditional.png)*
    [Triangle](https://github.com/nonkitMac/Pictionary/blob/master/img/Triangle.png)
    *Upper* Value
    [Wall](https://github.com/nonkitMac/Pictionary/blob/master/img/Wall.png)
@@ -140,7 +141,8 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    **[Stop](https://github.com/nonkitMac/Pictionary/blob/master/img/Stop.png)**
    **Tick**
    **[Turn](https://github.com/nonkitMac/Pictionary/blob/master/img/Turn.png)**
-   **Type** **Up** **Wait**
+   **[Type](https://github.com/nonkitMac/Pictionary/blob/master/img/Type.png)**
+   **Up** **Wait**
    **[Write](https://github.com/nonkitMac/Pictionary/blob/master/img/Write.png)**
    **[Zoom](https://github.com/nonkitMac/Pictionary/blob/master/img/Zoom.png)**
 5. *Can* **Contain** 

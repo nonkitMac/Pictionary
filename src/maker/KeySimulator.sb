@@ -1,0 +1,153 @@
+' Typewriter Key Simulator
+' Copyright © 2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-04-26
+
+GraphicsWindow.Title = "Typewriter Key Simulator"
+delay = 100
+gw = GraphicsWindow.Width
+gh = GraphicsWindow.Height
+ox = gw / 2
+oy = gh / 2
+r = 60
+GraphicsWindow.PenWidth = 0
+GraphicsWindow.BrushColor = "#99CCCCCC"
+shW[1] = 2 * r
+shH[1] = 2 * r
+shX[1] = ox - r
+shY[1] = oy - r
+shp[1] = Shapes.AddEllipse(shW[1], shH[1])
+Shapes.Move(shp[1], shX[1], shY[1])
+GraphicsWindow.BrushColor = "DimGray"
+θ1 = 2 * LDMath.ArcTan(1/3)
+θ2 = 180 - θ1
+θ = 10
+GraphicsWindow.PenWidth = 2
+GraphicsWindow.PenColor = "Blue"
+x = ox + 300 * LDMath.Cos(θ)
+y = oy + 300 * LDMath.Sin(θ)
+GraphicsWindow.DrawLine(ox, oy, x, y)
+GraphicsWindow.PenWidth = 0
+tfw = 6   ' type face
+tfh = 20
+tbw = 50  ' type bar
+tbh = 2
+n = 1 ' first corner of type face
+If θ < 90 Then
+  p[n][1] = 0
+  p[n][2] = tfw * LDMath.Sin(θ)
+ElseIf θ = 90 Then
+  p[n][1] = 0
+  p[n][2] = tfw
+Else
+  p[n][1] = tfw * LDMath.Sin(θ - 90)
+  p[n][2] = tfh * LDMath.Sin(θ - 90) + tfw * LDMath.Cos(θ - 90)
+EndIf
+n = 2 ' second corner of type face
+If θ < 90 Then
+  p[n][1] = tfw * LDMath.Cos(θ)
+  p[n][2] = 0
+ElseIf θ = 90 Then
+  p[n][1] = 0
+  p[n][2] = 0
+Else
+  p[n][1] = 0
+  p[n][2] = tfh * LDMath.Sin(θ - 90)
+EndIf
+n = 3 ' third corner of type face
+If θ < 90 Then
+  p[n][1] = p[n - 1][1] + tfh * LDMath.Sin(θ)
+  p[n][2] = p[n - 1][2] + tfh * LDMath.Cos(θ)
+  cx = p[n][1] - tfw / 2 * LDMath.Cos(θ) - tbh / 2 * LDMath.Sin(θ)
+  cy = p[n][2] + tfw / 2 * LDMath.Sin(θ) - tbh / 2 * LDMath.Cos(θ)
+ElseIf θ = 90 Then
+  p[n][1] = p[n - 1][1] + tfh
+  p[n][2] = p[n - 1][2] 
+  cx = p[n][1] - tbh / 2
+  cy = p[n][2] + tfw / 2 - tbh / 2
+Else
+  p[n][1] = tfh * LDMath.Cos(θ)
+  p[n][2] = 0
+  cx = p[n][1] - tbh / 2
+  cy = p[n][2] + tfw / 2 - tbh / 2
+EndIf
+If θ <= θ1 Then
+  y = cy - tbh / 2
+  k = (y - p[n - 1][2]) / (p[n][2] - p[n - 1][2])
+  x = (1 - k) * p[n - 1][1] + k * p[n][1]
+  p[n][1] = x
+  p[n][2] = y
+EndIf
+n = n + 1 ' third corner of type bar
+p[n][1] = cx + tbw
+p[n][2] = cy - tbh / 2
+n = n + 1 ' forth corner of type bar
+p[n][1] = p[n - 1][1]
+p[n][2] = p[n - 1][2] + tbh
+n = n + 1 ' dummy
+p[n][1] = 0
+p[n][2] = 0
+n = n + 1 ' forth corner of type face
+If θ < 90 Then
+  p[n][1] = p[1][1] + tfh * LDMath.Sin(θ)
+  p[n][2] = p[1][2] + tfh * LDMath.Cos(θ)
+ElseIf θ = 90 Then
+  p[n][1] = p[1][1] + tfh
+  p[n][2] = p[1][2]
+Else
+  p[n][1] = p[1][1] + tfh * LDMath.Cos(θ - 90)
+  p[n][2] = p[1][2] - tfh * LDMath.Sin(θ - 90)
+EndIf
+If θ2 <= θ Then
+  y = cy + tbh / 2
+  k = (y - p[1][2]) / (p[n][2] - p[1][2])
+  x = (1 - k) * p[1][1] + k * p[n][1]
+  p[n][1] = ""
+  p[n][2] = ""
+  n = n - 1
+  p[n][1] = x
+  p[n][2] = y
+Else
+  p[n - 1][1] = p[n][1] + (tfw / 2 - tbh / 2 * LDMath.Sin(θ / 2)) * LDMath.Cos(θ)
+  p[n - 1][2] = p[n][2] - (tfw / 2 - tbh / 2 * LDMath.Sin(θ / 2)) * LDMath.Sin(θ)
+EndIf
+
+shp[2] = LDShapes.AddPolygon(p)
+shW[2] = LDShapes.Width(shp[2])
+shH[2] = LDShapes.Height(shp[2])
+shX[2] = ox - tfw / 2 - p[1][1]
+shY[2] = oy - (tfh - tbh / 2) - p[1][2]
+Shapes.Move(shp[2], shX[2], shY[2])
+LDShapes.RotateAbout(shp[2], shX[2], shY[2], θ)
+da = 10
+For a = da To 80 Step da
+  Program.Delay(delay)
+  Shapes.Rotate(shp[2], 0)
+  scaleX = LDMath.Cos(a)
+  Shapes.Zoom(shp[2], Math.Abs(scaleX), 1)
+  'LDShapes.SetSize(shp[2], shW[2] * Math.Abs(scaleX), shH[2])
+  Shapes.Rotate(shp[2], θ)
+  If a = 90 Then
+    Shapes.HideShape(shp[2])
+  ElseIf a = 90 + da Then
+    Shapes.ShowShape(shp[2])
+    LDShapes.SetProperty(shp[2], "FlowDirection", "RightToLeft")
+  EndIf
+  cx = ox + shW[2] * (1 - scaleX / 2) * LDMath.Cos(θ)
+  cy = oy + shW[2] * (1 - scaleX / 2) * LDMath.Sin(θ)
+  shX[2] = cx - shW[2] * Math.Abs(scaleX) / 2
+  shY[2] = cy - shH[2] / 2
+  Shapes.Move(shp[2], shX[2], shY[2])
+EndFor
+
+Sub DumpPoints
+  LF = Text.GetCharacter(10)
+  buf = ""
+  For i = 1 To Array.GetItemCount(p)
+    buf = buf + "p[" + i + "]=(" + p[i][1] + "," + p[i][2] + ")" + LF
+  EndFor
+  tbox = Controls.AddMultiLineTextBox(gw / 2, 10)
+  Controls.SetSize(tbox, gw / 2 - 10, gh - 20)
+  Controls.SetTextBoxText(tbox, buf)
+  Shapes.SetOpacity(tbox, 50)
+EndSub
+  
