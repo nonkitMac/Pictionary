@@ -57,7 +57,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Color](https://github.com/nonkitMac/Pictionary/blob/master/img/Color.png)
    Content
    [Cosine](https://github.com/nonkitMac/Pictionary/blob/master/img/Cosine.png)
-   Count
+   [Count](https://github.com/nonkitMac/Pictionary/blob/master/img/Count.png)
    [Cursor](https://github.com/nonkitMac/Pictionary/blob/master/img/Cursor.png)
    [Date](https://github.com/nonkitMac/Pictionary/blob/master/img/Date.png)
    Day
@@ -95,7 +95,8 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Paper](https://github.com/nonkitMac/Pictionary/blob/master/img/Paper.png)
    Path
    [Pen](https://github.com/nonkitMac/Pictionary/blob/master/img/Pen.png)
-   Pi Pixel Power
+   [Pi](https://github.com/nonkitMac/Pictionary/blob/master/img/Pi.png)
+   Pixel Power
    [Radian](https://github.com/nonkitMac/Pictionary/blob/master/img/Radian.png)
    *[Random](https://github.com/nonkitMac/Pictionary/blob/master/img/Random.png)*
    [Remainder](https://github.com/nonkitMac/Pictionary/blob/master/img/Remainder.png)

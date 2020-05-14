@@ -1,10 +1,10 @@
 ' Pictionary
-' Version 1.4.0
+' Version 1.5.0
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-04-29
+' Last update 2020-05-14
 ' Using Extension LitDev
 
-title = "Pictionary 1.4.0"
+title = "Pictionary 1.5.0"
 GraphicsWindow.Title = title
 Not = "False=True;True=False;"
 gw = 660
@@ -27,15 +27,15 @@ Shapes.SetOpacity(icon, 90)
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
 kw = "And,Angle,Array,Bell,Bold,Box,Brush,"
 kw = kw + "Caption,Ceiling,Chime,Chinese,Click,Clock,"
-kw = kw + "Color,Control,Copy,Cosine,Cursor,"
+kw = kw + "Color,Control,Copy,Cosine,Count,Cursor,"
 kw = kw + "Date,Degree,Delete,Desktop,Dictionary,Draw,"
 kw = kw + "Ellipse,End,English,Error,"
 kw = kw + "File,Fill,Flickr,Floor,Font,For,French,From,"
-kw = kw + "German,Go,Graphics,Height,Hour,"
+kw = kw + "German,Go,Graphics,Gray,Height,Hour,"
 kw = kw + "Image,Italian,Italic,Japanese,Korean,"
 kw = kw + "Left,Length,Line,"
 kw = kw + "Math,Message,Minute,Mouse,Move,Music,Network,"
-kw = kw + "Or,Paper,Pen,Program,Radian,Random,Rectangle,"
+kw = kw + "Or,Paper,Pen,Pi,Program,Radian,Random,Rectangle,"
 kw = kw + "Remainder,Resize,RGB,Right,Ring,Root,Rotate,"
 kw = kw + "Second,Shape,Shell,Simplified,Sine,Size,Sound,Spanish,"
 kw = kw + "Square,Stack,Start,Step,Stop,Subroutine,"
