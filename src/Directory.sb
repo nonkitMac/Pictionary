@@ -1,13 +1,30 @@
-' Pictionary - Stack
+' Pictionary - Directory
 ' Version 1.6.0
-' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Copyright © 2020 Nonki Takahashi.  The MIT License.
 ' Last update 2020-05-15
 
 SB_Workaround()
 Init()
-' initialize stack shapes
-Shapes_Init_Stack()
-name = "Stack"
+' initialize folder shapes
+Shapes_Init_Folder()
+name = "Caption"
+scale = 0.25
+Sprite_Add()
+' initialize file shapes
+Shapes_Init_File()
+name = "Caption"
+scale = 0.2
+Sprite_Add()
+Sprite_Add()
+i = nSprite
+spr = sprite[i]
+x = spr["x"]
+y = spr["y"] + 80
+Sprite_Move()
+' initialize text shapes
+Shapes_Init_Text()
+name = "Text"
+scale = 1
 Sprite_Add()
 ' initialize caption shapes
 Shapes_Init_Caption()
@@ -15,11 +32,11 @@ name = "Caption"
 Sprite_Add()
 
 Sub Init
-  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw
   GraphicsWindow.Height = gh
+  GraphicsWindow.Title = "Pictionary"
 EndSub
 
 Sub Math_CartesianToPolar
@@ -140,29 +157,56 @@ Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 453 ' x offset
+  shX = 359 ' x offset
   shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Stack;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+  shape[1] = "func=text;x=0;y=0;text=Directory;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
-Sub Shapes_Init_Stack
+Sub Shapes_Init_File
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 250 ' x offset
-  shY = 40  ' y offset
+  shX = 180 ' x offset
+  shY = 146 ' y offset
   shape = ""
-  shape[1] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=0;"
-  shape[2] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=40;"
-  shape[3] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=80;"
-  shape[4] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=120;"
-  shape[5] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=160;"
-  shape[6] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=200;"
-  shape[7] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=240;"
-  shape[8] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=280;"
+  shape[1] = "func=rect;x=1;y=1;width=204;height=260;bc=#EEEE00;pw=0;"
+  shape[2] = "func=rect;x=4;y=12;width=190;height=237;bc=#FFFFFF;pw=0;"
+  shape[3] = "func=rect;x=70;y=80;width=10;height=10;bc=#333333;pw=0;"
+  shape[4] = "func=rect;x=100;y=80;width=10;height=10;bc=#333333;pw=0;"
+  shape[5] = "func=rect;x=130;y=80;width=10;height=10;bc=#333333;pw=0;"
+  shape[6] = "func=line;x=70;y=180;x1=0;y1=0;x2=70;y1=0;pc=#333333;pw=2;"
+  shape[7] = "func=rect;x=1;y=1;width=204;height=260;bc=#11000000;pw=0;"
+  shape[8] = "func=rect;x=0;y=0;width=15;height=262;bc=#CFCFCF;pw=0;"
 EndSub
-  
+
+Sub Shapes_Init_Folder
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 170 ' x offset
+  shY = 70  ' y offset
+  shape[1] = "func=tri;x=0;y=0;x1=14;y1=0;x2=0;y2=40;x3=28;y3=40;bc=#CDA35A;pc=#000000;pw=0;"
+  shape[2] = "func=rect;x=14;y=0;width=98;height=40;bc=#CDA35A;pc=#000000;pw=0;"
+  shape[3] = "func=tri;x=98;y=0;x1=14;y1=0;x2=0;y2=40;x3=28;y3=40;bc=#CDA35A;pc=#000000;pw=0;"
+  shape[4] = "func=rect;x=0;y=40;width=240;height=150;bc=#CDA35A;pc=#000000;pw=0;"
+  shape[5] = "func=tri;x=0;y=60;x1=14;y1=0;x2=0;y2=130;x3=28;y3=130;bc=#BC8C39;pc=#000000;pw=0;"
+  shape[6] = "func=rect;x=14;y=60;width=226;height=130;bc=#BC8C39;pc=#000000;pw=0;"
+  shape[7] = "func=tri;x=226;y=60;x1=14;y1=130;x2=0;y2=0;x3=28;y3=0;bc=#BC8C39;pc=#000000;pw=0;"
+EndSub
+
+Sub Shapes_Init_Text
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 260 ' x offset
+  shY = 70  ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=src;fn=Segoe UI;fs=30;fb=False;bc=#333333;"
+  shape[2] = "func=text;x=0;y=80;text=LICENSE.md;fn=Segoe UI;fs=30;fb=False;bc=#333333;"
+  shape[3] = "func=text;x=0;y=160;text=README.md;fn=Segoe UI;fs=30;fb=False;bc=#333333;"
+EndSub
+
 Sub Sprite_Add
   ' Sprite | add shapes to a sprite
   ' param name - sprite name
@@ -254,4 +298,34 @@ Sub Sprite_Add
   y = Stack.PopValue("local")
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
+EndSub
+
+Sub Sprite_Move
+  ' Sprite | move a sprite
+  ' param sprite[i] - sprite to move
+  ' param x, y - position to move
+  ' return sprite[i] - updated sprite
+  Stack.PushValue("local", j)
+  spr = sprite[i]
+  s = spr["scale"]
+  spr["x"] = x
+  spr["y"] = y
+  shape = spr["shape"]
+  n = Array.GetItemCount(shape)
+  For j = 1 To n
+    shp = shape[j]
+    If sbd And (shp["func"] = "line") Then
+      _x = shp["wx"]
+      _y = shp["wy"]
+    ElseIf silverlight And Text.IsSubText("tri|line", shp["func"]) Then
+      _x = shp["wx"]
+      _y = shp["wy"]
+    Else
+      _x = shp["rx"]
+      _y = shp["ry"]
+    EndIf
+    Shapes.Move(shp["obj"], spr["x"] + _x * s, spr["y"]  + _y * s)
+  EndFor
+  sprite[i] = spr
+  j = Stack.PopValue("local")
 EndSub

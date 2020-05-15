@@ -1,0 +1,40 @@
+' Pictionary - Lower
+' Version 1.6.0
+' Copyright © 2020 Nonki Takahashi.  The MIT Licenese.
+' Last update 2020-05-14
+
+Init()
+width = 400
+x = (gw - width) / 2
+y = 50
+dy = "1=8;2=18;3=44;"
+alpha[1] = "ABCDEFGHIJKLM"
+alpha[2] = "NOPQRSTUVWXYZ"
+alpha[3] = "abcdefghijklm"
+alpha[4] = "nopqrstuvwxyz"
+GraphicsWindow.PenColor = "LightGray"
+GraphicsWindow.BrushColor = "#999999"
+GraphicsWindow.FontSize = 50
+GraphicsWindow.FontName = "Courier New"
+For i = 1 To 4
+  If i = 3 Then
+    GraphicsWindow.BrushColor = "#CC0000"
+  EndIf
+  GraphicsWindow.DrawLine(x, y + dy[1], x + width, y + dy[1])
+  GraphicsWindow.DrawLine(x, y + dy[2], x + width, y + dy[2])
+  GraphicsWindow.DrawLine(x, y + dy[3], x + width, y + dy[3])
+  GraphicsWindow.DrawText(x + 4, y, alpha[i])
+  y = y + 70
+EndFor
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontName = "Trebuchet MS"
+GraphicsWindow.DrawText(433, 358, "Lower")
+
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub
+  

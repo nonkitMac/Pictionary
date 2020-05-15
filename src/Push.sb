@@ -1,18 +1,40 @@
-' Pictionary - Stack
+' Pictionary - Push
 ' Version 1.6.0
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
 ' Last update 2020-05-15
 
 SB_Workaround()
 Init()
+' initialize brick shapes
+Shapes_Init_Brick()
+name = "Brick"
+Sprite_Add()
+iB = nSprite
 ' initialize stack shapes
 Shapes_Init_Stack()
 name = "Stack"
 Sprite_Add()
+iS = nSprite
 ' initialize caption shapes
 Shapes_Init_Caption()
 name = "Caption"
 Sprite_Add()
+spr = sprite[iB]
+x = spr["x"]
+yB = spr["y"]
+spr = sprite[iS]
+yS = spr["y"]
+For y = yB + 1 To yS
+  Program.Delay(50)
+  If yS - 40 < y Then
+    y = y + 40
+    i = iS
+    Sprite_Move()
+    y = y - 40
+  EndIf
+  i = iB
+  Sprite_Move()
+EndFor
 
 Sub Init
   GraphicsWindow.Title = "Pictionary"
@@ -136,14 +158,24 @@ Sub Shapes_CalcWidthAndHeight
   EndFor
 EndSub
 
+Sub Shapes_Init_Brick
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 250 ' x offset
+  shY = 10  ' y offset
+  shape = ""
+  shape[1] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=0;"
+EndSub
+
 Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = 453 ' x offset
+  shX = 468 ' x offset
   shY = 358 ' y offset
   shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Stack;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+  shape[1] = "func=text;x=0;y=0;text=Push;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
 Sub Shapes_Init_Stack
@@ -151,7 +183,7 @@ Sub Shapes_Init_Stack
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
   shX = 250 ' x offset
-  shY = 40  ' y offset
+  shY = 70  ' y offset
   shape = ""
   shape[1] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=0;"
   shape[2] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=40;"
@@ -160,7 +192,6 @@ Sub Shapes_Init_Stack
   shape[5] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=160;"
   shape[6] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=200;"
   shape[7] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=240;"
-  shape[8] = "pw=0;bc=FireBrick;func=rect;width=100;height=35;x=0;y=280;"
 EndSub
   
 Sub Sprite_Add
@@ -254,4 +285,34 @@ Sub Sprite_Add
   y = Stack.PopValue("local")
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
+EndSub
+
+Sub Sprite_Move
+  ' Sprite | move a sprite
+  ' param sprite[i] - sprite to move
+  ' param x, y - position to move
+  ' return sprite[i] - updated sprite
+  Stack.PushValue("local", j)
+  spr = sprite[i]
+  s = spr["scale"]
+  spr["x"] = x
+  spr["y"] = y
+  shape = spr["shape"]
+  n = Array.GetItemCount(shape)
+  For j = 1 To n
+    shp = shape[j]
+    If sbd And (shp["func"] = "line") Then
+      _x = shp["wx"]
+      _y = shp["wy"]
+    ElseIf silverlight And Text.IsSubText("tri|line", shp["func"]) Then
+      _x = shp["wx"]
+      _y = shp["wy"]
+    Else
+      _x = shp["rx"]
+      _y = shp["ry"]
+    EndIf
+    Shapes.Move(shp["obj"], spr["x"] + _x * s, spr["y"]  + _y * s)
+  EndFor
+  sprite[i] = spr
+  j = Stack.PopValue("local")
 EndSub

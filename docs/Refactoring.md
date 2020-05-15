@@ -9,6 +9,7 @@ Update version information according to Semantic Versioning below.
 Use `Init()` subroutine such as following code.
 ```
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw

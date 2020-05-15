@@ -15,7 +15,10 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    *[Or](https://github.com/nonkitMac/Pictionary/blob/master/img/Or2.png)*
    *[For](https://github.com/nonkitMac/Pictionary/blob/master/img/For.png)*
    [Step](https://github.com/nonkitMac/Pictionary/blob/master/img/For.png)
-   *If* *Then* *Else* *While*
+   *If*
+   *Then*
+   *Else*
+   *While*
    **[Go](https://github.com/nonkitMac/Pictionary/blob/master/img/Go2.png)**
    *[To](https://github.com/nonkitMac/Pictionary/blob/master/img/To.png)*
    [Subroutine](https://github.com/nonkitMac/Pictionary/blob/master/img/Subroutine.png)
@@ -48,7 +51,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Box](https://github.com/nonkitMac/Pictionary/blob/master/img/Box.png)
    [Brush](https://github.com/nonkitMac/Pictionary/blob/master/img/Brush.png)
    [Caption](https://github.com/nonkitMac/Pictionary/blob/master/img/Caption.png)
-   Case
+   [Case](https://github.com/nonkitMac/Pictionary/blob/master/img/Case.png)
    [Ceiling](https://github.com/nonkitMac/Pictionary/blob/master/img/Ceiling.png)
    Character
    [Chime](https://github.com/nonkitMac/Pictionary/blob/master/img/Chime.png)
@@ -62,7 +65,8 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Date](https://github.com/nonkitMac/Pictionary/blob/master/img/Date.png)
    Day
    [Degree](https://github.com/nonkitMac/Pictionary/blob/master/img/Degree.png)
-   Definition Directory
+   Definition
+   [Directory](https://github.com/nonkitMac/Pictionary/blob/master/img/Directory.png)
    [Ellipse](https://github.com/nonkitMac/Pictionary/blob/master/img/Ellipse.png)
    [English](https://github.com/nonkitMac/Pictionary/blob/master/img/English2.png)
    [Error](https://github.com/nonkitMac/Pictionary/blob/master/img/Error.png)
@@ -74,29 +78,38 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Height](https://github.com/nonkitMac/Pictionary/blob/master/img/Height.png)
    [Hour](https://github.com/nonkitMac/Pictionary/blob/master/img/Hour.png)
    [Image](https://github.com/nonkitMac/Pictionary/blob/master/img/Image.png)
-   Index Interval
+   Index
+   Interval
    [Italian](https://github.com/nonkitMac/Pictionary/blob/master/img/Italian.png)
    [Italic](https://github.com/nonkitMac/Pictionary/blob/master/img/Italic.png)
    Item
    [Japanese](https://github.com/nonkitMac/Pictionary/blob/master/img/Japanese.png)
-   Key
+   [Key](https://github.com/nonkitMac/Pictionary/blob/master/img/Key.png)
    [Korean](https://github.com/nonkitMac/Pictionary/blob/master/img/Korean.png)
    *Last*
    [Left](https://github.com/nonkitMac/Pictionary/blob/master/img/Left.png)
    [Length](https://github.com/nonkitMac/Pictionary/blob/master/img/Length.png)
    [Line](https://github.com/nonkitMac/Pictionary/blob/master/img/Line.png)
-   *Lower* Logarithm *Natural* *Maximum*
+   *[Lower](https://github.com/nonkitMac/Pictionary/blob/master/img/Lower.png)*
+   Logarithm
+   *Natural*
+   *Maximum*
    [Message](https://github.com/nonkitMac/Pictionary/blob/master/img/Message.png)
-   Millisecond *Minimum*
+   Millisecond
+   *Minimum*
    [Minute](https://github.com/nonkitMac/Pictionary/blob/master/img/Minute.png)
    Month
    [Music](https://github.com/nonkitMac/Pictionary/blob/master/img/Music.png)
-   Name *Of* Opacity Page
+   Name
+   *Of*
+   Opacity
+   Page
    [Paper](https://github.com/nonkitMac/Pictionary/blob/master/img/Paper.png)
    Path
    [Pen](https://github.com/nonkitMac/Pictionary/blob/master/img/Pen.png)
    [Pi](https://github.com/nonkitMac/Pictionary/blob/master/img/Pi.png)
-   Pixel Power
+   Pixel
+   Power
    [Radian](https://github.com/nonkitMac/Pictionary/blob/master/img/Radian.png)
    *[Random](https://github.com/nonkitMac/Pictionary/blob/master/img/Random.png)*
    [Remainder](https://github.com/nonkitMac/Pictionary/blob/master/img/Remainder.png)
@@ -112,41 +125,60 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    Speed
    [Square](https://github.com/nonkitMac/Pictionary/blob/master/img/Square.png)
    [Tangent](https://github.com/nonkitMac/Pictionary/blob/master/img/Tangent.png)
-   Title Top 
+   Title
+   Top 
    *[Traditional](https://github.com/nonkitMac/Pictionary/blob/master/img/Traditional.png)*
    [Triangle](https://github.com/nonkitMac/Pictionary/blob/master/img/Triangle.png)
-   *Upper* Value
+   *[Upper](https://github.com/nonkitMac/Pictionary/blob/master/img/Upper.png)*
+   Value
    [Wall](https://github.com/nonkitMac/Pictionary/blob/master/img/Wall.png)
    [Web](https://github.com/nonkitMac/Pictionary/blob/master/img/Web.png)
    [Week](https://github.com/nonkitMac/Pictionary/blob/master/img/Week.png)
    [Width](https://github.com/nonkitMac/Pictionary/blob/master/img/Width.png)
    Year
-4. **Add** **Animate** **Append** **Clear**
+4. **Add**
+   **Animate**
+   **Append**
+   **Clear**
    **[Click](https://github.com/nonkitMac/Pictionary/blob/master/img/Click.png)**
    **Convert**
    **[Copy](https://github.com/nonkitMac/Pictionary/blob/master/img/Copy.png)**
    **Create**
    **[Delete](https://github.com/nonkitMac/Pictionary/blob/master/img/Delete.png)**
-   **Delay** **Download**
+   **Delay**
+   **Download**
    **[Draw](https://github.com/nonkitMac/Pictionary/blob/master/img/Draw.png)**
-   **Down** **Elapse**
+   **[Down](https://github.com/nonkitMac/Pictionary/blob/master/img/Down.png)**
+   **Elapse**
    **[Fill](https://github.com/nonkitMac/Pictionary/blob/master/img/Fill.png)**
-   **Get** **Hide** **Input** **Insert**
+   **Get**
+   **Hide**
+   **Input**
+   **Insert**
    **[Move](https://github.com/nonkitMac/Pictionary/blob/master/img/Move.png)**
-   **Pause** **Play** **Pop** **Push** **Read** **Remove**
+   **Pause**
+   **Play**
+   **[Pop](https://github.com/nonkitMac/Pictionary/blob/master/img/Pop.png)**
+   **[Push](https://github.com/nonkitMac/Pictionary/blob/master/img/Push.png)** 
+   **Read**
+   **Remove**
    **[Resize](https://github.com/nonkitMac/Pictionary/blob/master/img/Resize.png)**
    **Resume**
    **[Ring](https://github.com/nonkitMac/Pictionary/blob/master/img/Ring.png)**
    **[Rotate](https://github.com/nonkitMac/Pictionary/blob/master/img/Rotate.png)**
-   **Round** **Set** **Show**
+   **Round**
+   **Set**
+   **Show**
    **[Stop](https://github.com/nonkitMac/Pictionary/blob/master/img/Stop.png)**
    **Tick**
    **[Turn](https://github.com/nonkitMac/Pictionary/blob/master/img/Turn.png)**
    **[Type](https://github.com/nonkitMac/Pictionary/blob/master/img/Type.png)**
-   **Up** **Wait**
+   **[Up](https://github.com/nonkitMac/Pictionary/blob/master/img/Up.png)**
+   **Wait**
    **[Write](https://github.com/nonkitMac/Pictionary/blob/master/img/Write.png)**
    **[Zoom](https://github.com/nonkitMac/Pictionary/blob/master/img/Zoom.png)**
-5. *Can* **Contain** 
+5. *Can*
+   **Contain** 
    **[End](https://github.com/nonkitMac/Pictionary/blob/master/img/End.png)** 
    **Is**
    **[Start](https://github.com/nonkitMac/Pictionary/blob/master/img/Start.png)**
