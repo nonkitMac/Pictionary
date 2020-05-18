@@ -1,0 +1,23 @@
+'Written by Thaelmann-Pioniere
+'Program ID CWX957
+GraphicsWindow.Title = "Pictionary"
+GraphicsWindow.Width = 598
+GraphicsWindow.Height = 428
+GraphicsWindow.FontName="Trebchet MS"
+GraphicsWindow.BrushColor="Black"
+GraphicsWindow.FontSize=50
+GraphicsWindow.DrawText(350,358,"Animate")
+
+For i = 1 To 10
+  GraphicsWindow.BrushColor = GraphicsWindow.GetColorFromRGB(0,0,250-i*20)
+  shape[i] = Shapes.AddEllipse(100,100)
+  Shapes.Move(shape[i],200+i*10,164)
+  Program.Delay(200)
+  If i > 4 Then
+    Shapes.Remove(shape[i-4])
+  EndIf
+EndFor
+For i = 7 To 9
+  Shapes.Remove(shape[i])
+  Program.Delay(200)
+EndFor

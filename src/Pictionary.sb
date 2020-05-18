@@ -1,10 +1,10 @@
 ' Pictionary
-' Version 1.6.0
+' Version 1.7.0
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-05-15
+' Last update 2020-05-18
 ' Using Extension LitDev
 
-title = "Pictionary 1.6.0"
+title = "Pictionary 1.7.0"
 GraphicsWindow.Title = title
 Not = "False=True;True=False;"
 gw = 660
@@ -25,7 +25,7 @@ icon = Shapes.AddImage(img)
 Shapes.Move(icon, gw - iw - 10, gh - ih - 10)
 Shapes.SetOpacity(icon, 90)
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
-kw = "And,Angle,Array,Bell,Bold,Box,Brush,"
+kw = "And,Angle,Animate,Array,Bell,Bold,Box,Brush,"
 kw = kw + "Caption,Case,Ceiling,Chime,Chinese,Click,Clock,"
 kw = kw + "Color,Control,Copy,Cosine,Count,Cursor,"
 kw = kw + "Date,Degree,Delete,Desktop,Dictionary,Directory,"
