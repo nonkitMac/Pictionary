@@ -1,12 +1,15 @@
+'Pictionary - Animate
+'Version 1.7.1
 'Written by Thaelmann-Pioniere
-'Program ID CWX957
+'modified by Nonki Takahashi
+
 GraphicsWindow.Title = "Pictionary"
 GraphicsWindow.Width = 598
 GraphicsWindow.Height = 428
-GraphicsWindow.FontName="Trebchet MS"
+GraphicsWindow.FontName="Trebuchet MS"
 GraphicsWindow.BrushColor="Black"
 GraphicsWindow.FontSize=50
-GraphicsWindow.DrawText(350,358,"Animate")
+GraphicsWindow.DrawText(384,358,"Animate")
 
 For i = 1 To 10
   GraphicsWindow.BrushColor = GraphicsWindow.GetColorFromRGB(0,0,250-i*20)

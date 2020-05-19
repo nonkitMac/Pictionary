@@ -1,24 +1,27 @@
-' Pictionary - From
-' Version 1.2.0
+' Pictionary - Step
+' Version 1.7.1
 ' Copyright © 2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-04-21
+' Last update 2020-05-18
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
+
 ' initialize chart shapes
 Shapes_Init_Chart()
 name = "Chart"
 Sprite_Add()
+
 ' initialize arrow shapes
 Shapes_Init_Arrow()
 name = "Arrow"
 Sprite_Add()
 i = nSprite
+
 ' initialize caption shapes
 Shapes_Init_Caption()
 name = "Caption"
 Sprite_Add()
+
 spr = sprite[i]
 x = spr["x"]
 y = spr["y"]
@@ -32,35 +35,15 @@ While "True"
 EndWhile
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw
   GraphicsWindow.Height = gh
 EndSub
 
-Sub Math_CartesianToPolar
-  ' Math | convert cartesian coodinate to polar coordinate
-  ' param x, y - cartesian coordinate
-  ' return r, a - polar coordinate
-  r = Math.SquareRoot(x * x + y * y)
-  If x = 0 And y > 0 Then
-    a = 90 ' [degree]
-  ElseIf x = 0 And y < 0 Then
-    a = -90
-  ElseIf x = 0 Then
-    a = 0
-  Else
-    a = Math.ArcTan(y / x) * 180 / Math.Pi
-  EndIf
-  If x < 0 Then
-    a = a + 180
-  ElseIf x > 0 And y < 0 Then
-    a = a + 360
-  EndIf
-EndSub
-
 Sub SB_RotateWorkaround
-  ' Small Basic | rotate workaround For Silverlight
+  ' Small Basic | rotate workaround for Silverlight
   ' param shp - current shape
   ' param x, y - original coordinate
   ' param _alpha - angle [radian]

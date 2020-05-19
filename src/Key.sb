@@ -1,16 +1,17 @@
 ' Pictionary - Key
-' Version 1.6.0
+' Version 1.7.1
 ' Copyright © 2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-05-16
+' Last update 2020-05-18
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
+
 ' initialize keys shapes
 Shapes_Init_Keys()
 name = "Keys"
 scale = 2
 Sprite_Add()
+
 ' initialize caption shapes
 Shapes_Init_Caption()
 name = "Caption"
@@ -18,6 +19,7 @@ scale = 1
 Sprite_Add()
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw
@@ -25,29 +27,8 @@ Sub Init
   delay = 50  ' [ms]
 EndSub
 
-Sub Math_CartesianToPolar
-  ' Math | convert cartesian coodinate to polar coordinate
-  ' param x, y - cartesian coordinate
-  ' return r, a - polar coordinate
-  r = Math.SquareRoot(x * x + y * y)
-  If x = 0 And y > 0 Then
-    a = 90 ' [degree]
-  ElseIf x = 0 And y < 0 Then
-    a = -90
-  ElseIf x = 0 Then
-    a = 0
-  Else
-    a = Math.ArcTan(y / x) * 180 / Math.Pi
-  EndIf
-  If x < 0 Then
-    a = a + 180
-  ElseIf x > 0 And y < 0 Then
-    a = a + 360
-  EndIf
-EndSub
-
 Sub SB_RotateWorkaround
-  ' Small Basic | rotate workaround For Silverlight
+  ' Small Basic | rotate workaround for Silverlight
   ' param shp - current shape
   ' param x, y - original coordinate
   ' param _alpha - angle [radian]
@@ -153,7 +134,7 @@ Sub Shapes_Init_Keys
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
-  shX = -70   ' x offset
+  shX = -62   ' x offset
   shY = -330  ' y offset
   shape = ""
   shape[1] = "func=rect;x=90;y=290;width=180;height=12;pw=0;bc=Black;"

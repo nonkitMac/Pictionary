@@ -137,8 +137,8 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Width](https://github.com/nonkitMac/Pictionary/blob/master/img/Width.png)
    Year
 4. **Add**
-   **Animate**
-   **Append**
+   **[Animate](https://github.com/nonkitMac/Pictionary/blob/master/img/Animate.png)**
+   **[Append](https://github.com/nonkitMac/Pictionary/blob/master/img/Append.png)**
    **Clear**
    **[Click](https://github.com/nonkitMac/Pictionary/blob/master/img/Click.png)**
    **Convert**

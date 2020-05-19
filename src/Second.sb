@@ -1,20 +1,19 @@
 ' Pictionary - Second
-' Copyright © 2017 Nonki Takahashi.  The MIT License.
+' Version 1.7.1
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-18
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-' initialize shapes
+Init()
+
+' initialize clock shapes
 Shapes_Init()
 angle = 0 ' dummy
-' add shapes
 scale = 1
 iMin = 1
 iMax = 6
 Shapes_Add()
+
 cx = gw / 2 - shX
 cy = gh / 2 - shY
 While "True"
@@ -33,6 +32,14 @@ While "True"
   Program.Delay(500)
 EndWhile
 
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub
+
 Sub Shapes_Init
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
@@ -47,6 +54,7 @@ Sub Shapes_Init
   shape[5] = "func=ell;width=20;height=20;x=140;y=140;pw=0;bc=#990000;"
   shape[6] = "func=text;x=260;y=290;text=Second;bc=Black;fs=50;fn=Trebuchet MS;fb=False;fi=False;"
 EndSub
+
 Sub Math_CartesianToPolar
   ' Math | convert cartesian coodinate to polar coordinate
   ' param x, y - cartesian coordinate
@@ -67,6 +75,7 @@ Sub Math_CartesianToPolar
     a = a + 360
   EndIf
 EndSub
+
 Sub SB_RotateWorkaround
   ' Small Basic | Rotate workaround for Silverlight
   ' param shp - current shape
@@ -85,6 +94,7 @@ Sub SB_RotateWorkaround
   x = x1 * Math.Cos(alpha) - y1 * Math.Sin(alpha) + ox
   y = x1 * Math.Sin(alpha) + y1 * Math.Cos(alpha) + oy
 EndSub
+
 Sub SB_Workaround
   ' Small Basic | Workaround for Silverlight
   ' returns silverlight - "True" if in remote
@@ -96,6 +106,7 @@ Sub SB_Workaround
     silverlight = "False"
   EndIf
 EndSub
+
 Sub Shapes_Add
   ' Shapes | add shapes as shapes data
   ' param iMin, iMax - shape indices to add
@@ -156,6 +167,7 @@ Sub Shapes_Add
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
 EndSub
+
 Sub Shapes_CalcRotatePos
   ' Shapes | Calculate position for rotated shape
   ' param["x"], param["y"] - position of a shape
@@ -176,6 +188,7 @@ Sub Shapes_CalcRotatePos
   x = _cx - param["width"] / 2
   y = _cy - param["height"] / 2
 EndSub
+
 Sub Shapes_CalcWidthAndHeight
   ' Shapes | Calculate total width and height of shapes
   ' param iMin, iMax - shape indices to add
@@ -230,41 +243,7 @@ Sub Shapes_CalcWidthAndHeight
     shape[i] = shp
   EndFor
 EndSub
-Sub Shapes_Move
-  ' Shapes | Move shapes
-  ' param iMin, iMax - shape indices to add
-  ' param shape - array of shapes
-  ' param scale - to zoom
-  ' param x, y - position to move
-  ' return shX, shY - new position of shapes
-  Stack.PushValue("local", i)
-  s = scale
-  shX = x
-  shY = y
-  For i = iMin To iMax
-    shp = shape[i]
-    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
-      _x = shp["wx"]
-      _y = shp["wy"]
-    Else
-      _x = shp["rx"]
-      _y = shp["ry"]
-    EndIf
-    Shapes.Move(shp["obj"], shX + _x * s, shY + _y * s)
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
-Sub Shapes_Remove
-  ' Shapes | Remove shapes
-  ' param iMin, iMax - shapes indices to remove
-  ' param shape - array of shapes
-  Stack.PushValue("local", i)
-  For i = iMin To iMax
-    shp = shape[i]
-    Shapes.Remove(shp["obj"])
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
+
 Sub Shapes_Rotate
   ' Shapes | Rotate shapes
   ' param iMin, iMax - shapes indices to rotate
@@ -312,3 +291,4 @@ Sub Shapes_Rotate
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
 EndSub
+  

@@ -1,15 +1,21 @@
 ' Pictionary - Timer
-' Version 0.2b
-' Copyright © 2014-2017 Nonki Takahashi.  The MIT License.
-' Last update 2017-09-25
+' Version 1.7.1
+' Copyright © 2014-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-gw = 598
-gh = 428
 SB_Workaround()
-GraphicsWindow.Title = "Pictionary"
+Init()
 DrawKitchenTimer()
 AddPomodoro()
 StartTimer()
+
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub
 
 Sub DrawKitchenTimer
   size = 300
@@ -40,6 +46,8 @@ Sub AddPomodoro
   Shapes_Init()
   shX = (gw - size * 0.7) / 2
   shY = (gh - size * 0.7) / 2
+  shape[9]["x"] = 441 - shX
+  shape[9]["y"] = 358 - shY
   scale = 1
   iMin = 1
   iMax = Array.GetItemCount(shape)
@@ -83,7 +91,7 @@ Sub Shapes_Init
   shape[6] = "pw=0;bc=#003300;func=tri;x1=6.3;y1=0;x2=0;y2=75.6;x3=12.6;y3=75.6;x=60.9;y=67.2;angle=270;"
   shape[7] = "pw=0;bc=#003300;func=tri;x1=6.3;y1=0;x2=0;y2=75.6;x3=12.6;y3=75.6;x=79.8;y=34.46;angle=330;"
   shape[8] = "pw=0;bc=White;func=tri;x1=6.3;y1=0;x2=0;y2=12.6;x3=12.6;y3=12.6;x=98.7;y=4;"
-  shape[9] = "pw=0;bc=Black;fs=50;fn=Trebuchet MS;fb=True;fi=False;func=text;text=Timer;x=270;y=260;"
+  shape[9] = "pw=0;bc=Black;fs=50;fn=Trebuchet MS;fb=True;fi=False;func=text;text=Timer;x=250;y=260;"
 EndSub
 
 Sub Math_CartesianToPolar
@@ -275,43 +283,6 @@ Sub Shapes_CalcWidthAndHeight
   EndFor
 EndSub
 
-Sub Shapes_Move
-  ' Shapes | Move shapes
-  ' param iMin, iMax - shape indices to add
-  ' param shape - array of shapes
-  ' param scale - to zoom
-  ' param x, y - position to move
-  ' return shX, shY - new position of shapes
-  Stack.PushValue("local", i)
-  s = scale
-  shX = x
-  shY = y
-  For i = iMin To iMax
-    shp = shape[i]
-    If silverlight And Text.IsSubText("tri|line", shp["func"]) Then
-      _x = shp["wx"]
-      _y = shp["wy"]
-    Else
-      _x = shp["rx"]
-      _y = shp["ry"]
-    EndIf
-    Shapes.Move(shp["obj"], shX + _x * s, shY + _y * s)
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
-
-Sub Shapes_Remove
-  ' Shapes | Remove shapes
-  ' param iMin, iMax - shapes indices to remove
-  ' param shape - array of shapes
-  Stack.PushValue("local", i)
-  For i = iMin To iMax
-    shp = shape[i]
-    Shapes.Remove(shp["obj"])
-  EndFor
-  i = Stack.PopValue("local")
-EndSub
-
 Sub Shapes_Rotate
   ' Shapes | Rotate shapes
   ' param iMin, iMax - shapes indices to rotate
@@ -359,3 +330,4 @@ Sub Shapes_Rotate
   x = Stack.PopValue("local")
   i = Stack.PopValue("local")
 EndSub
+  

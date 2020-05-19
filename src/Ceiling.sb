@@ -1,15 +1,14 @@
 ' Pictionary - Ceiling
-' Version 1.1.0
+' Version 1.7.1
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-04-17
+' Last update 2020-05-18
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
+
 ' initialize ceiling shapes
 Shapes_Init_Ceiling()
 Shapes_Convert()
-angle = 0
 name = "Ceiling"
 Sprite_Add()
 
@@ -19,6 +18,7 @@ name = "Caption"
 Sprite_Add()
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw
@@ -47,7 +47,7 @@ Sub Math_CartesianToPolar
 EndSub
 
 Sub SB_RotateWorkaround
-  ' Small Basic | rotate workaround For Silverlight
+  ' Small Basic | rotate workaround for Silverlight
   ' param shp - current shape
   ' param x, y - original coordinate
   ' param _alpha - angle [radian]

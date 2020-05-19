@@ -1,20 +1,18 @@
 ' Pictionary - Left
-' Version 1.0.0
+' Version 1.7.1
 ' Copyright © 2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-04-17
+' Last update 2020-05-18
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
 
 ' initialize turtle shapes
 Shapes_Init_Turtle()
 scale = 1.5
-angle = 0
 name = "Turtle"
 Sprite_Add()
 
-' initialize turtle shapes
+' initialize left shapes
 Shapes_Init_Left()
 scale = 1
 name = "Left"
@@ -26,37 +24,15 @@ name = "Caption"
 Sprite_Add()
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw
   GraphicsWindow.Height = gh
 EndSub
 
-Sub Math_CartesianToPolar
-  ' Math | convert Cartesian coodinate to polar coordinate
-  ' param x, y - Cartesian coordinate
-  ' return r, a - polar Coordinate (0<=a<360)
-  r = Math.SquareRoot(x * x + y * y)
-  If x = 0 And y > 0 Then
-    a = 90 ' [degree]
-  ElseIf x = 0 And y < 0 Then
-    a = -90
-  ElseIf x = 0 And y = 0 Then
-    a = 0
-  Else
-    a = Math.ArcTan(y / x) * 180 / Math.Pi
-  EndIf
-  ' at this point -90<=a<=90
-  If x < 0 Then
-    a = a + 180
-  ElseIf x >= 0 And y < 0 Then
-    a = a + 360
-  EndIf
-  ' at this point 0<=a<360
-EndSub
-
 Sub SB_RotateWorkaround
-  ' Small Basic | rotate workaround For Silverlight
+  ' Small Basic | rotate workaround for Silverlight
   ' param shp - current shape
   ' param x, y - original coordinate
   ' param _alpha - angle [radian]
@@ -148,6 +124,16 @@ Sub Shapes_CalcWidthAndHeight
   EndFor
 EndSub
 
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 483 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=Left;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
 Sub Shapes_Init_Left
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
@@ -157,16 +143,6 @@ Sub Shapes_Init_Left
   shape = ""
   shape[1] = "func=tri;x=0;y=0;x1=10;y1=0;x2=0;y2=40;x3=20;y3=40;angle=-90;pw=0;bc=#333333;"
   shape[2] = "func=line;x=10;y=20;x1=0;y1=0;x2=120;y2=0;angle=-90;pw=6;pc=#333333;"
-EndSub
-
-Sub Shapes_Init_Caption
-  ' Shapes | Initialize shapes data
-  ' return shX, shY - current position of shapes
-  ' return shape - array of shapes
-  shX = 483 ' x offset
-  shY = 358 ' y offset
-  shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Left;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
 Sub Shapes_Init_Turtle

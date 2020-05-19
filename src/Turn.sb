@@ -1,9 +1,8 @@
 ' Pictionary - Turn
-' Version 1.0.0
+' Version 1.7.1
 ' Copyright © 2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-04-14
+' Last update 2020-05-18
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
 
@@ -56,6 +55,7 @@ For angle = 5 To 60 Step 5
 EndFor
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw
@@ -109,7 +109,7 @@ Sub SB_LineWorkaround
 EndSub
 
 Sub SB_RotateWorkaround
-  ' Small Basic | rotate workaround For Silverlight
+  ' Small Basic | rotate workaround for Silverlight
   ' param shp - current shape
   ' param x, y - original coordinate
   ' param _alpha - angle [radian]
