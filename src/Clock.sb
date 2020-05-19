@@ -1,25 +1,24 @@
 ' Pictionary - Clock
-' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
-' Last update 2018-07-09
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-' initialize shapes
+Init()
+
+' initialize caption shapes
 Shapes_Init_Caption()
-' add shapes
 scale = 1
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
-' initialize shapes
+
+' initialize clock shapes
 Shapes_Init_Clock()
 iMax = Array.GetItemCount(shape)
-' add shapes
 Shapes_Add()
+
+' move hands
 cx = gw / 2 - shX
 cy = gh / 2 - shY
 While "True"
@@ -38,6 +37,23 @@ While "True"
   Program.Delay(500)
 EndWhile
 
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 451 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=Clock;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
 Sub Shapes_Init_Clock
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
@@ -50,16 +66,6 @@ Sub Shapes_Init_Clock
   shape[3] = "pw=0;bc=#333333;func=rect;width=6;height=120;x=147;y=30;"
   shape[4] = "pw=0;bc=Black;func=rect;width=2;height=144;x=149;y=26;"
   shape[5] = "pw=0;bc=Black;func=ell;width=20;height=20;x=140;y=140;"
-EndSub
-
-Sub Shapes_Init_Caption
-  ' Shapes | Initialize shapes data
-  ' return shX, shY - current position of shapes
-  ' return shape - array of shapes
-  shX = 451 ' x offset
-  shY = 358 ' y offset
-  shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Clock;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
 Sub Math_CartesianToPolar

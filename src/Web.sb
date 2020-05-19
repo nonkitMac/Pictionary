@@ -1,19 +1,10 @@
 ' Pictionary - Web
-' Version 0.94
-' Copyright © 2019 Nonki Takahashi.  The MIT License.
-' Last update 2019-12-16
+' Version 1.7.2
+' Copyright © 2019-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
-bg = "White"
-GraphicsWindow.BackgroundColor = bg
-pc = "#DDDDDD"
-gw = GraphicsWindow.Width
-gh = GraphicsWindow.Height
-debug = "False"
-If debug Then
-  GraphicsWindow.Width = gw + 200
-  GraphicsWindow.Height = gh + 200
-EndIf 
+Init()
+
 gd = Math.SquareRoot(gw * gw + gh * gh) * 0.8
 x[0] = gw / 2
 y[0] = gh / 2
@@ -123,6 +114,22 @@ Sub AddDots
   EndIf
 EndSub
 
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  bg = "White"
+  GraphicsWindow.BackgroundColor = bg
+  pc = "#DDDDDD"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  debug = "False"
+  If debug Then
+    GraphicsWindow.Width = gw + 200
+    GraphicsWindow.Height = gh + 200
+  EndIf 
+EndSub
+
 Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
@@ -142,3 +149,4 @@ Sub Shapes_Show_Caption
   shp["obj"] = Shapes.AddText(shp["text"])
   Shapes.Move(shp["obj"], shp["x"] + shX, shp["y"] + shY)
 EndSub
+  

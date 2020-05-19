@@ -1,28 +1,32 @@
 ' Pictionary - French
-' Version 0.9
-' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
-' Last update 2019-04-19
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-GraphicsWindow.BackgroundColor = "LightGray"
-' initialize shapes for flag
+Init()
+
+' initialize flag shapes
 Shapes_Init_Flag()
 angle = 0 ' dummy
-' add shapes
 scale = 1
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
-' initialize shapes
+
+' initialize caption shapes
 Shapes_Init_Caption()
-' add shapes
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
+
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  GraphicsWindow.BackgroundColor = "LightGray"
+EndSub
 
 Sub Shapes_Init_Caption
   ' Shapes | Initialize shapes data
@@ -192,3 +196,4 @@ Sub Shapes_CalcWidthAndHeight
     shape[i] = shp
   EndFor
 EndSub
+    

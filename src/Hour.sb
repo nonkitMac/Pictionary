@@ -1,19 +1,21 @@
 ' Pictionary - Hour
-' Version 0.92
-' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
-' Last update 2019-04-19
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
+
 ' initialize caption shapes
 Shapes_Init_Caption()
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
+
 ' initialize clock shapes
 Shapes_Init_Clock()
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
+
 ' rotate hands
 cx = gw / 2 - shX
 cy = gh / 2 - shY
@@ -34,6 +36,7 @@ While "True"
 EndWhile
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw

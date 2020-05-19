@@ -1,18 +1,23 @@
 ' Pictionary - Shape
-' Version 1.7.1
+' Version 1.7.2
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-05-18
+' Last update 2020-05-19
 
 SB_Workaround()
 Init()
 
 ' initialize shapes
-Shapes_Init()
+Shapes_Init_Shapes()
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Convert()
 scale = 1
 angle = 0
+Shapes_Add()
+
+' initialize caption shapes
+Shapes_Init_Caption()
+iMax = Array.GetItemCount(shape)
 Shapes_Add()
 
 Sub Init
@@ -499,7 +504,17 @@ Sub Shapes_CalcWidthAndHeight
   EndFor
 EndSub
 
-Sub Shapes_Init
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 417 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=Shapes;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
+Sub Shapes_Init_Shapes
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -512,6 +527,5 @@ Sub Shapes_Init
   shape[4] = "func=hex;x=150;y=100;width=100;height=80;ratio=0.25;pw=0;bc=#CCFF00;"
   shape[5] = "func=trap;x=0;y=200;width=100;height=80;ratio=0.25;pw=0;bc=#00FF33;"
   shape[6] = "func=line;x=150;y=200;x1=100;y1=0;x2=0;y2=80;pc=#330099;pw=10;"
-  shape[7] = "func=text;x=230;y=300;text=Shape;fs=50;fn=Trebuchet MS;fb=True;Fi=False;bc=Black;"
 EndSub
   

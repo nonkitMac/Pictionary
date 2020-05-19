@@ -1,21 +1,23 @@
 ' Pictionary - Japanese
-' Version 0.92
-' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
-' Last update 2019-04-19
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
+
 ' initialize flag shapes
 Shapes_Init_Flag()
 name = "Flag"
 Group_Add()
+
 ' initialize caption shapes
 Shapes_Init_Caption()
 name = "Caption"
 Group_Add()
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw

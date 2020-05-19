@@ -1,28 +1,43 @@
 ' Pictionary - Chinese
-' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
-' Last update 2017-07-09
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-' initialize shapes
-Shapes_Init_Chinese()
+Init()
+
+' initialize flag shapes
+Shapes_Init_Flag()
 angle = 0 ' dummy
-' add shapes
 scale = 1
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
-' initialize shapes
+
+' initialize caption shapes
 Shapes_Init_Caption()
 iMax = Array.GetItemCount(shape)
-' add shapes
 Shapes_Add()
 
-Sub Shapes_Init_Chinese
+Sub Init
+GraphicsWindow.Title = "Pictionary"
+gw = 598
+gh = 428
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+EndSub
+
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 394 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=Chinese;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
+Sub Shapes_Init_Flag
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -55,16 +70,6 @@ Sub Shapes_Init_Chinese
   shape[24] = "pw=0;bc=#FFDE00;func=tri;x1=4.86;y1=0;x2=0;y2=14.97;x3=9.73;y3=14.97;x=119.64;y=100.72;angle=92.65;"
   shape[25] = "pw=0;bc=#FFDE00;func=tri;x1=4.86;y1=0;x2=0;y2=14.97;x3=9.73;y3=14.97;x=116.32;y=104.86;angle=164.65;"
   shape[26] = "pw=0;bc=#FFDE00;func=tri;x1=4.86;y1=0;x2=0;y2=14.97;x3=9.73;y3=14.97;x=111.36;y=102.99;angle=236.65;"
-EndSub
-
-Sub Shapes_Init_Caption
-  ' Shapes | Initialize shapes data
-  ' return shX, shY - current position of shapes
-  ' return shape - array of shapes
-  shX = 394 ' x offset
-  shY = 358 ' y offset
-  shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Chinese;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
 Sub SB_RotateWorkaround

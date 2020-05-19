@@ -1,28 +1,43 @@
 ' Pictionary - Color
-' Copyright © 2017-2018 Nonki Takahashi.  The MIT License.
-' Last update 2018-07-09
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-' initialize shapes
-Shapes_Init()
+Init()
+
+' initialize color shapes
+Shapes_Init_Color()
 angle = 0 ' dummy
-' add shapes
 scale = 1
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
-' initialize shapes
+
+' initialize caption shapes
 Shapes_Init_Caption()
 iMax = Array.GetItemCount(shape)
-' add shapes
 Shapes_Add()
 
-Sub Shapes_Init
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub
+
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 454 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=Color;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
+Sub Shapes_Init_Color
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -101,16 +116,6 @@ Sub Shapes_Init
   shape[70] = "pw=0;bc=#DD00DD;func=tri;x1=0;y1=0;x2=-41.35;y2=-144.19;x3=-26.05;y3=-147.73;x=299;y=204;"
   shape[71] = "pw=0;bc=#DD00DD;func=tri;x1=0;y1=0;x2=-28.63;y2=-147.25;x3=-13.08;y3=-149.43;x=299;y=204;"
   shape[72] = "pw=0;bc=#DD00DD;func=tri;x1=0;y1=0;x2=-15.68;y2=-149.18;x3=0;y3=-150;x=299;y=204;"
-EndSub
-
-Sub Shapes_Init_Caption
-  ' Shapes | Initialize shapes data
-  ' return shX, shY - current position of shapes
-  ' return shape - array of shapes
-  shX = 454 ' x offset
-  shY = 358 ' y offset
-  shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Color;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
 Sub SB_RotateWorkaround
@@ -259,3 +264,4 @@ Sub Shapes_CalcWidthAndHeight
     shape[i] = shp
   EndFor
 EndSub
+    

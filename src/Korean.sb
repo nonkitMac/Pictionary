@@ -1,21 +1,23 @@
 ' Pictionary - Korean
-' Version 0.92
-' Copyright © 2017-2019 Nonki Takahashi.  The MIT License.
-' Last update 2019-04-20
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
 Init()
+
 ' initialize caption shapes
 Shapes_Init_Caption()
 scale = 1
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
+
 ' initialize flag shapes
 Shapes_Init_Flag()
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
+
 ' rotate shapes
 x = 72
 y = 48
@@ -34,6 +36,7 @@ cy = gh / 2 - shY
 Shapes_Rotate()
 
 Sub Init
+  GraphicsWindow.Title = "Pictionary"
   gw = 598
   gh = 428
   GraphicsWindow.Width = gw

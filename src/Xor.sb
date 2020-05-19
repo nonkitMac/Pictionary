@@ -1,29 +1,43 @@
 ' Pictionary - Xor
-' Copyright © 2017-2018 Nonki Takahashi, Tryhest.  The MIT License.
-' Last update 2020
-' Program ID TCM130
+' Version 1.7.2
+' Copyright © 2017-2020 Nonki Takahashi, Tryhest.  The MIT License.
+' Last update 2020-05-19
 
-GraphicsWindow.Title = "Pictionary"
 SB_Workaround()
-gw = 598
-gh = 428
-GraphicsWindow.Width = gw
-GraphicsWindow.Height = gh
-' initialize shapes
-Shapes_Init_And()
-' add shapes
+Init()
+
+' initialize xor shapes
+Shapes_Init_Xor()
 scale = 1
 angle = 0
 iMin = 1
 iMax = Array.GetItemCount(shape)
 Shapes_Add()
-' initialize shapes
+
+' initialize caption shapes
 Shapes_Init_Caption()
 iMax = Array.GetItemCount(shape)
-' add shapes
 Shapes_Add()
 
-Sub Shapes_Init_And
+Sub Init
+GraphicsWindow.Title = "Pictionary"
+gw = 598
+gh = 428
+GraphicsWindow.Width = gw
+GraphicsWindow.Height = gh
+EndSub
+
+Sub Shapes_Init_Caption
+  ' Shapes | Initialize shapes data
+  ' return shX, shY - current position of shapes
+  ' return shape - array of shapes
+  shX = 498 ' x offset
+  shY = 358 ' y offset
+  shape = ""
+  shape[1] = "func=text;x=0;y=0;text=Xor;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
+EndSub
+
+Sub Shapes_Init_Xor
   ' Shapes | Initialize shapes data
   ' return shX, shY - current position of shapes
   ' return shape - array of shapes
@@ -88,16 +102,6 @@ Sub Shapes_Init_And
   shape[2]  = "pw=4;pc=#000;bc=orange;func=ell;width=200;height=200;x=138;y=0;"
   shape[57] = "pw=4;pc=#000;bc=transparent;func=ell;width=200;height=200;x=0;y=0;"
   shape[58] = "pw=4;pc=#000;bc=transparent;func=ell;width=200;height=200;x=138;y=0;"
-EndSub
-
-Sub Shapes_Init_Caption
-  ' Shapes | Initialize shapes data
-  ' return shX, shY - current position of shapes
-  ' return shape - array of shapes
-  shX = 488 ' x offset
-  shY = 358 ' y offset
-  shape = ""
-  shape[1] = "func=text;x=0;y=0;text=Xor;fn=Trebuchet MS;fs=50;fb=True;pw=0;bc=Black;"
 EndSub
 
 Sub SB_RotateWorkaround
