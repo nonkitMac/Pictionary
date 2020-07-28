@@ -1,10 +1,10 @@
 ' Pictionary
-' Version 1.7.1
+' Version 1.7.3
 ' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-05-18
+' Last update 2020-07-27
 ' Using Extension LitDev
 
-title = "Pictionary 1.7.1"
+title = "Pictionary 1.7.3"
 GraphicsWindow.Title = title
 Not = "False=True;True=False;"
 gw = 660
@@ -32,14 +32,14 @@ kw = kw + "Date,Degree,Delete,Desktop,Dictionary,Directory,"
 kw = kw + "Down,Draw,"
 kw = kw + "Ellipse,End,English,Error,"
 kw = kw + "File,Fill,Flickr,Floor,Font,For,French,From,"
-kw = kw + "German,Go,Graphics,Gray,Height,Hour,"
+kw = kw + "German,Go,Graphics,Gray,Height,Hide,Hour,"
 kw = kw + "Image,Italian,Italic,Japanese,Key,Korean,"
 kw = kw + "Left,Length,Line,Lower,"
 kw = kw + "Math,Message,Minute,Mouse,Move,Music,Network,"
-kw = kw + "Or,Paper,Pen,Pi,Pop,Program,Push,"
+kw = kw + "Opacity,Or,Paper,Pen,Pi,Pop,Program,Push,"
 kw = kw + "Radian,Random,Rectangle,Remainder,Resize,"
 kw = kw + "RGB,Right,Ring,Root,Rotate,"
-kw = kw + "Second,Shape,Shell,Simplified,Sine,Size,Sound,"
+kw = kw + "Second,Shape,Shell,Show,Simplified,Sine,Size,Sound,"
 kw = kw + "Spanish,Square,Stack,Start,Step,Stop,Subroutine,"
 kw = kw + "Tangent,Text,Timer,To,Traditional,"
 kw = kw + "Triangle,Turn,Turtle,Type,Up,Upper,"

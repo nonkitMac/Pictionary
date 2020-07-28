@@ -102,7 +102,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Music](https://github.com/nonkitMac/Pictionary/blob/master/img/Music.png)
    Name
    *Of*
-   Opacity
+   [Opacity](https://github.com/nonkitMac/Pictionary/blob/master/img/Opacity.png)
    Page
    [Paper](https://github.com/nonkitMac/Pictionary/blob/master/img/Paper.png)
    Path
@@ -152,7 +152,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    **Elapse**
    **[Fill](https://github.com/nonkitMac/Pictionary/blob/master/img/Fill.png)**
    **Get**
-   **Hide**
+   **[Hide](https://github.com/nonkitMac/Pictionary/blob/master/img/Hide.png)**
    **Input**
    **Insert**
    **[Move](https://github.com/nonkitMac/Pictionary/blob/master/img/Move.png)**
@@ -168,7 +168,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    **[Rotate](https://github.com/nonkitMac/Pictionary/blob/master/img/Rotate.png)**
    **Round**
    **Set**
-   **Show**
+   **[Show](https://github.com/nonkitMac/Pictionary/blob/master/img/Show.png)**
    **[Stop](https://github.com/nonkitMac/Pictionary/blob/master/img/Stop.png)**
    **Tick**
    **[Turn](https://github.com/nonkitMac/Pictionary/blob/master/img/Turn.png)**
