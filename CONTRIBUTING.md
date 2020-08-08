@@ -28,3 +28,7 @@
 ### Do you want to contribute the Pictionary documantation?
 
 - Pictionary documentations are now scattered around the GitHub Wiki and Sway. After moving all of these to the docs in this repository, the contribution rule will be set here.
+
+## Othre Languages
+
+- [日本語](CONTRIBUTING-ja.md)

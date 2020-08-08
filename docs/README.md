@@ -43,7 +43,8 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    [Window](https://github.com/nonkitMac/Pictionary/blob/master/img/Window.png)
 3. *Absolute*
    [Angle](https://github.com/nonkitMac/Pictionary/blob/master/img/Angle.png)
-   Append Argument Background
+   Argument
+   Background
    [Bell](https://github.com/nonkitMac/Pictionary/blob/master/img/Bell.png)
    Button
    [Bold](https://github.com/nonkitMac/Pictionary/blob/master/img/Bold.png)

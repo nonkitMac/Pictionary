@@ -1,5 +1,6 @@
 # Windows image file caches
 Thumbs.db
+desktop.ini
 
 # Windows execution files
 *.exe

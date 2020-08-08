@@ -25,3 +25,6 @@ Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/rel
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/) (official site)
 - [Pictionary Project for Small Basic](https://nonkitmac.github.io/Pictionary/) (concept)
 - [Pictionary for Small Basic](https://nonkitmac.github.io/Pictionary/Gallery.html) (images)
+
+## Other Languages
+- [日本語](README-ja.md)
