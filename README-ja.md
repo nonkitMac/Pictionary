@@ -25,3 +25,6 @@
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/)（オフィシャルサイト）
 - [Small Basic のためのピクショナリープロジェクト](https://nonkitmac.github.io/Pictionary/)（コンセプト）
 - [Small Basic のためのピクショナリー](https://nonkitmac.github.io/Pictionary/Gallery.html)（絵）
+
+## 他の言語
+- [English](README.md)

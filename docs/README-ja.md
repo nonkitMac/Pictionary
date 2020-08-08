@@ -1,15 +1,15 @@
-# Pictionary Project for Small Basic
+# Small Basic のためのピクショナリープロジェクト
 
 ![Sample](https://raw.githubusercontent.com/nonkitMac/Pictionary/master/img/Dictionary.png)
 
-## Purpose
-- Small Basic is a programming language for kids.
-- Little difficult to understand English keywords especially for non-native kids.
-- This project suggests to draw pictures about keywords in Small Basic.
+## 目的
+- Small Basic は子どもちのためのプログラミング言語です。
+- 特に非ネイティブの子どもたちにとって英語のキーワードを理解するのはちょっと難しそうです。
+- このプロジェクトは Small Basic のキーワードについて絵を描くことを提案します。
 
-## Target Keywords
+## 対象のキーワード
 
-Target keywords are following 172 words - nouns, **verbs** and *others*.
+対象のキーワードは以下の 172 語です。名詞、**動詞**、*その他*です。
 
 1. *[And](https://github.com/nonkitMac/Pictionary/blob/master/img/And2.png)*
    *[Or](https://github.com/nonkitMac/Pictionary/blob/master/img/Or2.png)*
@@ -184,27 +184,28 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    **Is**
    **[Start](https://github.com/nonkitMac/Pictionary/blob/master/img/Start.png)**
 
-## Format
+## 形式
 
-- 1 card 1 picture 1 word
-- a card is 598 x 428 pixels
-- prifered programed with Shapes as a Shapes_Init subroutine (can be converted to SVG)
+- １枚のカードに１つの絵と１つの語
+- カードは 598 x 428 ピクセル
+- なるべく Shapes_Init サブルーチンで Shapes オブジェクトを使う（SVG に変換可能）
 
-## Gallery
+## ギャラリー
 
-- [Pictionary for Small Basic](https://nonkitmac.github.io/Pictionary/Gallery.html)
+- [Small Basic のためのピクショナリー](https://nonkitmac.github.io/Pictionary/Gallery.html)
 
-## Documents
+## ドキュメント
 
-- [Pictionary Documents](Documents)
+- [ピクショナリー ドキュメント](Documents)
 
-## Other Languages
+## 他の言語
 
-- [日本語](README-ja) (Japanese)
+- [English](Documents)（英語）
+
 ____
 
-Copyright © 2017-2020 Nonki Takahashi.
+Copyright © 2017-2020 たかはしのんき.
 
-[![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
+[![クリエイティブ・コモンズ ライセンス](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/deed.ja)
 
-This work is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+この作品は[クリエイティブ・コモンズ表示4.0国際ライセンス](http://creativecommons.org/licenses/by/4.0/deed.ja)の下でライセンスされています。
