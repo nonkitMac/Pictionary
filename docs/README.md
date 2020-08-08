@@ -201,6 +201,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
 ## Other Languages
 
 - [日本語](README-ja) (Japanese)
+
 ____
 
 Copyright © 2017-2020 Nonki Takahashi.

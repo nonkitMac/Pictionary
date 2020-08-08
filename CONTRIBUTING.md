@@ -15,7 +15,8 @@
 
 - **Ensure the bug was not already reported** by searching on GitHub under [issues](https://github.com/nonkitMac/Pictionary/issues).
 
-- If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/nonkitMac/Pictionary/issues/new).  Be sure to include a **title and clear desciption**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occuring.
+- If you're unable to find an open issue addressing the problem, [open a new one](https://github.com/nonkitMac/Pictionary/issues/new).
+- Be sure to include a **title and clear desciption**, as much relevant information as possible, and a **code sample** or an **executable test case** demonstrating the expected behavior that is not occuring.
 
 ### Did you write a patch that fixes a bug?
 
@@ -27,8 +28,10 @@
 
 ### Do you want to contribute the Pictionary documantation?
 
-- Pictionary documentations are now scattered around the GitHub Wiki and Sway. After moving all of these to the docs in this repository, the contribution rule will be set here.
+- Pictionary documentations are stored in .md formats in `docs` folder in this repository.
+- For example, if an English document is XXX.md then it's Japanese file will be named as XXX-ja.md and are linked to each other.
+- Just like the source code, make a pull request on GitHub for your document.
 
 ## Othre Languages
 
-- [日本語](CONTRIBUTING-ja.md)
+- [日本語](CONTRIBUTING-ja.md) (Japanese)

@@ -10,6 +10,9 @@ Welcome to the Pictionary documents!
 * [Uploading Images](Uploading-Images)
 * [Small Basic: Revision Control with GitHub](https://social.technet.microsoft.com/wiki/contents/articles/37846.small-basic-revision-control-with-github.aspx) (TechNet Wiki)
 
+# Other Languages
+* [日本語](Documents-ja) (Japanese)
+
 ____
 
 Copyright © 2017-2020 Nonki Takahashi.

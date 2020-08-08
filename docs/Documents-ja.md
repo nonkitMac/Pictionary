@@ -11,7 +11,8 @@
 * [Small Basic: Revision Control with GitHub](https://social.technet.microsoft.com/wiki/contents/articles/37846.small-basic-revision-control-with-github.aspx) (TechNet Wiki)
 
 # 他の言語
-* [English](Documents)
+* [English](Documents)（日本語）
+
 ____
 
 Copyright © 2017-2020 たかはしのんき.
