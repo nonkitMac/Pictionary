@@ -1,10 +1,10 @@
 ピクショナリ ドキュメントへようこそ！
 
 # 利用者向け
-* [Small Basic のためのピクショナリー](README-ja)
+* [Small Basic のためのピクショナリー プロジェクト](README-ja)
 
 # 開発者向け
-* [ピクショナリーに参加する方法](https://github.com/nonkitMac/Pictionary/blob/master/CONTRIBUTING-ja)
+* [ピクショナリーに参加する方法](https://github.com/nonkitMac/Pictionary/blob/master/CONTRIBUTING-ja.md)
 * [Refactoring](Refactoring)
 * [Packaging](Packaging)
 * [Uploading Images](Uploading-Images)

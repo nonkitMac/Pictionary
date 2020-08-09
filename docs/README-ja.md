@@ -1,4 +1,4 @@
-# Small Basic のためのピクショナリープロジェクト
+# Small Basic のためのピクショナリー プロジェクト
 
 ![Sample](https://raw.githubusercontent.com/nonkitMac/Pictionary/master/img/Dictionary.png)
 
