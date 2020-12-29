@@ -24,6 +24,9 @@ Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/rel
 ## Documents
 - [Pictionary documents](https://nonkitmac.github.io/Pictionary/Documents)
 
+## Credit
+Made with Small Basic badge is designed by [rockycodeshimhe-1332](https://docs.microsoft.com/en-us/answers/questions/210063/guys-i-made-a-nice-small-basic-github-badge.html)
+
 ## Reference
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/) (official site)
 - [Pictionary Project for Small Basic](https://nonkitmac.github.io/Pictionary/) (concept)
@@ -31,6 +34,3 @@ Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/rel
 
 ## Other Languages
 - [日本語](README-ja.md)
-
-## Credit
-Made with Small Basic badge is designed by [rockycodeshimhe-1332](https://docs.microsoft.com/en-us/answers/questions/210063/guys-i-made-a-nice-small-basic-github-badge.html)
