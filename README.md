@@ -1,6 +1,9 @@
 ![icon](img/PictionaryIcon.png)
 
 # Pictionary
+
+[![Made with Small Basic](https://img.shields.io/badge/Made%20with-Small%20Basic-orange)](http://smallbasic.com)
+
 Pictionary for Small Basic is a project to show pictures about English keywords in Small Basic for non-native kids.
 
 ![Pictionary](img/Pictionary1.3.0.png)
@@ -28,3 +31,6 @@ Download a .zip file from [Releases](https://github.com/nonkitMac/Pictionary/rel
 
 ## Other Languages
 - [日本語](README-ja.md)
+
+## Credit
+Made with Small Basic badge is designed by [rockycodeshimhe-1332](https://docs.microsoft.com/en-us/answers/questions/210063/guys-i-made-a-nice-small-basic-github-badge.html)
