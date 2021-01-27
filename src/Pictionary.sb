@@ -1,10 +1,10 @@
 ' Pictionary
-' Version 1.7.3
-' Copyright © 2017-2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-07-27
+' Version 1.8.0
+' Copyright © 2017-2021 Nonki Takahashi.  The MIT License.
+' Last update 2021-01-27
 ' Using Extension LitDev
 
-title = "Pictionary 1.7.3"
+title = "Pictionary 1.8.0"
 GraphicsWindow.Title = title
 Not = "False=True;True=False;"
 gw = 660
@@ -35,7 +35,7 @@ kw = kw + "File,Fill,Flickr,Floor,Font,For,French,From,"
 kw = kw + "German,Go,Graphics,Gray,Height,Hide,Hour,"
 kw = kw + "Image,Italian,Italic,Japanese,Key,Korean,"
 kw = kw + "Left,Length,Line,Lower,"
-kw = kw + "Math,Message,Minute,Mouse,Move,Music,Network,"
+kw = kw + "Math,Message,Microwave,Minute,Mouse,Move,Music,Network,"
 kw = kw + "Opacity,Or,Paper,Pen,Pi,Pop,Program,Push,"
 kw = kw + "Radian,Random,Rectangle,Remainder,Resize,"
 kw = kw + "RGB,Right,Ring,Root,Rotate,"

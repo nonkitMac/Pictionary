@@ -1,0 +1,137 @@
+' Pictionary - Microwave
+' Version 1.8.0
+' Copyright © 2021 Nonki Takahashi.  The MIT License.
+' Using LitDev Extension
+' Last update 2021-01-27
+
+Init()
+DrawMicrowave()
+Calc()
+
+Sub Init
+  GraphicsWindow.Title = "Pictionary"
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+  bg = "LightGray"
+  GraphicsWindow.BackgroundColor = bg
+  GraphicsWindow.BrushColor = "Black"
+  GraphicsWindow.FontName = "Trebuchet MS"
+  GraphicsWindow.FontSize = 50
+  caption = Shapes.AddText("Microwave")
+  x = gw - LDShapes.Width(caption) - 20
+  y = gh - LDShapes.Height(caption) - 12
+  Shapes.Move(caption, x, y)
+  GraphicsWindow.FontName = "Roboto"
+  GraphicsWindow.FontSize = 16
+  GraphicsWindow.FontBold = "False"
+  GraphicsWindow.DrawText(10, 10, "Power")
+  GraphicsWindow.DrawText(10, 40, "Time")
+  GraphicsWindow.DrawText(10, 70, "Energy")
+  For i = 1 To 3
+    tbox[i] = Controls.AddTextBox(90, 8 + (i - 1) * 30)
+    Controls.SetSize(tbox[i], 100, 22)
+  EndFor
+  GraphicsWindow.DrawText(200, 10, "W")
+  GraphicsWindow.DrawText(200, 40, "s")
+  GraphicsWindow.DrawText(200, 70, "J")
+  btnUp = Controls.AddButton("▲", 240, 6)
+  Controls.SetSize(btnUp, 28, 28)
+  btnDown = Controls.AddButton("▼", 270, 6)
+  Controls.SetSize(btnDown, 28, 28)
+  value[1] = 1500                 ' power [W]
+  value[2] = 70                   ' time [s]
+  value[3] = value[1] * value[2]  ' energy [J]
+  For i = 1 To 3
+    Controls.SetTextBoxText(tbox[i], value[i])
+  EndFor
+  shTime = Shapes.AddText("")
+  Shapes.Move(shTime, 240, 40)
+  UpdateTime()
+  Controls.ButtonClicked = OnButtonClicked
+  Controls.TextTyped = OnTextTyped
+EndSub
+
+Sub OnButtonClicked
+  buttonClicked = "True"
+EndSub
+
+Sub OnTextTyped
+  textTyped = "True"
+EndSub
+
+Sub DrawMicrowave
+  mh = 200
+  mw = mh * 3 / 2
+  GraphicsWindow.BrushColor = "White"
+  x = (gw - mw) / 2
+  y = (gh - mh) / 2 + 20
+  GraphicsWindow.FillRectangle(x, y, mw, mh)
+  s = mh / 5
+  x1 = x + mw - s * 2
+  y1 = y
+  x2 = x1
+  y2 = y + mh
+  GraphicsWindow.PenColor = bg
+  GraphicsWindow.DrawLine(x1, y1, x2, y2)
+  GraphicsWindow.DrawEllipse(x1 + s / 2, y + s, s, s)
+  GraphicsWindow.DrawEllipse(x1 + s / 2, y + s * 3, s, s)
+  gap = s / 4
+  hw = x1 - x - gap * 2
+  hh = gap * 2
+  GraphicsWindow.BrushColor = "Silver" 
+  GraphicsWindow.FillRectangle(x + gap, y + gap, hw, hh)
+  gap = s
+  hw = x1 - x - gap * 2
+  hh = mh - gap * 2
+  GraphicsWindow.BrushColor = "Black" 
+  GraphicsWindow.FillRectangle(x + gap, y + gap, hw, hh)
+EndSub
+
+Sub Calc
+  While "True"
+    If buttonClicked Then
+      If Controls.LastClickedButton = btnUp Then
+        value[1] = value[1] + 100
+      ElseIf 100 < value[1] Then
+        value[1] = value[1] - 100
+      EndIf
+      Controls.SetTextBoxText(tbox[1], value[1])
+      value[2] = value[3] / value[1]
+      Controls.SetTextBoxText(tbox[2], Math.Round(value[2]))
+      skip = "True"
+      UpdateTime()
+      buttonClicked = "False"
+    ElseIf textTyped Then
+      For i = 1 To 3
+        If Controls.LastTypedTextBox = tbox[i] Then
+          value[i] = Controls.GetTextBoxText(tbox[i])
+          If i = 2 Then
+            UpdateTime()
+            If skip Then
+              skip = "False"
+            Else
+              value[3] = value[1] * value[2]
+              Controls.SetTextBoxText(tbox[3], Math.Round(value[3]))
+            EndIf
+          Else
+            value[2] = value[3] / value[1]
+            Controls.SetTextBoxText(tbox[2], Math.Round(value[2]))
+            skip = "True"
+            UpdateTime()
+          EndIf
+        EndIf
+      EndFor
+      textTyped = "False"
+    Else
+      Program.Delay(200)
+    EndIf
+  EndWhile
+EndSub
+
+Sub UpdateTime
+  sec = Math.Remainder(value[2], 60)
+  min = Math.Floor(value[2] / 60)
+  Shapes.SetText(shTime, "(" + min + "m" + Math.Round(sec) + "s)")
+EndSub
