@@ -1,0 +1,64 @@
+' Pictionary - Taues
+' Version 1.8.0
+' Copyright © 2020-2021 Tryhest, Nonki Takahashi.  The MIT License.
+' Using LitDev Extension
+' Last update 2021-01-27
+' Program ID STM207-3
+
+GraphicsWindow.Title = "Pictionary"
+Init()
+bbb=LDShapes.BrushGradient("1=white;2=white;3=gray" "DD")
+LDGraphicsWindow.BackgroundBrush(bbb)
+ 
+pii=LDText.Split("0/1 ⅞ ¾ ⅝ ½ ⅜ ¼ ⅛" " ")
+r = 160
+x1 = gw / 2
+y1 = gh / 2 - 10
+x2 = x1 + r
+y2 = y1
+rad = Math.GetDegrees(Math.Pi/4)
+For i = 0 To 9
+  a = i * rad / 9
+  p[1] = x1 + r * LDMath.Cos(a)
+  p[2] = y1 - r * LDMath.Sin(a)
+  points[i] = p
+EndFor
+p[1] = x1
+p[2] = y1
+points[i] = p
+GraphicsWindow.BrushColor = "#CC0000"
+GraphicsWindow.PenWidth = 0
+LDShapes.AddPolygon(points)
+GraphicsWindow.FontBold="false
+GraphicsWindow.FontName="Times New Roman
+GraphicsWindow.FontSize=22
+GraphicsWindow.PenWidth = 2
+
+rr=180
+GraphicsWindow.BrushColor="black
+For ii = 1 To 8
+  a = (ii - 1) * rad
+  x3 = x1+rr * LDMath.Cos(a)
+  y3 = y1+rr * LDMath.Sin(a)
+  If ii = 8 Then
+    GraphicsWindow.BrushColor = "#CC0000"
+  EndIf
+  GraphicsWindow.DrawText(x3-15 y3-10 pii[ii]+"τ")
+EndFor
+
+GraphicsWindow.PenColor = "Gray"
+GraphicsWindow.DrawEllipse(x1 - r, y2 - r, 2 * r, 2 * r)
+GraphicsWindow.BrushColor = "Black"
+GraphicsWindow.FontBold="true
+GraphicsWindow.FontName = "Trebuchet MS"
+GraphicsWindow.FontSize = 50
+caption = Shapes.AddText("Taues")
+x = gw - 20 - LDShapes.Width(caption)
+y = gh - 11 - LDShapes.Height(caption)
+Shapes.Move(caption, x, y)
+Sub Init
+  gw = 598
+  gh = 428
+  GraphicsWindow.Width = gw
+  GraphicsWindow.Height = gh
+EndSub

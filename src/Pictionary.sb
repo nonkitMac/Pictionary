@@ -2,7 +2,7 @@
 ' Version 1.8.0
 ' Copyright © 2017-2021 Nonki Takahashi.  The MIT License.
 ' Last update 2021-01-27
-' Using Extension LitDev
+' Using LitDev Extension
 
 title = "Pictionary 1.8.0"
 GraphicsWindow.Title = title
@@ -25,7 +25,7 @@ icon = Shapes.AddImage(img)
 Shapes.Move(icon, gw - iw - 10, gh - ih - 10)
 Shapes.SetOpacity(icon, 90)
 GraphicsWindow.BackgroundColor = "AntiqueWhite"
-kw = "And,Angle,Animate,Append,Array,Bell,Bold,Box,Brush,"
+kw = "And,Angle,Animate,Append,Array,Bell,Bible,Bold,Box,Brush,"
 kw = kw + "Caption,Case,Ceiling,Chime,Chinese,Click,Clock,"
 kw = kw + "Color,Control,Copy,Cosine,Count,Cursor,"
 kw = kw + "Date,Degree,Delete,Desktop,Dictionary,Directory,"
@@ -41,7 +41,7 @@ kw = kw + "Radian,Random,Rectangle,Remainder,Resize,"
 kw = kw + "RGB,Right,Ring,Root,Rotate,"
 kw = kw + "Second,Shape,Shell,Show,Simplified,Sine,Size,Sound,"
 kw = kw + "Spanish,Square,Stack,Start,Step,Stop,Subroutine,"
-kw = kw + "Tangent,Text,Timer,To,Traditional,"
+kw = kw + "Tangent,Taues,Text,Timer,To,Traditional,"
 kw = kw + "Triangle,Turn,Turtle,Type,Up,Upper,"
 kw = kw + "Wall,Web,Week,Width,Window,Write,Xor,Zoom"
 keywords = LDText.Split(kw, ",")
