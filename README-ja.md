@@ -1,6 +1,9 @@
 ![icon](img/PictionaryIcon.png)
 
 # ピクショナリー
+
+[![Made with Small Basic](https://img.shields.io/badge/Made%20with-Small%20Basic-orange)](http://smallbasic.com)
+
 「Small Basic のためのピクショナリー」は非ネイティブの子どもたちのために Small Basic に出てくる英単語を絵で表すというプロジェクトです。
 
 ![Pictionary](img/Pictionary1.3.0.png)
