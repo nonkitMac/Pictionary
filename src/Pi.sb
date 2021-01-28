@@ -1,7 +1,7 @@
 ' Pictionary - Pi
-' Version 1.7.1
-' Copyright © 2020 Nonki Takahashi.  The MIT License.
-' Last update 2020-05-18
+' Version 1.8.0
+' Copyright © 2020-2021 Nonki Takahashi.  The MIT License.
+' Last update 2021-01-27
 
 SB_Workaround()
 Init()
@@ -134,7 +134,7 @@ Sub Shapes_Init_Pi
   shX = 97.76 ' x offset
   shY = 64 ' y offset
   shape = ""
-  shape[1] = "func=line;x=1.24;y=30;x1=0;y1=0;x2=400;y2=0;pw=4;pc=Gray;"
+  shape[1] = "func=line;x=-0.76;y=30;x1=0;y1=0;x2=404;y2=0;pw=4;pc=Gray;"
   shape[2] = "func=line;x=1.24;y=30;x1=0;y1=0;x2=0;y2=200;pw=4;pc=Gray;"
   shape[3] = "func=line;x=401.24;y=30;x1=0;y1=0;x2=0;y2=200;pw=4;pc=Gray;"
   shape[4] = "func=line;x=1.24;y=56.79;x1=0;y1=173.21;x2=99.99;y2=0.00;pw=4;pc=Gray;"

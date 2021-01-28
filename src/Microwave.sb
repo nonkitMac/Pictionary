@@ -3,6 +3,7 @@
 ' Copyright © 2021 Nonki Takahashi.  The MIT License.
 ' Using LitDev Extension
 ' Last update 2021-01-27
+' Program ID FDC044
 
 Init()
 DrawMicrowave()

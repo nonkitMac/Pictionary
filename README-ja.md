@@ -24,6 +24,9 @@
 ## ドキュメント
 - [ピクショナリー ドキュメント](https://nonkitmac.github.io/Pictionary/Documents)
 
+## クレジット
+Made with Small Basic バッジは [rockycodeshimhe-1332](https://docs.microsoft.com/en-us/answers/questions/210063/guys-i-made-a-nice-small-basic-github-badge.html) によりデザインされました
+
 ## 関連リンク
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/)（オフィシャルサイト）
 - [Small Basic のためのピクショナリープロジェクト](https://nonkitmac.github.io/Pictionary/)（コンセプト）
