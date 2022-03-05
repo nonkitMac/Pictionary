@@ -1,14 +1,14 @@
 ' Pictionary
-' Version 1.8.0
-' Copyright © 2017-2021 Nonki Takahashi.  The MIT License.
-' Last update 2021-01-27
+' Version 1.9.0
+' Copyright © 2017-2022 Nonki Takahashi.  The MIT License.
+' Last update 2022-03-05
 ' Using LitDev Extension
 
-title = "Pictionary 1.8.0"
+title = "Pictionary 1.9.0"
 GraphicsWindow.Title = title
 Not = "False=True;True=False;"
-gw = 660
-gh = 428
+gw = 640
+gh = 480
 GraphicsWindow.Width = gw
 GraphicsWindow.Height = gh
 path = Program.Directory + "\PictionaryIcon.png"
@@ -24,24 +24,25 @@ ih = ImageList.GetHeightOfImage(img)
 icon = Shapes.AddImage(img)
 Shapes.Move(icon, gw - iw - 10, gh - ih - 10)
 Shapes.SetOpacity(icon, 90)
-GraphicsWindow.BackgroundColor = "AntiqueWhite"
+GraphicsWindow.BackgroundColor = "Ivory"
 kw = "And,Angle,Animate,Append,Array,Bell,Bible,Bold,Box,Brush,"
 kw = kw + "Caption,Case,Ceiling,Chime,Chinese,Click,Clock,"
 kw = kw + "Color,Control,Copy,Cosine,Count,Cursor,"
 kw = kw + "Date,Degree,Delete,Desktop,Dictionary,Directory,"
-kw = kw + "Down,Draw,"
+kw = kw + "Down,Download,Draw,"
 kw = kw + "Ellipse,End,English,Error,"
 kw = kw + "File,Fill,Flickr,Floor,Font,For,French,From,"
 kw = kw + "German,Go,Graphics,Gray,Height,Hide,Hour,"
-kw = kw + "Image,Italian,Italic,Japanese,Key,Korean,"
+kw = kw + "If,Image,Italian,Italic,Japanese,Key,Korean,"
 kw = kw + "Left,Length,Line,Lower,"
-kw = kw + "Math,Message,Microwave,Minute,Mouse,Move,Music,Network,"
+kw = kw + "Math,Maximum,Message,Microwave,Minimum,Minute,Mouse,Move,Music,"
+kw = kw + "Network,"
 kw = kw + "Opacity,Or,Paper,Pen,Pi,Pop,Program,Push,"
 kw = kw + "Radian,Random,Rectangle,Remainder,Resize,"
 kw = kw + "RGB,Right,Ring,Root,Rotate,"
 kw = kw + "Second,Shape,Shell,Show,Simplified,Sine,Size,Sound,"
 kw = kw + "Spanish,Square,Stack,Start,Step,Stop,Subroutine,"
-kw = kw + "Tangent,Tau,Text,Timer,To,Traditional,"
+kw = kw + "Tangent,Tau,Text,Then,Timer,To,Traditional,"
 kw = kw + "Triangle,Turn,Turtle,Type,Up,Upper,"
 kw = kw + "Wall,Web,Week,Width,Window,Write,Xor,Zoom"
 keywords = LDText.Split(kw, ",")
@@ -50,13 +51,15 @@ GraphicsWindow.Title = title + " - " + n + " keywords"
 LDSpeech.Voice = "Microsoft Zira Desktop"
 GraphicsWindow.BrushColor = "Black"
 GraphicsWindow.FontName = "Trebuchet MS"
+fs = 12
+GraphicsWindow.FontSize = fs
 xLeft = 10
-dx = 80
-dy = 26
+dx = fs * 7.5
+dy = fs * 2
 y[0] = 10 - dy
 For i = 1 To n
   y[i] = y[i - 1] + dy
-  If 400 < y[i] Then
+  If (gh - fs * 1.5) < y[i] Then
     xLeft = xLeft + dx
     y[i] = 10
   EndIf
@@ -68,7 +71,7 @@ LDSpeech.Speed = -1
 While "True"
   If mouseDown Then
     For i = 1 To n
-      If x[i] <= mx And mx <= x[i] + dx And y[i] <= my And my <= y[i] + 12 Then
+      If x[i] <= mx And mx <= x[i] + dx And y[i] <= my And my <= y[i] + fs Then
         LDProcess.Start(Program.Directory + "\" + keywords[i] + ".exe", "")
         LDSpeech.Speak(keywords[i])
         If keywords[i] = "Chime" Then
