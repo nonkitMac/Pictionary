@@ -14,9 +14,9 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
 1. *[And](https://github.com/nonkitMac/Pictionary/blob/master/img/And2.png)*
    *[Or](https://github.com/nonkitMac/Pictionary/blob/master/img/Or2.png)*
    *[For](https://github.com/nonkitMac/Pictionary/blob/master/img/For.png)*
-   [Step](https://github.com/nonkitMac/Pictionary/blob/master/img/For.png)
-   *If*
-   *Then*
+   [Step](https://github.com/nonkitMac/Pictionary/blob/master/img/Step.png)
+   *[If](https://github.com/nonkitMac/Pictionary/blob/master/img/If.png)*
+   *[Then](https://github.com/nonkitMac/Pictionary/blob/master/img/Then.png)*
    *Else*
    *While*
    **[Go](https://github.com/nonkitMac/Pictionary/blob/master/img/Go2.png)**
@@ -94,10 +94,10 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    *[Lower](https://github.com/nonkitMac/Pictionary/blob/master/img/Lower.png)*
    Logarithm
    *Natural*
-   *Maximum*
+   *[Maximum](https://github.com/nonkitMac/Pictionary/blob/master/img/Maximum.png)*
    [Message](https://github.com/nonkitMac/Pictionary/blob/master/img/Message.png)
    Millisecond
-   *Minimum*
+   *[Minimum](https://github.com/nonkitMac/Pictionary/blob/master/img/Minimum.png)*
    [Minute](https://github.com/nonkitMac/Pictionary/blob/master/img/Minute.png)
    Month
    [Music](https://github.com/nonkitMac/Pictionary/blob/master/img/Music.png)
@@ -147,7 +147,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
    **Create**
    **[Delete](https://github.com/nonkitMac/Pictionary/blob/master/img/Delete.png)**
    **Delay**
-   **Download**
+   **[Download](https://github.com/nonkitMac/Pictionary/blob/master/img/Download.png)**
    **[Draw](https://github.com/nonkitMac/Pictionary/blob/master/img/Draw.png)**
    **[Down](https://github.com/nonkitMac/Pictionary/blob/master/img/Down.png)**
    **Elapse**
@@ -204,7 +204,7 @@ Target keywords are following 172 words - nouns, **verbs** and *others*.
 
 ____
 
-Copyright © 2017-2020 Nonki Takahashi.
+Copyright © 2017-2022 Nonki Takahashi.
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
 

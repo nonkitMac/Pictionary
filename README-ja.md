@@ -6,7 +6,7 @@
 
 「Small Basic のためのピクショナリー」は非ネイティブの子どもたちのために Small Basic に出てくる英単語を絵で表すというプロジェクトです。
 
-![Pictionary](img/Pictionary1.3.0.png)
+![Pictionary](img/Pictionary1.9.0.png)
 
 ## ダウンロード
 [Releases](https://github.com/nonkitMac/Pictionary/releases) から .zip ファイルをダウンロードします。
