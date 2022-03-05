@@ -200,7 +200,7 @@
 
 ## 他の言語
 
-- [English](Documents)（英語）
+- [English](README)（英語）
 
 ____
 
