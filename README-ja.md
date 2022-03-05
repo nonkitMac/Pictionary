@@ -29,7 +29,7 @@ Made with Small Basic バッジは [rockycodeshimhe-1332](https://docs.microsoft
 
 ## 関連リンク
 - [Small Basic](https://smallbasic-publicwebsite.azurewebsites.net/)（オフィシャルサイト）
-- [Small Basic のためのピクショナリープロジェクト](https://nonkitmac.github.io/Pictionary/)（コンセプト）
+- [Small Basic のためのピクショナリープロジェクト](https://nonkitmac.github.io/Pictionary/README-ja)（コンセプト）
 - [Small Basic のためのピクショナリー](https://nonkitmac.github.io/Pictionary/Gallery.html)（絵）
 
 ## 他の言語

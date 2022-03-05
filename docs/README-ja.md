@@ -204,7 +204,7 @@
 
 ____
 
-Copyright © 2017-2020 たかはしのんき.
+Copyright © 2017-2022 たかはしのんき.
 
 [![クリエイティブ・コモンズ ライセンス](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/deed.ja)
 
