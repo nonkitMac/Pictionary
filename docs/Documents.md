@@ -15,7 +15,7 @@ Welcome to the Pictionary documents!
 
 ____
 
-Copyright © 2017-2020 Nonki Takahashi.
+Copyright © 2017-2022 Nonki Takahashi.
 
 [![Creative Commons License](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/)
 

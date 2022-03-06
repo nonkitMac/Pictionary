@@ -11,11 +11,11 @@
 * [Small Basic: Revision Control with GitHub](https://social.technet.microsoft.com/wiki/contents/articles/37846.small-basic-revision-control-with-github.aspx) (TechNet Wiki)
 
 # 他の言語
-* [English](Documents)（日本語）
+* [English](Documents)（英語）
 
 ____
 
-Copyright © 2017-2020 たかはしのんき.
+Copyright © 2017-2022 たかはしのんき.
 
 [![クリエイティブ・コモンズ ライセンス](https://i.creativecommons.org/l/by/4.0/88x31.png)](http://creativecommons.org/licenses/by/4.0/deed.ja)
 
